@@ -43,13 +43,13 @@ export interface Permission{
 }
 
 export interface UserForAuthenticationDto{
-  username: string
+  email: string
   password: string
 }
 
 export interface ServerAuthResponse{
-  minutesExpires: number,
-  roles: any,
+  minutesToExpire: number,
+  role: string,
   token: string
 }
 

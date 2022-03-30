@@ -16,13 +16,13 @@ export class AuthService {
     return localStorage.getItem('jwt');
   }
 
-  get roles() {
+  get role() {
     const expDate = new Date(localStorage.getItem('jwt-exp'));
     if (new Date() > expDate) {
       this.logout();
       return null;
     }
-    return localStorage.getItem('jwt-roles');
+    return localStorage.getItem('jwt-role');
   }
   constructor(private http: HttpClient) {}
 
@@ -46,11 +46,11 @@ export class AuthService {
       return;
     }
     const token = response.token;
-    const expDate = new Date(Date.now() + response.minutesExpires * 1000 * 60);
-    const roles = response.roles;
+    const expDate = new Date(Date.now() + response.minutesToExpire * 1000 * 60);
+    const role = response.role;
     localStorage.setItem('jwt', token);
     localStorage.setItem('jwt-exp', expDate.toString());
-    localStorage.setItem('jwt-roles', roles);
+    localStorage.setItem('jwt-role', role);
   }
 
   private handleError(error: HttpErrorResponse) {

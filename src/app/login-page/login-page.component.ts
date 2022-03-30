@@ -23,7 +23,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      username: new FormControl(null, Validators.required),
+      email: new FormControl(null, Validators.required),
       password: new FormControl(null, [
         Validators.required,
         Validators.minLength(4),
@@ -31,7 +31,7 @@ export class LoginPageComponent implements OnInit {
     });
     this.route.queryParams.subscribe((params: Params) => {
       if (params['loginAgain']) {
-        this.message = 'Please enter your username and password';
+        this.message = 'Please enter your email and password';
       }
     });
   }
@@ -42,7 +42,7 @@ export class LoginPageComponent implements OnInit {
     }
     this.submitted = true;
     const userForAuth: UserForAuthenticationDto = {
-      username: this.form.get('username').value,
+      email: this.form.get('email').value,
       password: this.form.get('password').value,
     };
 

@@ -1,21 +1,21 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
   <h2>Login admin panel</h2>
   <div class="alert alert-danger" *ngIf="wrongCredentials">
-    Wrong username, password or there is no such user in the database
+    Wrong email, password or there is no such user in the database
   </div>
   <div class="alert alert-danger" *ngIf="message">
     {{ message }}
   </div>
 
   <div class="form-control">
-    <label>Username</label>
-    <input type="text" formControlName="username" />
+    <label>Email</label>
+    <input type="text" formControlName="email" />
     <div
       class="validation"
-      *ngIf="form.get('username').touched && form.get('username').invalid"
+      *ngIf="form.get('email').touched && form.get('email').invalid"
     >
-      <small *ngIf="form.get('username').errors.required">
-        Username is required
+      <small *ngIf="form.get('email').errors.required">
+        Email is required
       </small>
     </div>
   </div>
