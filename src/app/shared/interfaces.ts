@@ -1,14 +1,19 @@
 export interface User{
   id: string,
   userName: string,
-  email: string
+  email: string,
+  firstName: string,
+  secondName: string,
+  role: string
 }
 
 export interface UserForCreationDto{
   email: string,
+  firstName: string,
+  secondName: string,
   password: string,
-  userName: string,
-  roles: string[]
+  passwordConfirm: string,
+  role: string
 }
 
 export interface UserForUpdateDto{

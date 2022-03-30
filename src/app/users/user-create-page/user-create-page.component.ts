@@ -15,9 +15,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 export class UserCreatePageComponent implements OnInit {
   submitted = false;
   form: FormGroup;
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings: IDropdownSettings = {};
+  roles: Role[] = [];
 
   constructor(
     private usersService: UsersService,
@@ -27,39 +25,33 @@ export class UserCreatePageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      username: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-    });
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'id',
-      textField: 'name',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true,
-    };
     this.loadRoles();
+    this.form = new FormGroup({
+      firstName: new FormControl(null, Validators.required),
+      secondName: new FormControl(null, Validators.required),
+      password: new FormControl(null, Validators.compose([
+        Validators.required])),
+      passwordConfirm: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      role: new FormControl(this.roles[0], Validators.required),
+    });
+
   }
 
   submit() {
+    console.log(this.form)
     if (this.form.invalid) {
       return;
     }
     this.submitted = true;
-    let selectedRoles = [];
-    if (this.selectedItems.length != 0) {
-      for (let i = 0; i < this.selectedItems.length; i++) {
-        selectedRoles.push(this.selectedItems[i].name);
-      }
-    }
+
     const user: UserForCreationDto = {
-      userName: this.form.get('username').value,
+      firstName: this.form.get('firstName').value,
+      secondName: this.form.get('secondName').value,
       email: this.form.get('email').value,
       password: this.form.get('password').value,
-      roles: selectedRoles,
+      passwordConfirm: this.form.get('passwordConfirm').value,
+      role: this.form.get('role').value,
     };
 
     console.log(user);
@@ -78,8 +70,9 @@ export class UserCreatePageComponent implements OnInit {
   }
 
   loadRoles() {
-    this.rolesService.getRoles().subscribe((roles: Role[]) => {
-      this.dropdownList = roles;
+    this.rolesService.getRoles()
+    .subscribe((roles: Role[]) => {
+      this.roles = roles
     });
   }
 }

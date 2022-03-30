@@ -2,14 +2,18 @@
     <table>
       <tr>
         <th>Id</th>
+        <th>Full Name</th>
         <th>Username</th>
         <th>Email</th>
+        <th>Role</th>
         <th>Actions</th>
       </tr>
       <tr *ngFor="let user of users">
         <td>{{user.id}}</td>
+        <td>{{user.firstName}} {{user.secondName}}</td>
         <td>{{user.userName}}</td>
         <td>{{user.email}}</td>
+        <td>{{user.role}}</td>
         <td>
           <button
             class="btn btn-dark"
