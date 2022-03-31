@@ -18,7 +18,6 @@ export class AccountPageComponent implements OnInit {
   submitted = false;
   form: FormGroup;
   user: User;
-  roles: Role[]
   loading = false;
 
   constructor(
@@ -32,22 +31,12 @@ export class AccountPageComponent implements OnInit {
         console.log(user);
         this.user = user;
         this.form = new FormGroup({
-          username: new FormControl(user.userName, Validators.required),
-          email: new FormControl(user.email, [
-            Validators.required,
-            Validators.email,
-          ]),
+          username: new FormControl(user.userName),
+          email: new FormControl(user.email),
+          firstName: new FormControl(user.firstName, Validators.required),
+          secondName: new FormControl(user.secondName, Validators.required),
+          role: new FormControl(this.user.role)
         });
-        this.loadUserRoles();
       });
-  }
-
- 
-  loadUserRoles() {
-    this.usersService.getCurrentUserRoles().subscribe((roles: Role[]) => {
-      this.roles = roles;
-      console.log(roles)
-      this.loading = true;
-    });
   }
 }

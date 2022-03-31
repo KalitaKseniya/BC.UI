@@ -52,6 +52,12 @@
       <small *ngIf="form.get('password').errors.required"
         >Password is a required field</small
       >
+      <small *ngIf="form.get('password').errors.pattern"
+        >Password must contain an uppercase character, lowercase character, a digit, and a non-alphanumeric character.</small
+      >
+      <small *ngIf="form.get('password').errors.minlength"
+        >Password length should be greater than or equal to 6.</small
+      >
     </div>
   </div>
   <div class="form-control">

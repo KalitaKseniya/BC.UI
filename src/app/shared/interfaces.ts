@@ -18,8 +18,8 @@ export interface UserForCreationDto{
 
 export interface UserForUpdateDto{
   email: string,
-  userName: string,
-  roles: string[]
+  firstName: string,
+  secondName: string,
 }
 
 export interface Role{

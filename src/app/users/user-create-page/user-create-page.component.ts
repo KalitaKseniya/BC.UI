@@ -6,6 +6,7 @@ import { Role, UserForCreationDto } from 'src/app/shared/interfaces';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { RolesService } from 'src/app/shared/services/roles.service';
 import { UsersService } from 'src/app/shared/services/users.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-create-page',
@@ -30,7 +31,10 @@ export class UserCreatePageComponent implements OnInit {
       firstName: new FormControl(null, Validators.required),
       secondName: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.compose([
-        Validators.required])),
+        Validators.required,
+        Validators.minLength(6),
+        Validators.pattern(environment.passwordPattern)
+      ])),
       passwordConfirm: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
       role: new FormControl(this.roles[0], Validators.required),

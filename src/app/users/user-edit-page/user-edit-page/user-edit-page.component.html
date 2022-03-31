@@ -20,26 +20,32 @@
       </div>
     </div>
     <div class="form-control">
-      <label>Username</label>
-      <input class="form-control" type="text" formControlName="username" />
+      <label>First Name</label>
+      <input class="form-control" type="text" formControlName="firstName" />
       <div
         class="validation"
-        *ngIf="form.get('username').touched && form.get('username').invalid"
+        *ngIf="form.get('firstName').touched && form.get('firstName').invalid"
       >
-        <small *ngIf="form.get('username').errors.required"
-          >Username is a required field</small
+        <small *ngIf="form.get('firstName').errors.required"
+          >First Name is a required field</small
         >
       </div>
     </div>
     <div class="form-control">
-      <label>Roles</label>
-      <ng-multiselect-dropdown
-        [settings]="dropdownSettings"
-        [data]="dropdownList"
-        [(ngModel)]="selectedItems"
-        [ngModelOptions]="{ standalone: true }"
+      <label>Second Name</label>
+      <input class="form-control" type="text" formControlName="secondName" />
+      <div
+        class="validation"
+        *ngIf="form.get('secondName').touched && form.get('secondName').invalid"
       >
-      </ng-multiselect-dropdown>
+        <small *ngIf="form.get('secondName').errors.required"
+          >Second Name is a required field</small
+        >
+      </div>
+    </div>
+    <div class="form-control">
+      <label>Role</label>
+      <input class="form-control" type="text" formControlName="role" readonly/>
     </div>
     <button
       class="btn btn-primary"

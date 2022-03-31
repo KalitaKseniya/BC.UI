@@ -15,15 +15,16 @@
         <input class="form-control" type="text" formControlName="username" readonly/>
       </div>
       <div class="form-control">
-        <label>Roles</label>
-        <div *ngFor="let role of roles">
-          <input
-            type="checkbox"
-            [checked]="true"
-            readonly
-          />
-          {{ role }}
-        </div>
+        <label>First Name</label>
+        <input class="form-control" type="text" formControlName="firstName" readonly />
+      </div>
+      <div class="form-control">
+        <label>Second Name</label>
+        <input class="form-control" type="text" formControlName="secondName" readonly/>
+      </div>
+      <div class="form-control">
+        <label>Role</label>
+        <input class="form-control" type="text" formControlName="role" readonly/>
       </div>
      
     </form>

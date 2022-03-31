@@ -31,24 +31,13 @@ export class UsersService {
     return this.http.delete<void>(`${environment.serverUrl}/api/admin/users/${id}`)
   }
 
-  getUserRoles(id: string): Observable<Role[]>{
-    return this.http.get<Role[]>(`${environment.serverUrl}/api/admin/users/${id}/roles`)
-  }
-
   changePassword(id: string, passwords: PasswordChangeDto): Observable<any>{
     return this.http.put<any>(`${environment.serverUrl}/api/admin/users/${id}/password-change`, passwords)
   }
 
-  updateUserRoles(id: string, roles: string[]): Observable<void>{
-    return this.http.put<void>(`${environment.serverUrl}/api/admin/users/${id}/roles`, roles)
-  }
-
   getCurrentUser(): Observable<User>{
+    console.log('hallo')
+    console.log(`${environment.serverUrl}/api/admin/users/account`)
     return this.http.get<User>(`${environment.serverUrl}/api/admin/users/account`)
   }
-
-  getCurrentUserRoles(): Observable<Role[]>{
-    return this.http.get<Role[]>(`${environment.serverUrl}/api/admin/users/account/roles`)
-  }
-
 }

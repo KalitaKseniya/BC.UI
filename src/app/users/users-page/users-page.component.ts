@@ -28,12 +28,14 @@ export class UsersPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  deleteUser(id: string) {
-    this.dSub = this.usersService.deleteUser(id).subscribe(
+  deleteUser(user: User) {
+    if (!confirm(`Are you sure you want to delete ${user.firstName} ${user.secondName}?`)) {
+      return;
+    }
+    this.dSub = this.usersService.deleteUser(user.id).subscribe(
       () => {
-        this.users = this.users.filter((u) => u.id !== id);
-        window.location.reload();
-        this.alert.danger('User has been deleted');
+        this.users = this.users.filter((u) => u.id !== user.id);
+        this.alert.danger('User has NOT been deleted');//ToDo K: fix, not showing
       },
       (error) => console.log('Error deleting user', error)
     );
