@@ -1,0 +1,37 @@
+<div *ngIf="partModels.length; else loading">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Available Quantity</th>
+      <th>Price</th>
+      <th>Manufacturer Name</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let partModel of partModels">
+      <td>{{partModel.id}}</td>
+      <td>{{partModel.name}}</td>
+      <td>{{partModel.availableQuantity}}</td>
+      <td>{{partModel.price}}</td>
+      <td>{{partModel.manufacturer.name}}</td>
+      <td>
+        <button
+          class="btn btn-dark"
+          [routerLink]="['/admin','part-models', partModel.id, 'edit']"
+        >
+          Edit
+        </button>
+        <button
+          class="btn btn-primary"
+          (click)="deletePartModel(partModel)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #loading>
+<p>Loading...</p>
+</ng-template>

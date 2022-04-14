@@ -14,9 +14,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { UserEditPageComponent } from '../users/user-edit-page/user-edit-page/user-edit-page.component';
 import { UserChangePasswordComponent } from '../users/user-change-password/user-change-password.component';
 import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
-import { ChatsPageComponent } from '../chats/chats-page/chats-page.component';
-import { ChatEditPageComponent } from '../chats/chat-edit-page/chat-edit-page.component';
-import { ChatCreatePageComponent } from '../chats/chat-create-page/chat-create-page.component';
+import { PartModelsPageComponent } from '../part-models/part-models-page/part-models-page.component';
+import { PartModelsEditPageComponent } from '../part-models/part-models-edit-page/part-models-edit-page.component';
+import { PartModelsCreatePageComponent } from '../part-models/part-models-create-page/part-models-create-page.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +28,10 @@ import { ChatCreatePageComponent } from '../chats/chat-create-page/chat-create-p
     RolesPageComponent,
     ForbiddenPageComponent,
     AlertComponent,
-    ChatsPageComponent,
-    ChatEditPageComponent,
-    ChatCreatePageComponent,
     AccountPageComponent,
+    PartModelsPageComponent,
+    PartModelsEditPageComponent,
+    PartModelsCreatePageComponent
   ],
   imports: [
     CommonModule,
@@ -76,19 +76,20 @@ import { ChatCreatePageComponent } from '../chats/chat-create-page/chat-create-p
             canActivate: [AuthGuard],
           },
           {
-            path: 'chats',
-            component: ChatsPageComponent,
+            path: 'part-models',
             pathMatch: 'full',
+            component: PartModelsPageComponent,
             canActivate: [AuthGuard],
           },
           {
-            path: 'chat/create',
-            component: ChatCreatePageComponent,
+            path: 'part-models/create',
+            pathMatch: 'full',
+            component: PartModelsCreatePageComponent,
             canActivate: [AuthGuard],
-          },
+          },//ToDo: fix multiple alignment on click
           {
-            path: 'chat/:id/edit',
-            component: ChatEditPageComponent,
+            path: 'part-models/:id/edit',
+            component: PartModelsEditPageComponent,
             canActivate: [AuthGuard],
           },
           {

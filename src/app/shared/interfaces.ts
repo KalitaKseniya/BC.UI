@@ -32,21 +32,6 @@ export interface PasswordChangeDto{
   newPassword: string
 }
 
-export interface RoleForCreationDto{
-  name: string,
-  permissions: Permission[]
-}
-
-export interface PermissionForRole{
-  name: string
-}
-
-export interface Permission{
-  id: number,
-  name: string,
-  description: string
-}
-
 export interface UserForAuthenticationDto{
   email: string
   password: string
@@ -58,15 +43,37 @@ export interface ServerAuthResponse{
   token: string
 }
 
-export interface Chat{
-  id: number,
-  userRequest: string,
-  botResponse: string,
-  nextIds: string
+export interface Part{
+  id: string,
+  name: string,
 }
 
-export interface ChatForManipulationDto{
-  userRequest: string,
-  botResponse: string,
-  nextIds: string
+export interface Manufacturer{
+  id: string,
+  name: string,
+}
+
+export interface PartDto{
+  name: string,
+}
+
+export interface ManufacturerDto{
+  name: string,
+}
+
+export interface PartModel{
+  id: string,
+  name: string,
+  part: Part,
+  manufacturer: Manufacturer,
+  price: number,
+  availableQuantity: number
+}
+
+export interface PartModelForCreationDto{
+  name: string,
+  part: PartDto,
+  manufacturer: ManufacturerDto,
+  price: number,
+  availableQuantity: number
 }
