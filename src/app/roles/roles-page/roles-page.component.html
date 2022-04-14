@@ -3,21 +3,20 @@
     <tr>
       <th>Id</th>
       <th>Name</th>
-      <th>Actions</th>
+      <th>Users</th>
     </tr>
     <tr *ngFor="let role of roles">
       <td>{{ role.id }}</td>
       <td>{{ role.name }}</td>
       <td>
-        <button class="btn btn-primary" (click)="deleteRole(role.id)">
-          Delete
-        </button>
-        <button
-          class="btn btn-dark"
-          [routerLink]="['/admin', 'role', role.id, 'edit-permissions']"
-        >
-          Edit permissions
-        </button>
+        <p  *ngFor="let user of rolesWithUsers[role.name]">
+          <button
+            class="btn btn-link"
+            [routerLink]="['/admin','user', user.id, 'edit']"
+          >
+            {{user.email}}
+          </button>
+        </p>
       </td>
     </tr>
   </table>

@@ -14,8 +14,6 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { UserEditPageComponent } from '../users/user-edit-page/user-edit-page/user-edit-page.component';
 import { UserChangePasswordComponent } from '../users/user-change-password/user-change-password.component';
 import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
-import { RoleCreatePageComponent } from '../roles/role-create-page/role-create-page.component';
-import { RoleEditPageComponent } from '../roles/role-edit-page/role-edit-page.component';
 import { ChatsPageComponent } from '../chats/chats-page/chats-page.component';
 import { ChatEditPageComponent } from '../chats/chat-edit-page/chat-edit-page.component';
 import { ChatCreatePageComponent } from '../chats/chat-create-page/chat-create-page.component';
@@ -28,8 +26,6 @@ import { ChatCreatePageComponent } from '../chats/chat-create-page/chat-create-p
     UsersPageComponent,
     UserChangePasswordComponent,
     RolesPageComponent,
-    RoleCreatePageComponent,
-    RoleEditPageComponent,
     ForbiddenPageComponent,
     AlertComponent,
     ChatsPageComponent,
@@ -72,16 +68,6 @@ import { ChatCreatePageComponent } from '../chats/chat-create-page/chat-create-p
             path: 'roles',
             component: RolesPageComponent,
             pathMatch: 'full',
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'role/create',
-            component: RoleCreatePageComponent,
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'role/:id/edit-permissions',
-            component: RoleEditPageComponent,
             canActivate: [AuthGuard],
           },
           {

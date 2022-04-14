@@ -31,12 +31,16 @@ export class AccountPageComponent implements OnInit {
         console.log(user);
         this.user = user;
         this.form = new FormGroup({
-          username: new FormControl(user.userName),
-          email: new FormControl(user.email),
+          username: new FormControl(user.userName, Validators.required),
           firstName: new FormControl(user.firstName, Validators.required),
           secondName: new FormControl(user.secondName, Validators.required),
-          role: new FormControl(this.user.role)
+          role: new FormControl(user.role, Validators.required),
+          email: new FormControl(user.email, [
+            Validators.required,
+            Validators.email,
+          ]),
         });
       });
   }
+
 }
