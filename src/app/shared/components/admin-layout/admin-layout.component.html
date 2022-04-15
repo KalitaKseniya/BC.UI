@@ -3,12 +3,12 @@
   <h3>Admin</h3>
   <!-- <ul> *ngIf="auth.isAuthenticated()"> -->
   <ul>
-    <li routerLinkActive="active">
-      <a [routerLink]="['part-models']">Part Models</a>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['part-models']">
+      <a>Part Models</a>
 
     </li>
-    <li routerLinkActive="active">
-      <a [routerLink]="['part-models', 'create']">Create a part model</a>
+    <li routerLinkActive="active"  [routerLink]="['part-models', 'create']">
+      <a>Create a part model</a>
     </li>
     <li routerLinkActive="active">
       <a [routerLink]="['users']">Users</a>

@@ -75,18 +75,21 @@ import { PartModelsCreatePageComponent } from '../part-models/part-models-create
             component: ForbiddenPageComponent,
             canActivate: [AuthGuard],
           },
+
           {
             path: 'part-models',
-            pathMatch: 'full',
-            component: PartModelsPageComponent,
             canActivate: [AuthGuard],
+            children:[
+              {
+                path: '',
+                component: PartModelsPageComponent,
+              },
+              {
+                path: 'create',
+                component: PartModelsCreatePageComponent,
+              },
+            ]
           },
-          {
-            path: 'part-models/create',
-            pathMatch: 'full',
-            component: PartModelsCreatePageComponent,
-            canActivate: [AuthGuard],
-          },//ToDo: fix multiple alignment on click
           {
             path: 'part-models/:id/edit',
             component: PartModelsEditPageComponent,
