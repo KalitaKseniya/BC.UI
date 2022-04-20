@@ -13,11 +13,11 @@ export class PartModelsService {
   constructor(private http: HttpClient) { }
 
   getPartModels(): Observable<PartModel[]>{
-    return this.http.get<PartModel[]>(`${environment.serverPartUrl}/api/admin/partModels`)
+    return this.http.get<PartModel[]>(`${environment.serverPartUrl}/api/admin/part-models`)
   }
 
   createPartModel(partModel: PartModelForCreationDto): Observable<void>{
-    return this.http.post<void>(`${environment.serverPartUrl}/api/admin/partModels`, partModel)
+    return this.http.post<void>(`${environment.serverPartUrl}/api/admin/part-models`, partModel)
   }
 
   // getChatById(id: number): Observable<PartModel>{
@@ -25,7 +25,7 @@ export class PartModelsService {
   // }
 
   deletePartModel(id: string): Observable<void>{
-    return this.http.delete<void>(`${environment.serverPartUrl}/api/admin/partModels/${id}`)
+    return this.http.delete<void>(`${environment.serverPartUrl}/api/admin/part-models/${id}`)
   }
 
   // updateChat(id: number, chat: ChatForManipulationDto): Observable<void>{
