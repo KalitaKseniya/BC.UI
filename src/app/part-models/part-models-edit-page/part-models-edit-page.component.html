@@ -1,1 +1,87 @@
-<p>part-models-edit-page works!</p>
+<div *ngIf="partModel && parts.length && manufacturers.length; else loading">
+
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="header">
+        <button routerLink="/admin/part-models" class="btn btn-link btn-left">
+          Back to all part models
+        </button>
+        <h2>Create a part model</h2>
+      </div>
+      <div class="form-control">
+        <label>Name</label>
+        <input class="form-control" type="text" formControlName="name" />
+        <div
+          class="validation"
+          *ngIf="form.get('name').touched && form.get('name').invalid"
+        >
+          <small *ngIf="form.get('name').errors.required"
+            >Name is a required field</small
+          >
+        </div>
+      </div>
+      <div class="form-control">
+        <label>Price</label>
+        <input class="form-control" type="text" formControlName="price" />
+        <div
+          class="validation"
+          *ngIf="form.get('price').touched && form.get('price').invalid"
+        >
+          <small *ngIf="form.get('price').errors.required"
+            >Price is a required field</small
+          >
+          <small *ngIf="form.get('price').errors.min">Price must be a non-negative number</small>
+        </div>
+      </div>
+      <div class="form-control">
+        <label>Available Quantity</label>
+        <input class="form-control" type="text" formControlName="availableQuantity" />
+        <div
+        class="validation"
+        *ngIf="form.get('availableQuantity').touched && form.get('availableQuantity').invalid"
+        >
+        <small *ngIf="form.get('availableQuantity').errors.required"
+        >Available Quantity is a required field</small
+        >
+        <small *ngIf="form.get('availableQuantity').errors.min">Available Quantity must be a non-negative number</small>
+        </div>
+      </div>
+      
+      <input type="file" id="file" accept="image/*" width="300" height="300" (change)="uploadImage()"/>
+      <img src={{partModel.imageUrl}}/>
+
+      <div class="form-control">
+        <label>Part</label>
+        <select formControlName="part">
+            <option
+                *ngFor="let p of parts"
+                [ngValue]="p.id"
+            >
+                {{p.name}}
+            </option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label>Manufacturer</label>
+        <select formControlName="manufacturer">
+            <option
+                *ngFor="let m of manufacturers"
+                [ngValue]="m.id"
+            >
+                {{m.name}}
+            </option>
+        </select>
+    </div>
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="form.invalid || submitted"
+      >
+        Save
+      </button>
+    </form>
+    </div>
+    
+    <ng-template #loading>
+      <p>Loading...</p>
+    </ng-template>
+    

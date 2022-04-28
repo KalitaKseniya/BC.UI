@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Manufacturer, ManufacturerDto, Part, PartDto, PartModelForCreationDto } from 'src/app/shared/interfaces';
+import { Manufacturer, ManufacturerDto, Part, PartDto, PartModelForCreationOrUpdateDto } from 'src/app/shared/interfaces';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { ManufacturersService } from 'src/app/shared/services/manufacturers.service';
 import { PartModelsService } from 'src/app/shared/services/partModels.service';
@@ -19,6 +19,7 @@ export class PartModelsCreatePageComponent implements OnInit {
   manufacturers: Manufacturer[] = [];
   parts: Part[] = [];
   loading = false;
+  imageBase64: string;
 
   constructor(
     private partModelsService: PartModelsService,
@@ -44,23 +45,21 @@ export class PartModelsCreatePageComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form)
     if (this.form.invalid) {
+      console.log(this.form)
       return;
     }
     this.submitted = true;
-    const manufacturer: ManufacturerDto = {
-      name: this.form.get('manufacturer').value,
-    };
-    const part: PartDto = {
-      name: this.form.get('part').value,
-    };
-    const partModel: PartModelForCreationDto = {
+    const manufacturerId = this.form.get('manufacturer').value;
+    const partId= this.form.get('part').value;
+
+    const partModel: PartModelForCreationOrUpdateDto = {
       name: this.form.get('name').value,
       price: this.form.get('price').value,
       availableQuantity: this.form.get('availableQuantity').value,
-      manufacturer: manufacturer,
-      part: part,
+      manufacturerId: manufacturerId,
+      partId: partId,
+      imageUrl: this.imageBase64
     };
 
     console.log(partModel);
@@ -68,8 +67,8 @@ export class PartModelsCreatePageComponent implements OnInit {
       () => {
         this.submitted = false;
         this.form.reset();
-        this.router.navigate(['admin', 'users']);
-        this.alert.success('User has been created');
+        this.router.navigate(['admin', 'part-models']);
+        this.alert.success('Part model has been created');
       },
       (error) => {
         console.log('Error when creating ', error);
@@ -84,10 +83,23 @@ export class PartModelsCreatePageComponent implements OnInit {
       this.parts = parts
     });
   }
+
   loadManufacturers() {
     this.manufacturersService.getAll()
     .subscribe((manufacturers: Manufacturer[]) => {
       this.manufacturers = manufacturers
     });
   }
-}
+  
+  uploadImage(){//ToDo: move to anther component
+    const file = (<HTMLInputElement>document.querySelector('input[type=file]')).files[0]
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageBase64 = e.target.result.split('base64,')[1];
+      console.log(this.imageBase64)
+
+    };
+    reader.readAsDataURL(file)
+  }
+ }
+

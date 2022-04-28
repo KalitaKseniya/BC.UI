@@ -35,7 +35,7 @@ export class UsersPageComponent implements OnInit, OnDestroy {
     this.dSub = this.usersService.deleteUser(user.id).subscribe(
       () => {
         this.users = this.users.filter((u) => u.id !== user.id);
-        this.alert.danger('User has NOT been deleted');//ToDo K: fix, not showing
+        this.alert.danger('User has been deleted');//ToDo K: fix, not showing
       },
       (error) => console.log('Error deleting user', error)
     );

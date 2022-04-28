@@ -11,7 +11,7 @@
       <td>
         <p  *ngFor="let user of rolesWithUsers[role.name]">
           <button
-            class="btn btn-link"
+            class="btn btn-link btn-left"
             [routerLink]="['/admin','user', user.id, 'edit']"
           >
             {{user.email}}

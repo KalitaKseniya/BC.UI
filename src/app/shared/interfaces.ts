@@ -67,13 +67,15 @@ export interface PartModel{
   part: Part,
   manufacturer: Manufacturer,
   price: number,
-  availableQuantity: number
+  availableQuantity: number,
+  imageUrl: string
 }
 
-export interface PartModelForCreationDto{
+export interface PartModelForCreationOrUpdateDto{
   name: string,
-  part: PartDto,
-  manufacturer: ManufacturerDto,
+  partId: string,
+  manufacturerId: string,
   price: number,
-  availableQuantity: number
+  availableQuantity: number,
+  imageUrl: string
 }

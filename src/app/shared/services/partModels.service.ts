@@ -2,33 +2,35 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PartModel, PartModelForCreationDto } from '../interfaces';
+import { PartModel, PartModelForCreationOrUpdateDto } from '../interfaces';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PartModelsService {
-
-  constructor(private http: HttpClient) { }
+  serverUrl: string;
+  constructor(private http: HttpClient) {
+    this.serverUrl = environment.serverPartUrl;
+   }
 
   getPartModels(): Observable<PartModel[]>{
-    return this.http.get<PartModel[]>(`${environment.serverPartUrl}/api/admin/part-models`)
+    return this.http.get<PartModel[]>(`${this.serverUrl}/api/admin/part-models`)
   }
 
-  createPartModel(partModel: PartModelForCreationDto): Observable<void>{
-    return this.http.post<void>(`${environment.serverPartUrl}/api/admin/part-models`, partModel)
+  createPartModel(partModel: PartModelForCreationOrUpdateDto): Observable<void>{
+    return this.http.post<void>(`${this.serverUrl}/api/admin/part-models`, partModel)
   }
 
-  // getChatById(id: number): Observable<PartModel>{
-  //   return this.http.get<PartModel>(`${environment.serverUrl}/api/chats/${id}`)
-  // }
+  getPartModelById(id: string): Observable<PartModel>{
+    return this.http.get<PartModel>(`${this.serverUrl}/api/admin/part-models/${id}`)
+  }
 
   deletePartModel(id: string): Observable<void>{
-    return this.http.delete<void>(`${environment.serverPartUrl}/api/admin/part-models/${id}`)
+    return this.http.delete<void>(`${this.serverUrl}/api/admin/part-models/${id}`)
   }
 
-  // updateChat(id: number, chat: ChatForManipulationDto): Observable<void>{
-  //   return this.http.put<void>(`${environment.serverUrl}/api/chats/${id}`, chat)
-  // }
+  updatePartModel(id: string, partModel: PartModelForCreationOrUpdateDto): Observable<void>{
+    return this.http.put<void>(`${this.serverUrl}/api/admin/part-models/${id}`, partModel)
+  }
 }

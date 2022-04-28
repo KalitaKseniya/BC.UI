@@ -7,6 +7,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -15,10 +18,14 @@ import {MatButtonModule} from '@angular/material/button';
     MatTableModule,
     MatSortModule,
     MatIconModule,
+    MatFormFieldModule,
     MatTooltipModule,
     MatButtonModule,
+    MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
+    MatCard
   ],
   exports: [
     HttpClientModule,
@@ -26,10 +33,13 @@ import {MatButtonModule} from '@angular/material/button';
     MatPaginatorModule,
     MatIconModule,
     MatTableModule,
+    MatFormFieldModule,
     MatSortModule,
     MatTooltipModule,
+    MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
   ],
   declarations: [],
 })

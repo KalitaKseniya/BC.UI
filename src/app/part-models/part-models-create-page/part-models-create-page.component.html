@@ -2,7 +2,7 @@
 
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
   <div class="header">
-    <button routerLink="/admin/part-models" class="btn btn-link">
+    <button routerLink="/admin/part-models" class="btn btn-link btn-left">
       Back to all part models
     </button>
     <h2>Create a part model</h2>
@@ -43,13 +43,15 @@
       >
     </div>
   </div>
+  
+  <input type="file" id="file" accept="image/*" width="300" height="300" (change)="uploadImage()"/>
 
   <div class="form-control">
     <label>Part</label>
     <select formControlName="part">
         <option
             *ngFor="let p of parts"
-            [ngValue]="p.name"
+            [ngValue]="p.id"
         >
             {{p.name}}
         </option>
@@ -60,7 +62,7 @@
     <select formControlName="manufacturer">
         <option
             *ngFor="let m of manufacturers"
-            [ngValue]="m.name"
+            [ngValue]="m.id"
         >
             {{m.name}}
         </option>

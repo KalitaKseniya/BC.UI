@@ -1,3 +1,4 @@
+import { PartModelDetailsComponent } from './../part-models/part-model-details/part-model-details.component';
 import { AccountPageComponent } from './../account-page/account-page.component';
 import { AlertComponent } from './../shared/components/alert/alert.component';
 import { ForbiddenPageComponent } from './../forbidden-page/forbidden-page.component';
@@ -31,7 +32,8 @@ import { PartModelsCreatePageComponent } from '../part-models/part-models-create
     AccountPageComponent,
     PartModelsPageComponent,
     PartModelsEditPageComponent,
-    PartModelsCreatePageComponent
+    PartModelsCreatePageComponent,
+    PartModelDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -93,6 +95,11 @@ import { PartModelsCreatePageComponent } from '../part-models/part-models-create
           {
             path: 'part-models/:id/edit',
             component: PartModelsEditPageComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'part-model/:id/details',
+            component: PartModelDetailsComponent,
             canActivate: [AuthGuard],
           },
           {

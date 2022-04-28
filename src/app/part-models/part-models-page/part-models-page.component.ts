@@ -5,6 +5,8 @@ import { AlertService } from 'src/app/shared/services/alert.service';
 import { PartModelsService } from 'src/app/shared/services/partModels.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-part-models-page',
@@ -15,19 +17,20 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
   partModels: PartModel[] = [];
   gSub: Subscription;
   dSub: Subscription;
-  public displayedColumns = ['name', 'availableQuantity', 'price', 'manufacturerName', 'partName','details', 'update', 'delete'
+  public displayedColumns = ['image', 'name', 'availableQuantity', 'price', 'manufacturerName', 'partName','details', 'update', 'delete'
 ];
   public dataSource = new MatTableDataSource<PartModel>();
 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private partModelsService: PartModelsService,
-    private alert: AlertService
+    private alert: AlertService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-
   }
 
   ngAfterViewInit(): void {
@@ -40,6 +43,7 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
       (error) => console.log('Error when fetching part models', error)
     );
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
 
   }
 
@@ -50,19 +54,23 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
     this.dSub = this.partModelsService.deletePartModel(partModel.id).subscribe(
       () => {
         this.partModels = this.partModels.filter((u) => u.id !== partModel.id);
-        this.alert.danger('PartModel has NOT been deleted');//ToDo K: fix, not showing
+        this.alert.danger('PartModel has been deleted');//ToDo K: fix, not showing
       },
       (error) => console.log('Error deleting part model', error)
     );
   }
 
   public redirectToDetails = (id: string) => {
-    //ToDO: implement
-    throw new Error('Method not implemented.');
+    let url: string = `admin/part-model/${id}/details`;
+    this.router.navigate([url]);
   }
   public redirectToUpdate = (id: string) => {
-    // ToDo:impelement
-    throw new Error('Method not implemented.');
+    let url: string = `admin/part-models/${id}/edit`;
+    this.router.navigate([url]);
+  }
+
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
   ngOnDestroy() {
