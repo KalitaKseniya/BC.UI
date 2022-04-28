@@ -19,6 +19,12 @@
     <li routerLinkActive="active">
       <a [routerLink]="['roles']">Roles</a>
     </li>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <a [routerLink]="['parts']">Parts</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['parts', 'create']">Create a Part</a>
+    </li>
     <li routerLinkActive="active">
       <a [routerLink]="['account']"><i>My account</i></a>
     </li>

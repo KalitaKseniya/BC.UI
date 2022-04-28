@@ -3,10 +3,6 @@
     <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
 </div>
-<mat-card-actions align="center">
-  <button mat-raised-button color="primary" [disabled]="!ownerForm.valid">Create</button>
-  <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
-</mat-card-actions>
  <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="image">
       <th mat-header-cell  *matHeaderCellDef> Image </th>

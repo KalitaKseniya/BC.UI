@@ -1,0 +1,13 @@
+<div *ngIf="!loading; else loadingTemplate">
+  <app-parts-form
+    [callbackFunction]="updateCallback"
+    [(partDto)]="partDto"
+    [formStatus]="formStatusUpdate"
+    [submitted]="submitted"
+  ></app-parts-form>
+</div>
+
+<ng-template #loadingTemplate>
+  <p>Loading...</p>
+</ng-template>
+

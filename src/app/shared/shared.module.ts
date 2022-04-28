@@ -25,7 +25,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MatCard
   ],
   exports: [
     HttpClientModule,

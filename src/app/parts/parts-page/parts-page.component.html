@@ -1,0 +1,26 @@
+<div *ngIf="parts.length; else loading">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let part of parts">
+      <td>{{ part.id }}</td>
+      <td>{{ part.name }}</td>
+      <td>
+        <button class="btn btn-sm btn-warning"
+          (click)="redirectToUpdate(part.id)">
+          Edit
+        </button>
+        <button class="btn btn-sm btn-danger" (click)="deletePart(part)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

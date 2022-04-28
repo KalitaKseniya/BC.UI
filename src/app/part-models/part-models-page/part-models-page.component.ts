@@ -64,6 +64,7 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
     let url: string = `admin/part-model/${id}/details`;
     this.router.navigate([url]);
   }
+  
   public redirectToUpdate = (id: string) => {
     let url: string = `admin/part-models/${id}/edit`;
     this.router.navigate([url]);

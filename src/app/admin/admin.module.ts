@@ -18,6 +18,10 @@ import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
 import { PartModelsPageComponent } from '../part-models/part-models-page/part-models-page.component';
 import { PartModelsEditPageComponent } from '../part-models/part-models-edit-page/part-models-edit-page.component';
 import { PartModelsCreatePageComponent } from '../part-models/part-models-create-page/part-models-create-page.component';
+import { PartsEditorComponent } from '../parts/parts-editor/parts-editor.component';
+import { PartsPageComponent } from '../parts/parts-page/parts-page.component';
+import { PartsFormComponent } from '../parts/parts-form/parts-form.component';
+import { PartsCreatePageComponent } from '../parts/parts-create-page/parts-create-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { PartModelsCreatePageComponent } from '../part-models/part-models-create
     PartModelsPageComponent,
     PartModelsEditPageComponent,
     PartModelsCreatePageComponent,
-    PartModelDetailsComponent
+    PartModelDetailsComponent,
+    PartsEditorComponent,
+    PartsPageComponent,
+    PartsFormComponent,
+    PartsCreatePageComponent,
   ],
   imports: [
     CommonModule,
@@ -77,7 +85,6 @@ import { PartModelsCreatePageComponent } from '../part-models/part-models-create
             component: ForbiddenPageComponent,
             canActivate: [AuthGuard],
           },
-
           {
             path: 'part-models',
             canActivate: [AuthGuard],
@@ -101,6 +108,24 @@ import { PartModelsCreatePageComponent } from '../part-models/part-models-create
             path: 'part-model/:id/details',
             component: PartModelDetailsComponent,
             canActivate: [AuthGuard],
+          },
+          {
+            path: 'parts',
+            canActivate: [AuthGuard],
+            children:[
+              {
+                path: '',
+                component: PartsPageComponent,
+              },
+              {
+                path: 'create',
+                component: PartsCreatePageComponent,
+              },
+              {
+                path: "edit/:id",
+                component: PartsEditorComponent
+              },
+            ]
           },
           {
             path: 'account',
