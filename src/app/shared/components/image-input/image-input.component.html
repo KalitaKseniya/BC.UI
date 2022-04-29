@@ -1,0 +1,16 @@
+<input type="file" id="file" accept="image/*" width="300" height="300" (change)="uploadImage()"/>
+
+<div>
+  <div *ngIf="imageBase64 != null">
+    <div style="margin:10px">
+        <img src={{imageBase64Src}} style="width:400px;">
+    </div>
+  </div>
+</div>
+<div>
+  <div *ngIf="imageUrl != null">
+    <div style="margin:10px">
+        <img src={{imageUrl}} style="width:400px;">
+    </div>
+  </div>
+</div>

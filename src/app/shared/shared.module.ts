@@ -40,6 +40,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     FlexLayoutModule,
   ],
-  declarations: [],
+  declarations: [
+  ],
 })
 export class SharedModule {}

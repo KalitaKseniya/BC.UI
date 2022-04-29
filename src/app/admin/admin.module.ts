@@ -22,6 +22,8 @@ import { PartsEditorComponent } from '../parts/parts-editor/parts-editor.compone
 import { PartsPageComponent } from '../parts/parts-page/parts-page.component';
 import { PartsFormComponent } from '../parts/parts-form/parts-form.component';
 import { PartsCreatePageComponent } from '../parts/parts-create-page/parts-create-page.component';
+import { ImageInputComponent } from '../shared/components/image-input/image-input.component';
+import { PartModelsFormComponent } from '../part-models/part-models-form/part-models-form.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { PartsCreatePageComponent } from '../parts/parts-create-page/parts-creat
     PartsPageComponent,
     PartsFormComponent,
     PartsCreatePageComponent,
+    ImageInputComponent,
+    PartModelsFormComponent,
   ],
   imports: [
     CommonModule,
