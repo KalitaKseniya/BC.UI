@@ -28,6 +28,9 @@
         <small *ngIf="form.get('price').errors.required"
           >Price is a required field</small
         >
+        <small *ngIf="form.get('price').errors.min"
+          >Price must be non-negative</small
+        >
       </div>
     </div>
     <div class="form-control">
@@ -39,6 +42,9 @@
       >
         <small *ngIf="form.get('availableQuantity').errors.required"
           >Available Quantity is a required field</small
+        >
+        <small *ngIf="form.get('availableQuantity').errors.min"
+          >Available Quantity must be non-negative</small
         >
       </div>
     </div>

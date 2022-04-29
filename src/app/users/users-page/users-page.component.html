@@ -1,3 +1,9 @@
+<button
+    mat-flat-button
+    color="primary"
+    [routerLink]="['/admin','user', 'create']"
+  >Create new User
+</button>
 <div *ngIf="users.length; else loading">
     <table>
       <tr>

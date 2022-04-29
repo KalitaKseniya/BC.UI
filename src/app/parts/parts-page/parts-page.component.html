@@ -1,3 +1,9 @@
+<button
+    mat-flat-button
+    color="primary"
+    [routerLink]="['/admin','parts', 'create']"
+  >Create new Part
+</button>
 <div *ngIf="parts.length; else loading">
   <table>
     <tr>
