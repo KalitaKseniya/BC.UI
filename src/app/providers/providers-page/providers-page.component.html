@@ -1,0 +1,36 @@
+<button
+    mat-flat-button
+    color="primary"
+    [routerLink]="['/admin','providers', 'create']"
+  >Create new Provider
+</button>
+<div *ngIf="providers.length; else loading">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let provider of providers">
+      <td>{{ provider.id }}</td>
+      <td>{{ provider.name }}</td>
+      <td>{{ provider.email }}</td>
+      <td>{{ provider.phone }}</td>
+      <td>
+        <button class="btn btn-sm btn-warning"
+          (click)="redirectToUpdate(provider.id)">
+          Edit
+        </button>
+        <button class="btn btn-sm btn-danger" (click)="deleteProvider(provider)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

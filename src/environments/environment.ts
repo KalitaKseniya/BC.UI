@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   serverUrl: "https://localhost:5021",
   serverPartUrl: "https://localhost:5030",
+  serverDeliveryOrdersUrl: "https://localhost:5040",
   passwordPattern : '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$'
 };
 

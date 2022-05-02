@@ -24,6 +24,10 @@ import { PartsFormComponent } from '../parts/parts-form/parts-form.component';
 import { PartsCreatePageComponent } from '../parts/parts-create-page/parts-create-page.component';
 import { ImageInputComponent } from '../shared/components/image-input/image-input.component';
 import { PartModelsFormComponent } from '../part-models/part-models-form/part-models-form.component';
+import { ProvidersPageComponent } from '../providers/providers-page/providers-page.component';
+import { ProvidersCreatePageComponent } from '../providers/providers-create-page/providers-create-page.component';
+import { ProvidersEditComponent } from '../providers/providers-edit/providers-edit.component';
+import { ProvidersFormComponent } from '../providers/providers-form/providers-form.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,10 @@ import { PartModelsFormComponent } from '../part-models/part-models-form/part-mo
     PartsCreatePageComponent,
     ImageInputComponent,
     PartModelsFormComponent,
+    ProvidersPageComponent,
+    ProvidersEditComponent,
+    ProvidersFormComponent,
+    ProvidersCreatePageComponent,
   ],
   imports: [
     CommonModule,
@@ -128,6 +136,24 @@ import { PartModelsFormComponent } from '../part-models/part-models-form/part-mo
               {
                 path: "edit/:id",
                 component: PartsEditorComponent
+              },
+            ]
+          },
+          {
+            path: 'providers',
+            canActivate: [AuthGuard],
+            children:[
+              {
+                path: '',
+                component: ProvidersPageComponent,
+              },
+              {
+                path: 'create',
+                component: ProvidersCreatePageComponent,
+              },
+              {
+                path: ":id/edit",
+                component: ProvidersEditComponent
               },
             ]
           },

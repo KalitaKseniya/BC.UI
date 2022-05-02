@@ -30,7 +30,6 @@ export class PartModelsEditPageComponent implements OnInit {
     this.formStatusUpdate = FormStatus.Update;
 
     let id = this.activeRoute.snapshot.params["id"]
-    console.log('id',id)
 
     this.partModelsService.getPartModelById(id)
     .subscribe((partModel: PartModel) => {

@@ -79,3 +79,16 @@ export interface PartModelForCreationOrUpdateDto{
   availableQuantity: number,
   imageUrl: string
 }
+
+export interface ProviderDto{
+  name: string,
+  email: string,
+  phone: string
+}
+
+export interface Provider{
+  id: string,
+  name: string,
+  email: string,
+  phone: string
+}

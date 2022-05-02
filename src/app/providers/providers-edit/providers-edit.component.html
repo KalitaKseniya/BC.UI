@@ -1,0 +1,12 @@
+<div *ngIf="!loading; else loadingTemplate">
+  <app-providers-form
+      [callbackFunction]="updateCallback"
+      [(providerDto)]="providerDto"
+      [formStatus]="formStatusUpdate"
+      [submitted]="submitted"
+  ></app-providers-form>
+</div>
+
+<ng-template #loadingTemplate>
+  <p>Loading...</p>
+</ng-template>
