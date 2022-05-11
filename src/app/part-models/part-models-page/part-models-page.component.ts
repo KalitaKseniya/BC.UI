@@ -17,7 +17,7 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
   partModels: PartModel[] = [];
   gSub: Subscription;
   dSub: Subscription;
-  public displayedColumns = ['image', 'name', 'availableQuantity', 'price', 'manufacturerName', 'partName','details', 'update', 'delete'
+  public displayedColumns = ['image', 'name', 'availableQuantity', 'price', 'manufacturerName', 'partName', 'update', 'delete'
 ];
   public dataSource = new MatTableDataSource<PartModel>();
 
@@ -64,7 +64,7 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
     let url: string = `admin/part-model/${id}/details`;
     this.router.navigate([url]);
   }
-  
+
   public redirectToUpdate = (id: string) => {
     let url: string = `admin/part-models/${id}/edit`;
     this.router.navigate([url]);
