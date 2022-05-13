@@ -28,6 +28,8 @@ import { ProvidersPageComponent } from '../providers/providers-page/providers-pa
 import { ProvidersCreatePageComponent } from '../providers/providers-create-page/providers-create-page.component';
 import { ProvidersEditComponent } from '../providers/providers-edit/providers-edit.component';
 import { ProvidersFormComponent } from '../providers/providers-form/providers-form.component';
+import { DeliveryOrdersComponent } from '../delivery-orders/delivery-orders/delivery-orders.component';
+import { DeliveryOrderCreatePageComponent } from '../delivery-orders/delivery-order-create-page/delivery-order-create-page.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { ProvidersFormComponent } from '../providers/providers-form/providers-fo
     ProvidersEditComponent,
     ProvidersFormComponent,
     ProvidersCreatePageComponent,
+    DeliveryOrdersComponent,
+    DeliveryOrderCreatePageComponent
   ],
   imports: [
     CommonModule,
@@ -154,6 +158,20 @@ import { ProvidersFormComponent } from '../providers/providers-form/providers-fo
               {
                 path: ":id/edit",
                 component: ProvidersEditComponent
+              },
+            ]
+          },
+          {
+            path: 'delivery-orders',
+            canActivate: [AuthGuard],
+            children:[
+              {
+                path: '',
+                component: DeliveryOrdersComponent,
+              },
+              {
+                path: 'create',
+                component: DeliveryOrderCreatePageComponent,
               },
             ]
           },

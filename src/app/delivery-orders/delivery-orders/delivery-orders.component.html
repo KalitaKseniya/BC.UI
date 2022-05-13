@@ -6,29 +6,29 @@
       mat-flat-button
       color="primary"
       [routerLink]="['create']"
-    >Create new Part Model</button>
+    >Create new Delivery Order</button>
 </div>
 
  <table mat-table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="image">
-      <th mat-header-cell  *matHeaderCellDef> Image </th>
-      <td mat-cell *matCellDef="let element"> <img src={{element.imageUrl}}> </td>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
-    <ng-container matColumnDef="name">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <ng-container matColumnDef="dateCreated">
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Date Created </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateCreated}} </td>
     </ng-container>
-    <ng-container matColumnDef="availableQuantity">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Available Quantity </th>
-      <td mat-cell *matCellDef="let element"> {{element.availableQuantity}} </td>
+    <ng-container matColumnDef="stage">
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Stage </th>
+      <td mat-cell *matCellDef="let element"> {{element.stage}} </td>
     </ng-container>
-    <ng-container matColumnDef="price">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Price </th>
-      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    <ng-container matColumnDef="providerName">
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Provider Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.provider.name}} </td>
     </ng-container>
-    <ng-container matColumnDef="manufacturerName">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Manufacturer </th>
-      <td mat-cell *matCellDef="let element"> {{element.manufacturer.name}} </td>
+    <ng-container matColumnDef="totalPrice">
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Total Price </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalPrice}} </td>
     </ng-container>
     <ng-container matColumnDef="partName">
       <th mat-header-cell  mat-sort-header *matHeaderCellDef> Part </th>

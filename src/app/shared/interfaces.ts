@@ -1,3 +1,5 @@
+import { DeliveryOrderStage } from "./enums"
+
 export interface User{
   id: string,
   userName: string,
@@ -91,4 +93,29 @@ export interface Provider{
   name: string,
   email: string,
   phone: string
+}
+
+export interface DeliveryOrderPartModelForReadModel{
+  partModelId: string,
+  partModelName: string,
+  imageUrl: string,
+  quantity: number,
+  purchasePrice: number
+}
+
+export interface DeliveryOrder{
+  id: string,
+  dateCreated: Date,
+  dateFinished: Date,
+  stage: DeliveryOrderStage,
+  provider: Provider,
+  partModels: DeliveryOrderPartModelForReadModel
+}
+
+export interface DeliveryOrderForCreationDto {
+
+}
+
+export interface DeliveryOrderForUpdateDto {
+
 }

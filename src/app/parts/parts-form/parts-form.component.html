@@ -1,5 +1,11 @@
 <div *ngIf="form">
   <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="header">
+      <button routerLink="/admin/parts" class="btn btn-link btn-left">
+        Back to all parts
+      </button>
+      <h2>{{formStatus}} part</h2>
+    </div>
     <div class="form-control">
       <label>Name</label>
       <input class="form-control" type="text" formControlName="name" />
