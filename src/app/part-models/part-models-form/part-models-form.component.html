@@ -34,6 +34,21 @@
       </div>
     </div>
     <div class="form-control">
+      <label>Purchase Price</label>
+      <input class="form-control" type="number" formControlName="purchasePrice" />
+      <div
+        class="validation"
+        *ngIf="form.get('purchasePrice').touched && form.get('purchasePrice').invalid"
+      >
+        <small *ngIf="form.get('purchasePrice').errors.required"
+          >Purchase Price is a required field</small
+        >
+        <small *ngIf="form.get('purchasePrice').errors.min"
+          >Purchase Price must be non-negative</small
+        >
+      </div>
+    </div>
+    <div class="form-control">
       <label>Available Quantity</label>
       <input class="form-control" type="number" formControlName="availableQuantity" />
       <div
@@ -45,6 +60,21 @@
         >
         <small *ngIf="form.get('availableQuantity').errors.min"
           >Available Quantity must be non-negative</small
+        >
+      </div>
+    </div>
+    <div class="form-control">
+      <label>Weight, kg</label>
+      <input class="form-control" type="number" formControlName="weightInKg" />
+      <div
+        class="validation"
+        *ngIf="form.get('weightInKg').touched && form.get('weightInKg').invalid"
+      >
+        <small *ngIf="form.get('weightInKg').errors.required"
+          >Weight is a required field</small
+        >
+        <small *ngIf="form.get('weightInKg').errors.min"
+          >Weight must be non-negative</small
         >
       </div>
     </div>

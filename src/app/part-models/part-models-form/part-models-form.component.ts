@@ -37,6 +37,8 @@ export class PartModelsFormComponent implements OnInit {
     this.form = new FormGroup({
       name: new FormControl(this.partModelDto.name, Validators.required),
       price: new FormControl(this.partModelDto.price, [Validators.required, Validators.min(0)]),//ToDo: add number check
+      purchasePrice: new FormControl(this.partModelDto.purchasePrice, [Validators.required, Validators.min(0)]),//ToDo: add number check
+      weightInKg: new FormControl(this.partModelDto.weightInKg, [Validators.required, Validators.min(0)]),//ToDo: add number check
       availableQuantity: new FormControl(this.partModelDto.availableQuantity, [Validators.required, Validators.min(0)]),//ToDo: add number check
       manufacturer: new FormControl(this.partModelDto.manufacturerId, Validators.required),
       part: new FormControl(this.partModelDto.partId, Validators.required),
@@ -73,7 +75,9 @@ export class PartModelsFormComponent implements OnInit {
       availableQuantity: this.form.get('availableQuantity').value,
       manufacturerId: manufacturerId,
       partId: partId,
-      imageUrl: this.imageBase64
+      imageUrl: this.imageBase64,
+      weightInKg: this.form.get('weightInKg').value,
+      purchasePrice: this.form.get('purchasePrice').value
     };
 
     this.callbackFunction(updatedPartModel);

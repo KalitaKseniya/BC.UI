@@ -29,7 +29,9 @@ export class PartModelsCreatePageComponent implements OnInit {
       manufacturerId: null,
       price: null,
       availableQuantity: null,
-      imageUrl: null
+      imageUrl: null,
+      purchasePrice: null,
+      weightInKg: null
     }
   }
 

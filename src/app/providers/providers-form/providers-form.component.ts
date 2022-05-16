@@ -26,6 +26,8 @@ export class ProvidersFormComponent implements OnInit {
       name: new FormControl(this.providerDto.name, [Validators.required, Validators.maxLength(255)]),
       email: new FormControl(this.providerDto.email, [Validators.required, Validators.maxLength(64), Validators.email]),
       phone: new FormControl(this.providerDto.phone, [Validators.required, Validators.maxLength(255)]),//ToDo: add pattern?
+      pricePerKg: new FormControl(this.providerDto.pricePerKg, [Validators.required, Validators.min(0)]),
+      minWeightInKgToDeliver: new FormControl(this.providerDto.minWeightInKgToDeliver, [Validators.required, Validators.min(0)]),
     });
   }
 
@@ -38,6 +40,8 @@ export class ProvidersFormComponent implements OnInit {
       name: this.form.get('name').value,
       email: this.form.get('email').value,
       phone: this.form.get('phone').value,
+      minWeightInKgToDeliver: this.form.get('minWeightInKgToDeliver').value,
+      pricePerKg: this.form.get('pricePerKg').value
     }
 
     this.callbackFunction(updatedProvider)

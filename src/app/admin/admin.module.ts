@@ -1,3 +1,6 @@
+import { DeliveryOrderCheckoutPageComponent } from './../delivery-orders/delivery-order-checkout-page/delivery-order-checkout-page.component';
+import { DeliveryOrderProviderCreatePageComponent } from './../delivery-orders/delivery-order-provider-create-page/delivery-order-provider-create-page.component';
+import { DeliveryOrderUpdatePageComponent } from './../delivery-orders/delivery-order-update-page/delivery-order-update-page.component';
 import { PartModelDetailsComponent } from './../part-models/part-model-details/part-model-details.component';
 import { AccountPageComponent } from './../account-page/account-page.component';
 import { AlertComponent } from './../shared/components/alert/alert.component';
@@ -57,7 +60,10 @@ import { DeliveryOrderCreatePageComponent } from '../delivery-orders/delivery-or
     ProvidersFormComponent,
     ProvidersCreatePageComponent,
     DeliveryOrdersComponent,
-    DeliveryOrderCreatePageComponent
+    DeliveryOrderCreatePageComponent,
+    DeliveryOrderUpdatePageComponent,
+    DeliveryOrderProviderCreatePageComponent,
+    DeliveryOrderCheckoutPageComponent
   ],
   imports: [
     CommonModule,
@@ -172,6 +178,14 @@ import { DeliveryOrderCreatePageComponent } from '../delivery-orders/delivery-or
               {
                 path: 'create',
                 component: DeliveryOrderCreatePageComponent,
+              },
+              {
+                path: 'checkout',
+                component: DeliveryOrderCheckoutPageComponent,
+              },
+              {
+                path: ":id/edit",
+                component: DeliveryOrderUpdatePageComponent
               },
             ]
           },

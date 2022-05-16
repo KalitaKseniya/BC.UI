@@ -1,0 +1,46 @@
+<div *ngIf="provider">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Price per kg</th>
+        <th>Min weight to deliver</th>
+      </tr>
+      <tr>
+        <td>{{ provider.name }}</td>
+        <td>{{ provider.pricePerKg | currency: 'USD'}}</td>
+        <td>{{ provider.minWeightInKgToDeliver}} kg</td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngIf="partModels">
+    <table>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Purchase price</th>
+          <th>Quantity</th>
+          <th>Weight</th>
+          <th>Part name</th>
+          <th>Manufacturer name</th>
+        </tr>
+        <tr *ngFor="let partModel of partModels">
+          <td><img src="{{partModel.imageUrl}}"> </td>
+          <td>{{ partModel.name }}</td>
+          <td>{{ partModel.purchasePrice | currency: 'USD'}}</td>
+          <td>{{ partModel.quantity}}</td>
+          <td>{{ partModel.weight}} kg</td>
+          <td>{{ partModel.part.name}} </td>
+          <td>{{ partModel.manufacturer.name}} </td>
+        </tr>
+      </table>
+  </div>
+<label>Total different items</label>
+<div>{{partModels.length}}</div>
+<button
+  class="btn btn-success btn-left"
+  (click)="confirmOrder()"
+>
+  Confirm order
+</button>
+<label>Total price</label>

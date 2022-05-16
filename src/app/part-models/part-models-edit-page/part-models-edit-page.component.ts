@@ -41,6 +41,8 @@ export class PartModelsEditPageComponent implements OnInit {
         manufacturerId: partModel.manufacturer.id,
         imageUrl: partModel.imageUrl,
         partId: partModel.part.id,
+        weightInKg: partModel.weightInKg,
+        purchasePrice: partModel.purchasePrice
       };
       this.loading = false;
     })

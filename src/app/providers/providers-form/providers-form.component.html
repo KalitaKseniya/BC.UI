@@ -57,6 +57,36 @@
         </small>
       </div>
     </div>
+    <div class="form-control">
+      <label>PricePerKg</label>
+      <input class="form-control" type="number" formControlName="pricePerKg" />
+      <div
+        class="validation"
+        *ngIf="form.get('pricePerKg').touched && form.get('pricePerKg').invalid"
+      >
+        <small *ngIf="form.get('pricePerKg').errors.required"
+          >PricePerKg is a required field</small
+        >
+        <small *ngIf="form.get('pricePerKg').errors.min"
+          >PricePerKg must be non-negative</small
+        >
+      </div>
+    </div>
+    <div class="form-control">
+      <label>MinWeightInKgToDeliver</label>
+      <input class="form-control" type="number" formControlName="minWeightInKgToDeliver" />
+      <div
+        class="validation"
+        *ngIf="form.get('minWeightInKgToDeliver').touched && form.get('minWeightInKgToDeliver').invalid"
+      >
+        <small *ngIf="form.get('minWeightInKgToDeliver').errors.required"
+          >minWeightInKgToDeliver is a required field</small
+        >
+        <small *ngIf="form.get('minWeightInKgToDeliver').errors.min"
+          >minWeightInKgToDeliver must be non-negative</small
+        >
+      </div>
+    </div>
     <button
       type="submit"
       class="btn btn-primary"

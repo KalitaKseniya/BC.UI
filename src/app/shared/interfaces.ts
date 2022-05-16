@@ -70,7 +70,9 @@ export interface PartModel{
   manufacturer: Manufacturer,
   price: number,
   availableQuantity: number,
-  imageUrl: string
+  imageUrl: string,
+  weightInKg: number,
+  purchasePrice: number
 }
 
 export interface PartModelForCreationOrUpdateDto{
@@ -79,20 +81,26 @@ export interface PartModelForCreationOrUpdateDto{
   manufacturerId: string,
   price: number,
   availableQuantity: number,
-  imageUrl: string
+  imageUrl: string,
+  weightInKg: number,
+  purchasePrice: number
 }
 
 export interface ProviderDto{
   name: string,
   email: string,
-  phone: string
+  phone: string,
+  pricePerKg: number,
+  minWeightInKgToDeliver: number
 }
 
 export interface Provider{
   id: string,
   name: string,
   email: string,
-  phone: string
+  phone: string,
+  pricePerKg: number,
+  minWeightInKgToDeliver: number
 }
 
 export interface DeliveryOrderPartModelForReadModel{

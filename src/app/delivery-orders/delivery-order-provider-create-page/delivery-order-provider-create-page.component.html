@@ -1,0 +1,26 @@
+<div *ngIf="providers.length; else loading">
+  <table>
+    <tr>
+      <th>Choose</th>
+      <th>Name</th>
+      <th>Price per kg</th>
+      <th>Min weight to deliver</th>
+    </tr>
+    <tr *ngFor="let provider of providers">
+      <td>
+        <input 
+          type="radio" 
+          name="providers-radio-group" 
+          value="{{provider.id}}" 
+          (change)="chooseProvider(provider)">
+      </td>
+      <td>{{ provider.name }}</td>
+      <td>{{ provider.pricePerKg | currency: 'USD'}}</td>
+      <td>{{ provider.minWeightInKgToDeliver}} kg</td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

@@ -17,7 +17,7 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
   partModels: PartModel[] = [];
   gSub: Subscription;
   dSub: Subscription;
-  public displayedColumns = ['image', 'name', 'availableQuantity', 'price', 'manufacturerName', 'partName', 'update', 'delete'
+  public displayedColumns = ['image', 'name', 'availableQuantity', 'price', 'purchasePrice', 'weightInKg', 'manufacturerName', 'partName', 'update', 'delete'
 ];
   public dataSource = new MatTableDataSource<PartModel>();
 
@@ -67,6 +67,10 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
 
   public doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  financial(x) {
+    return Number.parseFloat(x).toFixed(2);
   }
 
   ngOnDestroy() {

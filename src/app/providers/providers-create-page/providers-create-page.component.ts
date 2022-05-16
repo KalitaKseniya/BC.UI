@@ -27,6 +27,8 @@ export class ProvidersCreatePageComponent implements OnInit {
       name: null,
       email: null,
       phone: null,
+      pricePerKg: 0,
+      minWeightInKgToDeliver: 0
     }
   }
 

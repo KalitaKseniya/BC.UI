@@ -10,6 +10,8 @@
       <th>Id</th>
       <th>Name</th>
       <th>Email</th>
+      <th>Price per kg</th>
+      <th>Min weight to deliver</th>
       <th>Phone</th>
       <th>Actions</th>
     </tr>
@@ -17,6 +19,8 @@
       <td>{{ provider.id }}</td>
       <td>{{ provider.name }}</td>
       <td>{{ provider.email }}</td>
+      <td>{{ provider.pricePerKg | currency: 'USD'}}</td>
+      <td>{{ provider.minWeightInKgToDeliver}} kg</td>
       <td>{{ provider.phone }}</td>
       <td>
         <button class="btn btn-sm btn-warning"

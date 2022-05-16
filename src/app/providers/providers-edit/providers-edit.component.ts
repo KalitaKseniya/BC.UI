@@ -37,7 +37,9 @@ export class ProvidersEditComponent implements OnInit {
           this.providerDto = {
             name: provider.name,
             email: provider.email,
-            phone: provider.phone
+            phone: provider.phone,
+            pricePerKg: provider.pricePerKg,
+            minWeightInKgToDeliver: provider.minWeightInKgToDeliver
           };
           this.loading = false;
         },
