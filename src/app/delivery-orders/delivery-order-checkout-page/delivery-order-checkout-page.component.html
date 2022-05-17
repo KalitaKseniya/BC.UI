@@ -27,20 +27,35 @@
         <tr *ngFor="let partModel of partModels">
           <td><img src="{{partModel.imageUrl}}"> </td>
           <td>{{ partModel.name }}</td>
-          <td>{{ partModel.purchasePrice | currency: 'USD'}}</td>
+          <td>{{ financial(partModel.purchasePrice) | currency: 'USD'}}</td>
           <td>{{ partModel.quantity}}</td>
-          <td>{{ partModel.weight}} kg</td>
+          <td>{{ financial(partModel.weightInKg)}} kg</td>
           <td>{{ partModel.part.name}} </td>
           <td>{{ partModel.manufacturer.name}} </td>
         </tr>
       </table>
   </div>
-<label>Total different items</label>
-<div>{{partModels.length}}</div>
+  <table>
+    <tr>
+      <th>Total different items</th>
+      <th>Total weight</th>
+      <th>Delivery price</th>
+      <th>Part models price</th>
+      <th>Total price</th>
+    </tr>
+    <tr>
+      <td>{{totalDifferentItems}}</td>
+      <td>{{financial(totalWeight)}} kg</td>
+      <td>{{financial(deliveryPrice) | currency: 'USD'}}</td>
+      <td>{{financial(partModelsPrice) | currency: 'USD'}}</td>
+      <td><b>{{financial(totalPrice) | currency: 'USD'}}</b></td>
+    </tr>
+  </table>
+
 <button
   class="btn btn-success btn-left"
   (click)="confirmOrder()"
+  [disabled]="submitted"
 >
   Confirm order
 </button>
-<label>Total price</label>

@@ -1,3 +1,4 @@
+import { DeliveryOrderCalculationService } from './../../shared/services/delivery-order-calculation.service';
 import { CheckoutData } from './../../shared/models/checkoutData';
 import { Provider } from './../../shared/interfaces';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
@@ -20,10 +21,15 @@ export class DeliveryOrderCreatePageComponent implements OnInit, OnDestroy {
 
   partModels: DeliveryOrderPartModelForDisplay[] = [];
   totalPrice = 0;
+  totalDifferentItems: number = 0;
+  totalWeight: number = 0;
+  deliveryPrice: number = 0;
+  partModelsPrice: number = 0;
+  isWeightAllowed: boolean = false;
   gSub: Subscription;
   dSub: Subscription;
   chosenProvider: Provider;
-  public displayedColumns = ['isChecked','image', 'name', 'quantity', 'price', 'manufacturerName', 'partName' ]
+  public displayedColumns = ['isChecked','image', 'name', 'quantity', 'price', 'manufacturerName', 'partName', 'weight' ]
   public dataSource = new MatTableDataSource<DeliveryOrderPartModelForDisplay>();
   readonly defaultQuantity = 0;
   readonly defaultChecked = false;
@@ -33,7 +39,8 @@ export class DeliveryOrderCreatePageComponent implements OnInit, OnDestroy {
   constructor(
     private partModelsService: PartModelsService,
     private alert: AlertService,
-    private router: Router
+    private router: Router,
+    private calculationService: DeliveryOrderCalculationService
   ) {}
 
   ngOnInit(): void {
@@ -52,7 +59,8 @@ export class DeliveryOrderCreatePageComponent implements OnInit, OnDestroy {
             purchasePrice: x.purchasePrice,
             quantity: this.defaultQuantity,
             isChecked: this.defaultChecked,
-            imageUrl: x.imageUrl
+            imageUrl: x.imageUrl,
+            weightInKg: x.weightInKg
           };
           this.partModels.push(partModel);
         });
@@ -69,7 +77,7 @@ export class DeliveryOrderCreatePageComponent implements OnInit, OnDestroy {
       x.isChecked = ev.target.checked;
       this.changeQuantity(x);
     });
-    this.recalculateTotalPrice();
+    this.recalculateSummaries();
   }
 
   isAllCheckBoxChecked(){
@@ -97,15 +105,16 @@ export class DeliveryOrderCreatePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  recalculateTotalPrice(){
+  recalculateSummaries(){
     console.log('recalulatin')
-    this.totalPrice = 0;
-    this.partModels.forEach(x => {
-      if (x.isChecked){
-        this.totalPrice += x.purchasePrice * x.quantity
-      }
-    })
-    this.totalPrice = Math.round(this.totalPrice * 100) / 100;
+    var checked = this.partModels.filter(x => x.isChecked);
+    
+    this.totalDifferentItems = checked.length;
+    this.totalWeight = this.calculationService.calculateTotalWeight(checked);
+    this.totalPrice = this.calculationService.calculateTotalPrice(this.chosenProvider, checked);
+    this.deliveryPrice = this.calculationService.calculateDeliveryPrice(this.chosenProvider, checked);
+    this.partModelsPrice = this.calculationService.calculatePartModelsPrice(checked);
+    this.isWeightAllowed = this.calculationService.isWeightAllowed(this.chosenProvider, checked);
     console.log('total price', this.totalPrice)
   }
 
@@ -134,5 +143,7 @@ export class DeliveryOrderCreatePageComponent implements OnInit, OnDestroy {
       this.gSub.unsubscribe();
     }
   }
-
+  financial(x) {
+    return Number.parseFloat(x).toFixed(2);
+  }
 }

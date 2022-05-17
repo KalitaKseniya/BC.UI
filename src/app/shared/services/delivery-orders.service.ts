@@ -65,33 +65,9 @@ import { Configuration } from '../configuration';
 
          let headers = this.defaultHeaders;
 
-         // to determine the Accept header
-         let httpHeaderAccepts: string[] = [
-             'text/plain',
-             'application/json',
-             'text/json'
-         ];
-         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-         if (httpHeaderAcceptSelected != undefined) {
-             headers = headers.set('Accept', httpHeaderAcceptSelected);
-         }
-
-         // to determine the Content-Type header
-         const consumes: string[] = [
-             'application/json-patch+json',
-             'application/json',
-             'text/json',
-             'application/_*+json'
-         ];
-         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-         if (httpContentTypeSelected != undefined) {
-             headers = headers.set('Content-Type', httpContentTypeSelected);
-         }
-
          return this.httpClient.request<DeliveryOrderForReadModel>('post',`${this.basePath}/api/admin/delivery-orders`,
              {
                  body: body,
-                 withCredentials: this.configuration.withCredentials,
                  headers: headers,
                  observe: observe,
                  reportProgress: reportProgress
@@ -116,21 +92,6 @@ import { Configuration } from '../configuration';
          }
 
          let headers = this.defaultHeaders;
-
-         // to determine the Accept header
-         let httpHeaderAccepts: string[] = [
-             'text/plain',
-             'application/json',
-             'text/json'
-         ];
-         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-         if (httpHeaderAcceptSelected != undefined) {
-             headers = headers.set('Accept', httpHeaderAcceptSelected);
-         }
-
-         // to determine the Content-Type header
-         const consumes: string[] = [
-         ];
 
          return this.httpClient.request<any>('delete',`${this.basePath}/api/admin/delivery-orders/${encodeURIComponent(String(id))}`,
              {
@@ -166,14 +127,6 @@ import { Configuration } from '../configuration';
              'application/json',
              'text/json'
          ];
-         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-         if (httpHeaderAcceptSelected != undefined) {
-             headers = headers.set('Accept', httpHeaderAcceptSelected);
-         }
-
-         // to determine the Content-Type header
-         const consumes: string[] = [
-         ];
 
          return this.httpClient.request<DeliveryOrderForReadModel>('get',`${this.basePath}/api/admin/delivery-orders/${encodeURIComponent(String(id))}`,
              {
@@ -197,23 +150,6 @@ import { Configuration } from '../configuration';
      public getDeliveryOrdersList(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
          let headers = this.defaultHeaders;
-
-         // to determine the Accept header
-         let httpHeaderAccepts: string[] = [
-             'text/plain',
-             'application/json',
-             'text/json'
-         ];
-        //  console.log(this.configuration)
-        //  console.log(this.configuration.selectHeaderAccept(httpHeaderAccepts))
-        //  const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        //  if (httpHeaderAcceptSelected != undefined) {
-        //      headers = headers.set('Accept', httpHeaderAcceptSelected);
-        //  }
-
-         // to determine the Content-Type header
-         const consumes: string[] = [
-         ];
 
          return this.httpClient.request<Array<DeliveryOrderForReadModel>>('get',`${this.basePath}/api/admin/delivery-orders`,
              {

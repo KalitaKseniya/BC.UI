@@ -8,5 +8,6 @@ export interface DeliveryOrderPartModelForDisplay{
   purchasePrice: number,
   quantity: number,
   imageUrl: string,
+  weightInKg: number,
   isChecked: boolean
 }

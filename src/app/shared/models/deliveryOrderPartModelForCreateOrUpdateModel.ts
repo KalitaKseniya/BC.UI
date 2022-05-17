@@ -13,5 +13,4 @@
 export interface DeliveryOrderPartModelForCreateOrUpdateModel { 
     partModelId: string;
     quantity: number;
-    purchasePrice: number;
 }
