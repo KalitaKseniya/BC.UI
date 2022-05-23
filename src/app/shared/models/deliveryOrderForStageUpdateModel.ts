@@ -9,12 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { DeliveryOrderStage } from './deliveryOrderStage';
 
-export interface DeliveryOrderPartModelForReadModel { 
-    partModelId?: string;
-    partModelName?: string;
-    partModelImageUrl?: string;
-    quantity?: number;
-    purchasePrice?: number;
-    partModelWeightInKg: number;
+export interface DeliveryOrderForStageUpdateModel { 
+    stage: DeliveryOrderStage;
 }

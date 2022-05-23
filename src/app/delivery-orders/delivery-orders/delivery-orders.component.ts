@@ -19,7 +19,7 @@ export class DeliveryOrdersComponent implements OnInit {
   deliveryOrders: DeliveryOrderForReadModel[] = [];
   gSub: Subscription;
   dSub: Subscription;
-  public displayedColumns = ['id', 'dateCreated', 'stage', 'providerName', 'totalPrice', 'update', 'delete'
+  public displayedColumns = ['id', 'dateCreated', 'stage', 'providerName', 'totalPrice', 'details', 'delete'
 ];
   public dataSource = new MatTableDataSource<DeliveryOrderForReadModel>();
 
@@ -62,8 +62,8 @@ export class DeliveryOrdersComponent implements OnInit {
     );
   }
 
-  public redirectToUpdate = (id: string) => {
-    let url: string = `admin/delivery-orders/${id}/edit`;
+  public redirectToDetails = (id: string) => {
+    let url: string = `admin/delivery-orders/${id}/details`;
     this.router.navigate([url]);
   }
 

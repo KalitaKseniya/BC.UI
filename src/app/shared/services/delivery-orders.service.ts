@@ -1,3 +1,4 @@
+import { DeliveryOrderStage } from './../models/deliveryOrderStage';
 /**
  * BicycleCompany Delivery Orders API
  * A simple ASP.NET Core Web API
@@ -15,7 +16,7 @@
           HttpResponse, HttpEvent }                           from '@angular/common/http';
 
  import { Observable }                                        from 'rxjs';
-import { DeliveryOrderForCreateModel, DeliveryOrderForReadModel, Operation } from '../models/models';
+import { DeliveryOrderForCreateModel, DeliveryOrderForReadModel, DeliveryOrderForStageUpdateModel, Operation } from '../models/models';
 import { environment } from 'src/environments/environment';
 import { Configuration } from '../configuration';
 
@@ -95,7 +96,6 @@ import { Configuration } from '../configuration';
 
          return this.httpClient.request<any>('delete',`${this.basePath}/api/admin/delivery-orders/${encodeURIComponent(String(id))}`,
              {
-                 withCredentials: this.configuration.withCredentials,
                  headers: headers,
                  observe: observe,
                  reportProgress: reportProgress
@@ -130,7 +130,6 @@ import { Configuration } from '../configuration';
 
          return this.httpClient.request<DeliveryOrderForReadModel>('get',`${this.basePath}/api/admin/delivery-orders/${encodeURIComponent(String(id))}`,
              {
-                 withCredentials: this.configuration.withCredentials,
                  headers: headers,
                  observe: observe,
                  reportProgress: reportProgress
@@ -160,37 +159,37 @@ import { Configuration } from '../configuration';
          );
      }
 
-     /**
-      * Partial Update of DeliveryOrder information.
-      *
-      * @param id The value that is used to find DeliveryOrder
-      * @param body Description of update in the PATCH-style
-      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-      * @param reportProgress flag to report request and response progress.
-      */
-     public partialUpdateDeliveryOrder(id: string, body?: Array<Operation>, observe?: 'body', reportProgress?: boolean): Observable<any>;
-     public partialUpdateDeliveryOrder(id: string, body?: Array<Operation>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-     public partialUpdateDeliveryOrder(id: string, body?: Array<Operation>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-     public partialUpdateDeliveryOrder(id: string, body?: Array<Operation>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
+    /**
+     * Update of DeliveryOrder stage.
+     * 
+     * @param id The value that is used to find DeliveryOrder
+     * @param body Stage to update
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+     public updateStageDeliveryOrder(id: string, body?: DeliveryOrderForStageUpdateModel, observe?: 'body', reportProgress?: boolean): Observable<any>;
+     public updateStageDeliveryOrder(id: string, body?: DeliveryOrderForStageUpdateModel, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+     public updateStageDeliveryOrder(id: string, body?: DeliveryOrderForStageUpdateModel, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+     public updateStageDeliveryOrder(id: string, body?: DeliveryOrderForStageUpdateModel, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+ 
          if (id === null || id === undefined) {
-             throw new Error('Required parameter id was null or undefined when calling partialUpdateDeliveryOrder.');
+             throw new Error('Required parameter id was null or undefined when calling updateStageDeliveryOrder.');
          }
-
-
+ 
+ 
          let headers = this.defaultHeaders;
-
+ 
          // to determine the Accept header
          let httpHeaderAccepts: string[] = [
              'text/plain',
              'application/json',
              'text/json'
          ];
-         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+         const httpHeaderAcceptSelected: string | undefined = undefined;
          if (httpHeaderAcceptSelected != undefined) {
              headers = headers.set('Accept', httpHeaderAcceptSelected);
          }
-
+ 
          // to determine the Content-Type header
          const consumes: string[] = [
              'application/json-patch+json',
@@ -198,69 +197,14 @@ import { Configuration } from '../configuration';
              'text/json',
              'application/_*+json'
          ];
-         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+         const httpContentTypeSelected: string | undefined = undefined;
          if (httpContentTypeSelected != undefined) {
              headers = headers.set('Content-Type', httpContentTypeSelected);
          }
-
-         return this.httpClient.request<any>('patch',`${this.basePath}/api/admin/delivery-orders/${encodeURIComponent(String(id))}`,
-             {
-                 body: body,
-                 withCredentials: this.configuration.withCredentials,
-                 headers: headers,
-                 observe: observe,
-                 reportProgress: reportProgress
-             }
-         );
-     }
-
-     /**
-      * Update DeliveryOrder information.
-      *
-      * @param id The value that is used to find DeliveryOrder
-      * @param body The DeliveryOrder object which is used for update DeliveryOrder with provided id
-      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-      * @param reportProgress flag to report request and response progress.
-      */
-     public updateDeliveryOrder(id: string, body?: DeliveryOrderForCreateModel, observe?: 'body', reportProgress?: boolean): Observable<any>;
-     public updateDeliveryOrder(id: string, body?: DeliveryOrderForCreateModel, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-     public updateDeliveryOrder(id: string, body?: DeliveryOrderForCreateModel, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-     public updateDeliveryOrder(id: string, body?: DeliveryOrderForCreateModel, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-         if (id === null || id === undefined) {
-             throw new Error('Required parameter id was null or undefined when calling updateDeliveryOrder.');
-         }
-
-
-         let headers = this.defaultHeaders;
-
-         // to determine the Accept header
-         let httpHeaderAccepts: string[] = [
-             'text/plain',
-             'application/json',
-             'text/json'
-         ];
-         const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-         if (httpHeaderAcceptSelected != undefined) {
-             headers = headers.set('Accept', httpHeaderAcceptSelected);
-         }
-
-         // to determine the Content-Type header
-         const consumes: string[] = [
-             'application/json-patch+json',
-             'application/json',
-             'text/json',
-             'application/_*+json'
-         ];
-         const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-         if (httpContentTypeSelected != undefined) {
-             headers = headers.set('Content-Type', httpContentTypeSelected);
-         }
-
+ 
          return this.httpClient.request<any>('put',`${this.basePath}/api/admin/delivery-orders/${encodeURIComponent(String(id))}`,
              {
                  body: body,
-                 withCredentials: this.configuration.withCredentials,
                  headers: headers,
                  observe: observe,
                  reportProgress: reportProgress

@@ -18,6 +18,8 @@ export interface DeliveryOrderForReadModel {
     dateCreated?: Date;
     dateFinished?: Date;
     stage?: DeliveryOrderStage;
+    totalPrice: number;
     provider?: ProviderForReadModel;
+    weightInKg: number;
     partModels?: Array<DeliveryOrderPartModelForReadModel>;
 }

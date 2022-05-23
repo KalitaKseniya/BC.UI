@@ -1,6 +1,7 @@
 export * from './baseResponseModel';
 export * from './deliveryOrderForCreateModel';
 export * from './deliveryOrderForReadModel';
+export * from './deliveryOrderForStageUpdateModel';
 export * from './deliveryOrderPartModelForCreateOrUpdateModel';
 export * from './deliveryOrderPartModelForReadModel';
 export * from './deliveryOrderStage';
