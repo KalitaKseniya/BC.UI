@@ -34,6 +34,8 @@ import { ProvidersEditComponent } from '../providers/providers-edit/providers-ed
 import { ProvidersFormComponent } from '../providers/providers-form/providers-form.component';
 import { DeliveryOrdersComponent } from '../delivery-orders/delivery-orders/delivery-orders.component';
 import { DeliveryOrderCreatePageComponent } from '../delivery-orders/delivery-order-create-page/delivery-order-create-page.component';
+import { AdminRoutingModule } from './admin-routing.module';
+import { CreateProblemPageComponent } from '../problems/create-problem-page/create-problem-page.component';
 
 @NgModule({
   declarations: [
@@ -66,145 +68,15 @@ import { DeliveryOrderCreatePageComponent } from '../delivery-orders/delivery-or
     DeliveryOrderProviderCreatePageComponent,
     DeliveryOrderCheckoutPageComponent,
     DeliveryOrderDetailsComponent,
+    CreateProblemPageComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: AdminLayoutComponent,
-        children: [
-          { path: '', redirectTo: '/', pathMatch: 'full' },
-          {
-            path: 'user/create',
-            component: UserCreatePageComponent,
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'users',
-            component: UsersPageComponent,
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'user/:id/edit',
-            component: UserEditPageComponent,
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'user/:id/change-password',
-            component: UserChangePasswordComponent,
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'roles',
-            component: RolesPageComponent,
-            pathMatch: 'full',
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'forbidden',
-            component: ForbiddenPageComponent,
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'part-models',
-            canActivate: [AuthGuard],
-            children:[
-              {
-                path: '',
-                component: PartModelsPageComponent,
-              },
-              {
-                path: 'create',
-                component: PartModelsCreatePageComponent,
-              },
-            ]
-          },
-          {
-            path: 'part-models/:id/edit',
-            component: PartModelsEditPageComponent,
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'part-model/:id/details',
-            component: PartModelDetailsComponent,
-            canActivate: [AuthGuard],
-          },
-          {
-            path: 'parts',
-            canActivate: [AuthGuard],
-            children:[
-              {
-                path: '',
-                component: PartsPageComponent,
-              },
-              {
-                path: 'create',
-                component: PartsCreatePageComponent,
-              },
-              {
-                path: "edit/:id",
-                component: PartsEditorComponent
-              },
-            ]
-          },
-          {
-            path: 'providers',
-            canActivate: [AuthGuard],
-            children:[
-              {
-                path: '',
-                component: ProvidersPageComponent,
-              },
-              {
-                path: 'create',
-                component: ProvidersCreatePageComponent,
-              },
-              {
-                path: ":id/edit",
-                component: ProvidersEditComponent
-              },
-            ]
-          },
-          {
-            path: 'delivery-orders',
-            canActivate: [AuthGuard],
-            children:[
-              {
-                path: '',
-                component: DeliveryOrdersComponent,
-              },
-              {
-                path: 'create',
-                component: DeliveryOrderCreatePageComponent,
-              },
-              {
-                path: 'checkout',
-                component: DeliveryOrderCheckoutPageComponent,
-              },
-              {
-                path: ":id/edit",
-                component: DeliveryOrderUpdatePageComponent
-              },
-              {
-                path: ":id/details",
-                component: DeliveryOrderDetailsComponent
-              },
-            ]
-          },
-          {
-            path: 'account',
-            component: AccountPageComponent,
-            canActivate: [AuthGuard],
-          },
-        ],
-      },
-    ]),
     NgMultiSelectDropDownModule.forRoot(),
+    AdminRoutingModule,
   ],
-  exports: [RouterModule],
 })
 export class AdminModule {}

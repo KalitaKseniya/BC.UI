@@ -32,6 +32,24 @@ export class AuthService {
       .pipe(tap(this.setToken), catchError(this.handleError.bind(this)));
   }
 
+  public isAdmin = (): boolean => {
+    const role = localStorage.getItem("jwt-role");
+
+    return role === 'Admin';
+  }
+
+  public isUser = (): boolean => {
+    const role = localStorage.getItem("jwt-role");
+
+    return role === 'User';
+  }
+
+  public isMaster = (): boolean => {
+    const role = localStorage.getItem("jwt-role");
+
+    return role === 'Master';
+  }
+
   logout() {
     this.setToken(null);
   }

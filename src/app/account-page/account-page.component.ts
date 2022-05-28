@@ -5,6 +5,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { switchMap } from 'rxjs/internal/operators/switchMap';
 import { Role, User } from '../shared/interfaces';
 import { AlertService } from '../shared/services/alert.service';
+import { AuthService } from '../shared/services/auth.service';
 import { RolesService } from '../shared/services/roles.service';
 import { UsersService } from '../shared/services/users.service';
 
@@ -21,7 +22,8 @@ export class AccountPageComponent implements OnInit {
   loading = false;
 
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private auth: AuthService,
   ) {}
 
   ngOnInit(): void {

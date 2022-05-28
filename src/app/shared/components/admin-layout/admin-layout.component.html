@@ -1,26 +1,27 @@
 <app-alert></app-alert>
 <nav class="navbar bg-primary">
   <h3>Admin</h3>
-  <!-- <ul> *ngIf="auth.isAuthenticated()"> -->
   <ul>
-    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['part-models']">
+    <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['part-models']">
       <a>Part Models</a>
-
     </li>
-    <li routerLinkActive="active">
+    <li routerLinkActive="active" *ngIf="auth.isAdmin()">
       <a [routerLink]="['users']">Users</a>
     </li>
-    <li routerLinkActive="active">
+    <li routerLinkActive="active" *ngIf="auth.isAdmin()">
       <a [routerLink]="['roles']">Roles</a>
     </li>
-    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+    <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
       <a [routerLink]="['parts']">Parts</a>
     </li>
-    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+    <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
       <a [routerLink]="['providers']">Providers</a>
     </li>
-    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+    <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
       <a [routerLink]="['delivery-orders']">Delivery Orders</a>
+    </li>
+    <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
+      <a [routerLink]="['problems/create']">Create Problem</a>
     </li>
     <li routerLinkActive="active">
       <a [routerLink]="['account']"><i>My account</i></a>

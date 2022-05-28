@@ -1,7 +1,7 @@
 <div *ngIf="user && form && loading">
     <form class="card" [formGroup]="form" (ngSubmit)="submit()">
       <div class="header">
-        <button routerLink="/admin/users" class="btn btn-link btn-left">
+        <button *ngIf="auth.isAdmin()" routerLink="/admin/users" class="btn btn-link btn-left">
           Back to all users
         </button>
         <h2>My account</h2>
