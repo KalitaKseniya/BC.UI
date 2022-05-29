@@ -30,7 +30,6 @@ export class AccountPageComponent implements OnInit {
     this.loading = true;
      this.usersService.getCurrentUser()
       .subscribe((user: User) => {
-        console.log(user);
         this.user = user;
         this.form = new FormGroup({
           username: new FormControl(user.userName, Validators.required),

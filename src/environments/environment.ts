@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   serverUrl: "https://localhost:5021",
-  // serverPartUrl: "https://localhost:5030",
-  serverPartUrl: "https://bicyclecompanypartmodelsapi20220519144324.azurewebsites.net",
+  serverPartUrl: "https://localhost:5030",
+  serverBicycleUrl: "https://localhost:5070",
   serverDeliveryOrdersUrl: "https://localhost:5040",
   passwordPattern : '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$'
 };

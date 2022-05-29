@@ -42,7 +42,8 @@ export interface UserForAuthenticationDto{
 export interface ServerAuthResponse{
   minutesToExpire: number,
   role: string,
-  token: string
+  token: string,
+  "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": string
 }
 
 export interface Part{

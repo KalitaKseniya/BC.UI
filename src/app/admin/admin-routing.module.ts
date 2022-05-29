@@ -14,7 +14,7 @@ import { PartModelsPageComponent } from '../part-models/part-models-page/part-mo
 import { PartsCreatePageComponent } from '../parts/parts-create-page/parts-create-page.component';
 import { PartsEditorComponent } from '../parts/parts-editor/parts-editor.component';
 import { PartsPageComponent } from '../parts/parts-page/parts-page.component';
-import { CreateProblemPageComponent } from '../problems/create-problem-page/create-problem-page.component';
+import { ProblemCreatePageComponent } from '../problems/problem-create-page/problem-create-page.component';
 import { ProvidersCreatePageComponent } from '../providers/providers-create-page/providers-create-page.component';
 import { ProvidersEditComponent } from '../providers/providers-edit/providers-edit.component';
 import { ProvidersPageComponent } from '../providers/providers-page/providers-page.component';
@@ -153,7 +153,7 @@ const routes: Routes = [
       },
       {
         path: 'problems/create',
-        component: CreateProblemPageComponent,
+        component: ProblemCreatePageComponent,
         canActivate: [AuthGuard],
       },
     ]

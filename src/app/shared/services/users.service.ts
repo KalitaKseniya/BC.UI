@@ -36,8 +36,6 @@ export class UsersService {
   }
 
   getCurrentUser(): Observable<User>{
-    console.log('hallo')
-    console.log(`${environment.serverUrl}/api/admin/users/account`)
     return this.http.get<User>(`${environment.serverUrl}/api/admin/users/account`)
   }
 }

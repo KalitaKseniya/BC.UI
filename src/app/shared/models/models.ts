@@ -9,3 +9,7 @@ export * from './httpStatusCode';
 export * from './operation';
 export * from './providerForCreateOrUpdateModel';
 export * from './providerForReadModel';
+export * from './bicycleForCreateOrUpdateModel';
+export * from './bicycleForReadModel';
+export * from './operationType';
+export * from './addedResponse';
