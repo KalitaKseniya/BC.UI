@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormStatus } from 'src/app/shared/enums';
-import { PartModelForCreationOrUpdateDto } from 'src/app/shared/interfaces';
-import { ProblemForCreateOrUpdateModel } from 'src/app/shared/models/problems/problemForCreateOrUpdateModel';
+import { ProblemForCreateModel } from 'src/app/shared/models/models';
 import { AlertService } from 'src/app/shared/services/alert.service';
-import { PartModelsService } from 'src/app/shared/services/partModels.service';
+import { ProblemsService } from 'src/app/shared/services/problems.service';
 
 @Component({
   selector: 'app-problem-create-page',
@@ -13,12 +12,12 @@ import { PartModelsService } from 'src/app/shared/services/partModels.service';
 })
 export class ProblemCreatePageComponent implements OnInit {
 
-  problemDto: ProblemForCreateOrUpdateModel;
+  problemDto: ProblemForCreateModel;
   formStatusCreate: FormStatus;
   submitted: boolean = false;
 
   constructor(
-    private partModelsService: PartModelsService,
+    private problemsService: ProblemsService,
     private router: Router,
     private alert: AlertService
   ) {}
@@ -29,21 +28,20 @@ export class ProblemCreatePageComponent implements OnInit {
       description: null,
       bicycle: null,
       address: null,
-      place: null,
       parts: null,
       userEmail: null
     }
   }
 
-  createCallback = (createdPartModel: PartModelForCreationOrUpdateDto): void => {
+  createCallback = (createdProblem: ProblemForCreateModel): void => {
     console.log('create callback')
-    console.log(createdPartModel)
+    console.log(createdProblem)
 
-    this.partModelsService.createPartModel(createdPartModel).subscribe(
+    this.problemsService.createProblem(createdProblem).subscribe(
       () => {
         this.submitted = false;
-        this.router.navigate(['admin', 'part-models']);
-        this.alert.success('Part model has been created');
+        this.alert.success('Problem has been created');
+        this.router.navigate(['admin', 'problems']); //ToDo : change
       },
       (error) => {
         console.error('Error when creating ', error);

@@ -9,6 +9,7 @@ import {
 import { UsersService } from 'src/app/shared/services/users.service';
 import { switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-user-change-password',
@@ -25,7 +26,8 @@ export class UserChangePasswordComponent implements OnInit {
     private usersService: UsersService,
     private router: Router,
     private route: ActivatedRoute,
-    private alert: AlertService
+    private alert: AlertService,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -66,11 +68,13 @@ export class UserChangePasswordComponent implements OnInit {
         this.error = null;
         this.submitted = false;
         this.form.reset();
-        this.router.navigate(['admin', 'users']);
-        this.alert.success('Password has been changed');
+        if (this.auth.isAdmin()) {
+          this.router.navigate(['admin', 'users']);
+          this.alert.success('Password has been changed');
+        }
       },
       (error) => {
-        console.log('Error when chnaging password ', error);
+        console.log('Error when changing password ', error);
         this.submitted = false;
         this.error = error;
         this.alert.danger('Error when changing password');

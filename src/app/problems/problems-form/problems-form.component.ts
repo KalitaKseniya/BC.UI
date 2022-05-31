@@ -2,8 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { FormStatus } from 'src/app/shared/enums';
 import { PartModelForCreationOrUpdateDto, Manufacturer, Part, PartModel } from 'src/app/shared/interfaces';
-import { BicycleForReadModel } from 'src/app/shared/models/models';
-import { ProblemForCreateOrUpdateModel } from 'src/app/shared/models/problems/problemForCreateOrUpdateModel';
+import { BicycleForReadModel, ProblemAddressModel, ProblemBicycleModel, ProblemForCreateModel, ProblemPartModel } from 'src/app/shared/models/models';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { BicyclesService } from 'src/app/shared/services/bicycles.service';
 import { ManufacturersService } from 'src/app/shared/services/manufacturers.service';
@@ -18,7 +17,7 @@ import { PartsService } from 'src/app/shared/services/parts.service';
 export class ProblemsFormComponent implements OnInit {
 
   @Input() callbackFunction: (args: any) => void;
-  @Input() problemDto: ProblemForCreateOrUpdateModel;
+  @Input() problemDto: ProblemForCreateModel;
   @Input() formStatus: FormStatus;
   @Input() submitted: boolean;
   form: FormGroup;
@@ -37,7 +36,6 @@ export class ProblemsFormComponent implements OnInit {
     )
     {
       this.partForm = this.fb.group({
-        name: '',
         quantities: this.fb.array([]) ,
       });
      }
@@ -53,7 +51,7 @@ export class ProblemsFormComponent implements OnInit {
         bicycle: new FormControl(null, Validators.required),
         addressLine1: new FormControl(null, Validators.required),
         addressLine2: new FormControl(null),
-        description: new FormControl(null, Validators.required),
+        description: new FormControl(null),
         place: new FormControl(null, Validators.required),
       });
     }
@@ -62,10 +60,15 @@ export class ProblemsFormComponent implements OnInit {
       return this.partForm.get("quantities") as FormArray
     }
 
+    getQuantity(i: number) {
+      return this.quantities().controls[i];
+    }
+
     newQuantity(): FormGroup {
       return this.fb.group({
-        part: '',
+        part: [null, Validators.required],
         partModel: '',
+        amount: [1, [Validators.required, Validators.min(1)]]
       })
     }
 
@@ -77,6 +80,11 @@ export class ProblemsFormComponent implements OnInit {
       this.quantities().removeAt(i);
     }
 
+    isPartModelEmpty(i: number): boolean {
+      const partModel = this.quantities().controls[i].get('partModel').value;
+      console.log(partModel);
+      return partModel == null || partModel == undefined || partModel == '';
+    }
 
     loadParts() {
       this.partsService.getAll()
@@ -116,35 +124,63 @@ export class ProblemsFormComponent implements OnInit {
 
     getPartModels(i: number) {
       const partId = this.quantities().controls[i].get('part').value;
-      if (partId) {
-        return this.partModels.filter(x => x.part.id == partId);
-      }
-      return this.partModels;
+      return this.partModels.filter(x => x.part.id == partId);
     }
 
     submit() {
-      if (this.form.invalid){
-        console.log(this.form)
+      if (this.form.invalid || this.partForm.invalid){
+        console.log(this.form);
+        console.log(this.partForm);
         return;
       }
-      this.submitted = true;
 
-      // ToDo: fix this
-      // const manufacturerId = this.form.get('manufacturer').value;
-      // const partId = this.form.get('part').value;
+      const chosenBicycleId = this.form.get('bicycle').value;
+      const chosenBicycle: BicycleForReadModel = this.userBicycles.find(b => b.id == chosenBicycleId);
+      const bicycle: ProblemBicycleModel = {
+        id: chosenBicycle.id,
+        model: chosenBicycle.model,
+        serialNumber: chosenBicycle.serialNumber,
+      };
+      const userId = this.authService.userId;
+      const userEmail = this.authService.userEmail;
+      const address : ProblemAddressModel = {
+        addressLine1: this.form.get('addressLine1').value,
+        addressLine2: this.form.get('addressLine2').value,
+        place: this.form.get('place').value
+      };
+      const parts: Array<ProblemPartModel> = [];
 
-      // const updatedPartModel: ProblemForCreateOrUpdateModel = {
-      //   name: this.form.get('name').value,
-      //   price: this.form.get('price').value,
-      //   availableQuantity: this.form.get('availableQuantity').value,
-      //   manufacturerId: manufacturerId,
-      //   partId: partId,
-      //   imageUrl: this.imageBase64,
-      //   weightInKg: this.form.get('weightInKg').value,
-      //   purchasePrice: this.form.get('purchasePrice').value
-      // };
+      for (var i = 0; i < this.quantities().length; i++){
+          var quantity = this.getQuantity(i);
+          const chosenPartId = quantity.get('part').value;
+          const chosenPart: Part = this.parts.find(p => p.id == chosenPartId);
 
-      //this.callbackFunction(updatedPartModel);
+          const chosenPartModelId = quantity?.get('partModel')?.value;
+          const chosenPartModel: PartModel = this.partModels?.find(pm => pm.id == chosenPartModelId);
+
+          var problemPartModel: ProblemPartModel = {
+            partId: chosenPart.id,
+            partName: chosenPart.name,
+            partModelId: chosenPartModel?.id,
+            partModelName: chosenPartModel?.name,
+            amount: quantity?.get('amount')?.value,
+            pricePerDetail: chosenPartModel?.price,
+          };
+          parts.push(problemPartModel);
+      }
+
+      const updatedProblem : ProblemForCreateModel = {
+        bicycle: bicycle,
+        userId: userId,
+        userEmail: userEmail,
+        address: address,
+        description: this.form.get('description').value,
+        parts: parts
+      };
+
+      console.log(updatedProblem);
+
+      this.callbackFunction(updatedProblem);
     }
 
 }

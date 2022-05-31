@@ -37,6 +37,7 @@ import { DeliveryOrderCreatePageComponent } from '../delivery-orders/delivery-or
 import { AdminRoutingModule } from './admin-routing.module';
 import { ProblemCreatePageComponent } from '../problems/problem-create-page/problem-create-page.component';
 import { ProblemsFormComponent } from '../problems/problems-form/problems-form.component';
+import { UserProblemsPageComponent } from '../problems/user-problems-page/user-problems-page.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { ProblemsFormComponent } from '../problems/problems-form/problems-form.c
     DeliveryOrderCheckoutPageComponent,
     DeliveryOrderDetailsComponent,
     ProblemCreatePageComponent,
-    ProblemsFormComponent
+    ProblemsFormComponent,
+    UserProblemsPageComponent,
   ],
   imports: [
     CommonModule,

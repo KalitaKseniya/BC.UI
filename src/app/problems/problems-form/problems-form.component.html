@@ -79,10 +79,29 @@
                     *ngFor="let pm of getPartModels(i)"
                     [ngValue]="pm.id"
                 >
-                    {{pm.name}}
+                    {{pm.name}} - {{pm.price | currency: 'USD'}}
                 </option>
             </select>
           </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <div class="form-control">
+              <label>Amount</label>
+              <input class="form-control" type="number" formControlName="amount" />
+              <div
+                class="validation"
+                *ngIf="quantities().controls[i].get('amount').touched && quantities().controls[i].get('amount').invalid"
+              >
+                <small *ngIf="quantities().controls[i].get('amount').errors.required"
+                  >Amount is a required field</small
+                >
+                <small *ngIf="quantities().controls[i].get('amount').errors.min"
+                  >Amount must be greater than or equal to 1</small
+                >
+              </div>
+            </div>
+            </div>
         </td>
         <td>
             <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
@@ -94,7 +113,8 @@
     <button
       class="btn btn-primary"
       type="submit"
-      [disabled]="form.invalid || submitted"
+      style="margin-top: 10px;"
+      [disabled]="form.invalid || submitted || partForm.invalid"
     >
       {{formStatus}}
     </button>

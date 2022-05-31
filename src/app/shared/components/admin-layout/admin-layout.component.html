@@ -1,12 +1,17 @@
 <app-alert></app-alert>
 <nav class="navbar bg-primary">
-  <h3>Admin</h3>
+  <h3 *ngIf="auth.isAdmin()">Admin</h3>
+  <h3 *ngIf="auth.isMaster()">Master</h3>
+  <h3 *ngIf="auth.isUser()">User</h3>
   <ul>
     <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['part-models']">
       <a>Part Models</a>
     </li>
     <li routerLinkActive="active" *ngIf="auth.isAdmin()">
       <a [routerLink]="['users']">Users</a>
+    </li>
+    <li routerLinkActive="active" *ngIf="auth.isUser()">
+      <a [routerLink]="['user-problems']">Problems</a>
     </li>
     <li routerLinkActive="active" *ngIf="auth.isAdmin()">
       <a [routerLink]="['roles']">Roles</a>

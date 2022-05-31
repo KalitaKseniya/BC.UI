@@ -15,6 +15,7 @@ import { PartsCreatePageComponent } from '../parts/parts-create-page/parts-creat
 import { PartsEditorComponent } from '../parts/parts-editor/parts-editor.component';
 import { PartsPageComponent } from '../parts/parts-page/parts-page.component';
 import { ProblemCreatePageComponent } from '../problems/problem-create-page/problem-create-page.component';
+import { UserProblemsPageComponent } from '../problems/user-problems-page/user-problems-page.component';
 import { ProvidersCreatePageComponent } from '../providers/providers-create-page/providers-create-page.component';
 import { ProvidersEditComponent } from '../providers/providers-edit/providers-edit.component';
 import { ProvidersPageComponent } from '../providers/providers-page/providers-page.component';
@@ -22,6 +23,7 @@ import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
 import { AdminGuard } from '../shared/admin.guard';
 import { AuthGuard } from '../shared/auth.guard';
 import { AdminLayoutComponent } from '../shared/components/admin-layout/admin-layout.component';
+import { UserGuard } from '../shared/user.guard';
 import { UserChangePasswordComponent } from '../users/user-change-password/user-change-password.component';
 import { UserCreatePageComponent } from '../users/user-create-page/user-create-page.component';
 import { UserEditPageComponent } from '../users/user-edit-page/user-edit-page/user-edit-page.component';
@@ -51,7 +53,7 @@ const routes: Routes = [
       {
         path: 'user/:id/change-password',
         component: UserChangePasswordComponent,
-        canActivate: [AuthGuard, AdminGuard],
+        canActivate: [AuthGuard],
       },
       {
         path: 'roles',
@@ -156,6 +158,11 @@ const routes: Routes = [
         component: ProblemCreatePageComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: 'user-problems',
+        component: UserProblemsPageComponent,
+        canActivate: [AuthGuard, UserGuard],
+      },
     ]
   },
   {
@@ -167,6 +174,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard, AdminGuard],
+  providers: [AuthGuard, AdminGuard, UserGuard],
 })
 export class AdminRoutingModule {}

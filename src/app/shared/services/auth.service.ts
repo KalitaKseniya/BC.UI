@@ -33,7 +33,16 @@ export class AuthService {
       this.logout();
       return null;
     }
-    return localStorage.getItem('jwt-userid');
+    return this.getDataFromToken('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier');
+  }
+
+  get userEmail() {
+    const expDate = new Date(localStorage.getItem('jwt-exp'));
+    if (new Date() > expDate) {
+      this.logout();
+      return null;
+    }
+    return this.getDataFromToken('http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress');
   }
 
   constructor(private http: HttpClient) {}
@@ -79,17 +88,19 @@ export class AuthService {
     const expDate = new Date(Date.now() + response.minutesToExpire * 1000 * 60);
     const role = response.role;
 
-    const tokenInfo =  jwt_decode(token);
-    const userId = tokenInfo['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
 
     localStorage.setItem('jwt', token);
     localStorage.setItem('jwt-exp', expDate.toString());
     localStorage.setItem('jwt-role', role);
-    localStorage.setItem('jwt-userid', userId);
   }
 
   private handleError(error: HttpErrorResponse) {
     //console.log('From handle error authservice:', error.error)
     return throwError(error);
+  }
+
+  private getDataFromToken(name: string){
+    const tokenInfo = jwt_decode(this.token);
+    return tokenInfo[name];
   }
 }
