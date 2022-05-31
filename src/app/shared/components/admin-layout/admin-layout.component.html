@@ -26,7 +26,7 @@
       <a [routerLink]="['delivery-orders']">Delivery Orders</a>
     </li>
     <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['problems/create']">Create Problem</a>
+      <a [routerLink]="['user-problems/create']">Create Problem</a>
     </li>
     <li routerLinkActive="active">
       <a [routerLink]="['account']"><i>My account</i></a>

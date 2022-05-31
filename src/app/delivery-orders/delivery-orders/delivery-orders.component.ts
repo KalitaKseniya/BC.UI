@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,7 +14,7 @@ import { DeliveryOrdersService } from '../../shared/services/delivery-orders.ser
   templateUrl: './delivery-orders.component.html',
   styleUrls: ['./delivery-orders.component.scss']
 })
-export class DeliveryOrdersComponent implements OnInit {
+export class DeliveryOrdersComponent implements OnInit, OnDestroy {
 
   deliveryOrders: DeliveryOrderForReadModel[] = [];
   gSub: Subscription;

@@ -15,6 +15,7 @@ import { PartsCreatePageComponent } from '../parts/parts-create-page/parts-creat
 import { PartsEditorComponent } from '../parts/parts-editor/parts-editor.component';
 import { PartsPageComponent } from '../parts/parts-page/parts-page.component';
 import { ProblemCreatePageComponent } from '../problems/problem-create-page/problem-create-page.component';
+import { UserProblemsDetailsPageComponent } from '../problems/user-problems-details-page/user-problems-details-page.component';
 import { UserProblemsPageComponent } from '../problems/user-problems-page/user-problems-page.component';
 import { ProvidersCreatePageComponent } from '../providers/providers-create-page/providers-create-page.component';
 import { ProvidersEditComponent } from '../providers/providers-edit/providers-edit.component';
@@ -154,14 +155,22 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'problems/create',
-        component: ProblemCreatePageComponent,
-        canActivate: [AuthGuard],
-      },
-      {
         path: 'user-problems',
-        component: UserProblemsPageComponent,
         canActivate: [AuthGuard, UserGuard],
+        children:[
+          {
+            path: '',
+            component: UserProblemsPageComponent,
+          },
+          {
+            path: 'create',
+            component: ProblemCreatePageComponent,
+          },
+          {
+            path: ":id/details",
+            component: UserProblemsDetailsPageComponent,
+          },
+        ]
       },
     ]
   },

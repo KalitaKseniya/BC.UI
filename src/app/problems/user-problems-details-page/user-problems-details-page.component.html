@@ -1,0 +1,67 @@
+<div *ngIf="problem && form && loading">
+  <form class="card" [formGroup]="form" >
+    <div class="header">
+      <button routerLink="/admin/user-problems" class="btn btn-link btn-left">
+        Back to problems
+      </button>
+    </div>
+    <div class="form-control">
+      <label>Id</label>
+      <input class="form-control" type="text" formControlName="id" readonly />
+    </div>
+    <div class="form-control">
+      <label>Date Created</label>
+      <input class="form-control" type="text" formControlName="dateCreated" readonly />
+    </div>
+    <div class="form-control">
+      <label>Date finished</label>
+      <input class="form-control" type="text" formControlName="dateFinished" readonly/>
+    </div>
+    <div class="form-control">
+      <label>Address Line 1</label>
+      <input class="form-control" type="text" formControlName="addressLine1" readonly />
+    </div>
+    <div class="form-control">
+      <label>Address Line 2</label>
+      <input class="form-control" type="text" formControlName="addressLine2" readonly />
+    </div>
+    <div class="form-control">
+      <label>Place</label>
+      <input class="form-control" type="text" formControlName="place" readonly />
+    </div>
+    <div class="form-control">
+      <label>Bicycle model</label>
+      <input class="form-control" type="text" formControlName="bicycleModel" readonly />
+    </div>
+    <div class="form-control">
+      <label>Bicycle serial number</label>
+      <input class="form-control" type="text" formControlName="bicycleSerialNumber" readonly />
+    </div>
+    <div class="form-control">
+      <label>Stage</label>
+      <input class="form-control" type="text" formControlName="stage" readonly />
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea class="form-control" formControlName="description" rows="3" readonly></textarea>
+    </div>
+    <div *ngIf="problem.parts">
+      <table>
+        <caption><b>Parts and Part models</b></caption>
+          <tr>
+            <th>Part</th>
+            <th>Part Model</th>
+            <th>Amount</th>
+            <th>Price</th>
+          </tr>
+          <tr *ngFor="let part of problem.parts">
+            <td>{{ part.partName }}</td>
+            <td>{{ part?.partModelName}}</td>
+            <td>{{ part?.amount}}</td>
+            <td>{{ financial(part?.pricePerDetail) | currency: 'USD'}}</td>
+          </tr>
+        </table>
+    </div>
+  </form>
+</div>

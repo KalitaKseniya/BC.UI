@@ -38,6 +38,8 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { ProblemCreatePageComponent } from '../problems/problem-create-page/problem-create-page.component';
 import { ProblemsFormComponent } from '../problems/problems-form/problems-form.component';
 import { UserProblemsPageComponent } from '../problems/user-problems-page/user-problems-page.component';
+import { UserProblemsDetailsPageComponent } from '../problems/user-problems-details-page/user-problems-details-page.component';
+import { CreateBicycleDialogComponent } from '../problems/create-bicycle-dialog/create-bicycle-dialog.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,8 @@ import { UserProblemsPageComponent } from '../problems/user-problems-page/user-p
     ProblemCreatePageComponent,
     ProblemsFormComponent,
     UserProblemsPageComponent,
+    UserProblemsDetailsPageComponent,
+    CreateBicycleDialogComponent
   ],
   imports: [
     CommonModule,
