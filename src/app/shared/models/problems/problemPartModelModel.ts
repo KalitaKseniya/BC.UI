@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface ProblemPartModel {
+export interface ProblemPartModelModel {
     partId?: string;
     partName?: string;
     partModelId?: string;

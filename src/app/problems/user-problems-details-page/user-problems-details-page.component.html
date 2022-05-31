@@ -46,7 +46,7 @@
       <label>Description</label>
       <textarea class="form-control" formControlName="description" rows="3" readonly></textarea>
     </div>
-    <div *ngIf="problem.parts">
+    <div *ngIf="problem.partModels">
       <table>
         <caption><b>Parts and Part models</b></caption>
           <tr>
@@ -55,7 +55,7 @@
             <th>Amount</th>
             <th>Price</th>
           </tr>
-          <tr *ngFor="let part of problem.parts">
+          <tr *ngFor="let part of problem.partModels">
             <td>{{ part.partName }}</td>
             <td>{{ part?.partModelName}}</td>
             <td>{{ part?.amount}}</td>

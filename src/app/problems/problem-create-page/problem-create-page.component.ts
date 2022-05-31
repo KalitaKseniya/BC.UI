@@ -28,7 +28,7 @@ export class ProblemCreatePageComponent implements OnInit {
       description: null,
       bicycle: null,
       address: null,
-      parts: null,
+      partModels: null,
       userEmail: null
     }
   }
@@ -41,7 +41,7 @@ export class ProblemCreatePageComponent implements OnInit {
       () => {
         this.submitted = false;
         this.alert.success('Problem has been created');
-        this.router.navigate(['admin', 'problems']); //ToDo : change
+        this.router.navigate(['admin', 'user-problems']); //ToDo : change
       },
       (error) => {
         console.error('Error when creating ', error);

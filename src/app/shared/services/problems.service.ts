@@ -140,6 +140,124 @@ export class ProblemsService {
         );
     }
 
+  /**
+     *
+     *
+     * @param masterId
+     * @param searchTerm
+     * @param pageNumber
+     * @param pageSize
+     * @param orderBy
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+   public getMasterProblemsList(masterId: string, searchTerm?: string, pageNumber?: number, pageSize?: number, orderBy?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<ProblemForReadModel>>;
+   public getMasterProblemsList(masterId: string, searchTerm?: string, pageNumber?: number, pageSize?: number, orderBy?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ProblemForReadModel>>>;
+   public getMasterProblemsList(masterId: string, searchTerm?: string, pageNumber?: number, pageSize?: number, orderBy?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ProblemForReadModel>>>;
+   public getMasterProblemsList(masterId: string, searchTerm?: string, pageNumber?: number, pageSize?: number, orderBy?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+       if (masterId === null || masterId === undefined) {
+           throw new Error('Required parameter masterId was null or undefined when calling getMasterProblemsList.');
+       }
+
+       let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+       if (searchTerm !== undefined && searchTerm !== null) {
+           queryParameters = queryParameters.set('SearchTerm', <any>searchTerm);
+       }
+       if (pageNumber !== undefined && pageNumber !== null) {
+           queryParameters = queryParameters.set('PageNumber', <any>pageNumber);
+       }
+       if (pageSize !== undefined && pageSize !== null) {
+           queryParameters = queryParameters.set('PageSize', <any>pageSize);
+       }
+       if (orderBy !== undefined && orderBy !== null) {
+           queryParameters = queryParameters.set('OrderBy', <any>orderBy);
+       }
+
+       let headers = this.defaultHeaders;
+
+       // to determine the Accept header
+       let httpHeaderAccepts: string[] = [
+           'text/plain',
+           'application/json',
+           'text/json'
+       ];
+       const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+       if (httpHeaderAcceptSelected != undefined) {
+           headers = headers.set('Accept', httpHeaderAcceptSelected);
+       }
+
+       // to determine the Content-Type header
+       const consumes: string[] = [
+       ];
+
+       return this.httpClient.request<Array<ProblemForReadModel>>('get',`${this.basePath}/api/masters/${encodeURIComponent(String(masterId))}/problems`,
+           {
+               params: queryParameters,
+               headers: headers,
+               observe: observe,
+               reportProgress: reportProgress
+           }
+       );
+   }
+
+   /**
+    *
+    *
+    * @param searchTerm
+    * @param pageNumber
+    * @param pageSize
+    * @param orderBy
+    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+    * @param reportProgress flag to report request and response progress.
+    */
+   public getNewProblemList(searchTerm?: string, pageNumber?: number, pageSize?: number, orderBy?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<ProblemForReadModel>>;
+   public getNewProblemList(searchTerm?: string, pageNumber?: number, pageSize?: number, orderBy?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ProblemForReadModel>>>;
+   public getNewProblemList(searchTerm?: string, pageNumber?: number, pageSize?: number, orderBy?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ProblemForReadModel>>>;
+   public getNewProblemList(searchTerm?: string, pageNumber?: number, pageSize?: number, orderBy?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+       let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+       if (searchTerm !== undefined && searchTerm !== null) {
+           queryParameters = queryParameters.set('SearchTerm', <any>searchTerm);
+       }
+       if (pageNumber !== undefined && pageNumber !== null) {
+           queryParameters = queryParameters.set('PageNumber', <any>pageNumber);
+       }
+       if (pageSize !== undefined && pageSize !== null) {
+           queryParameters = queryParameters.set('PageSize', <any>pageSize);
+       }
+       if (orderBy !== undefined && orderBy !== null) {
+           queryParameters = queryParameters.set('OrderBy', <any>orderBy);
+       }
+
+       let headers = this.defaultHeaders;
+
+       // to determine the Accept header
+       let httpHeaderAccepts: string[] = [
+           'text/plain',
+           'application/json',
+           'text/json'
+       ];
+       const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+       if (httpHeaderAcceptSelected != undefined) {
+           headers = headers.set('Accept', httpHeaderAcceptSelected);
+       }
+
+       // to determine the Content-Type header
+       const consumes: string[] = [
+       ];
+
+       return this.httpClient.request<Array<ProblemForReadModel>>('get',`${this.basePath}/api/problems/new`,
+           {
+               params: queryParameters,
+               headers: headers,
+               observe: observe,
+               reportProgress: reportProgress
+           }
+       );
+   }
+
+
     /**
      *
      *

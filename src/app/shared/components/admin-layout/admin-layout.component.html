@@ -10,7 +10,7 @@
     <li routerLinkActive="active" *ngIf="auth.isAdmin()">
       <a [routerLink]="['users']">Users</a>
     </li>
-    <li routerLinkActive="active" *ngIf="auth.isUser()">
+    <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
       <a [routerLink]="['user-problems']">Problems</a>
     </li>
     <li routerLinkActive="active" *ngIf="auth.isAdmin()">

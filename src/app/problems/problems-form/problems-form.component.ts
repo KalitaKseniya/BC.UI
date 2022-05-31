@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { FormStatus } from 'src/app/shared/enums';
 import { PartModelForCreationOrUpdateDto, Manufacturer, Part, PartModel } from 'src/app/shared/interfaces';
-import { BicycleForReadModel, ProblemAddressModel, ProblemBicycleModel, ProblemForCreateModel, ProblemPartModel } from 'src/app/shared/models/models';
+import { BicycleForReadModel, ProblemAddressModel, ProblemBicycleModel, ProblemForCreateModel, ProblemPartModelModel } from 'src/app/shared/models/models';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { BicyclesService } from 'src/app/shared/services/bicycles.service';
 import { ManufacturersService } from 'src/app/shared/services/manufacturers.service';
@@ -148,7 +148,7 @@ export class ProblemsFormComponent implements OnInit {
         addressLine2: this.form.get('addressLine2').value,
         place: this.form.get('place').value
       };
-      const parts: Array<ProblemPartModel> = [];
+      const parts: Array<ProblemPartModelModel> = [];
 
       for (var i = 0; i < this.quantities().length; i++){
           var quantity = this.getQuantity(i);
@@ -158,7 +158,7 @@ export class ProblemsFormComponent implements OnInit {
           const chosenPartModelId = quantity?.get('partModel')?.value;
           const chosenPartModel: PartModel = this.partModels?.find(pm => pm.id == chosenPartModelId);
 
-          var problemPartModel: ProblemPartModel = {
+          var problemPartModel: ProblemPartModelModel = {
             partId: chosenPart.id,
             partName: chosenPart.name,
             partModelId: chosenPartModel?.id,
@@ -175,7 +175,7 @@ export class ProblemsFormComponent implements OnInit {
         userEmail: userEmail,
         address: address,
         description: this.form.get('description').value,
-        parts: parts
+        partModels: parts
       };
 
       console.log(updatedProblem);
