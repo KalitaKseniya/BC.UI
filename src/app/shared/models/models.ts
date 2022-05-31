@@ -19,3 +19,4 @@ export * from './problems/problemForCreateModel';
 export * from './problems/problemForReadModel';
 export * from './problems/problemForUpdateModel';
 export * from './problems/problemPartModelModel';
+export * from './problems/problemProgressForUpdateModel';

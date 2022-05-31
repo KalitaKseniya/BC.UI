@@ -14,6 +14,8 @@ import { PartModelsPageComponent } from '../part-models/part-models-page/part-mo
 import { PartsCreatePageComponent } from '../parts/parts-create-page/parts-create-page.component';
 import { PartsEditorComponent } from '../parts/parts-editor/parts-editor.component';
 import { PartsPageComponent } from '../parts/parts-page/parts-page.component';
+import { MasterProblemsPageComponent } from '../problems/master-problems-page/master-problems-page.component';
+import { NewProblemsPageComponent } from '../problems/new-problems-page/new-problems-page.component';
 import { ProblemCreatePageComponent } from '../problems/problem-create-page/problem-create-page.component';
 import { UserProblemsDetailsPageComponent } from '../problems/user-problems-details-page/user-problems-details-page.component';
 import { UserProblemsPageComponent } from '../problems/user-problems-page/user-problems-page.component';
@@ -24,6 +26,7 @@ import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
 import { AdminGuard } from '../shared/admin.guard';
 import { AuthGuard } from '../shared/auth.guard';
 import { AdminLayoutComponent } from '../shared/components/admin-layout/admin-layout.component';
+import { MasterGuard } from '../shared/master.guard';
 import { UserGuard } from '../shared/user.guard';
 import { UserChangePasswordComponent } from '../users/user-change-password/user-change-password.component';
 import { UserCreatePageComponent } from '../users/user-create-page/user-create-page.component';
@@ -172,6 +175,20 @@ const routes: Routes = [
           },
         ]
       },
+      {
+        path: 'master-problems',
+        canActivate: [AuthGuard, MasterGuard],
+        children:[
+          {
+            path: '',
+            component: MasterProblemsPageComponent,
+          },
+          {
+            path: 'new',
+            component: NewProblemsPageComponent,
+          },
+        ]
+      },
     ]
   },
   {
@@ -183,6 +200,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard, AdminGuard, UserGuard],
+  providers: [AuthGuard, AdminGuard, UserGuard, MasterGuard],
 })
 export class AdminRoutingModule {}

@@ -1,16 +1,8 @@
-
-<div fxLayout fxLayoutAlign="center center">
-    <button
-      mat-flat-button
-      color="primary"
-      [routerLink]="['create']"
-    >Create new Problem</button>
-</div>
 <div *ngIf="problems?.length && problems.length > 0" else=loading>
   <app-problems-table
     [displayedColumns]="displayedColumns"
     [problems]="problems"
-  >
+>
 
   </app-problems-table>
 </div>

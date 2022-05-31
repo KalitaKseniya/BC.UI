@@ -3,17 +3,16 @@ import { Subscription } from 'rxjs';
 import { ProblemForReadModel } from 'src/app/shared/models/models';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ProblemsService } from 'src/app/shared/services/problems.service';
-
 @Component({
-  selector: 'app-user-problems-page',
-  templateUrl: './user-problems-page.component.html',
-  styleUrls: ['./user-problems-page.component.scss']
+  selector: 'app-new-problems-page',
+  templateUrl: './new-problems-page.component.html',
+  styleUrls: ['./new-problems-page.component.scss']
 })
-export class UserProblemsPageComponent implements OnInit, OnDestroy {
+export class NewProblemsPageComponent implements OnInit {
 
   problems: ProblemForReadModel[] = [];
   gSub: Subscription;
-  public displayedColumns = ['id', 'bicycle', 'address', 'masterEmail', 'dateCreated', 'stage', 'dateFinished', 'details', 'delete'
+  public displayedColumns = ['id', 'bicycle', 'address', 'dateCreated', 'stage', 'dateFinished', 'Accept problem', 'details', 'delete'
 ];
 
   constructor(
@@ -26,13 +25,13 @@ export class UserProblemsPageComponent implements OnInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    const userId = this.auth.userId;
-    this.gSub = this.problemsService.getUserProblemsList(userId).subscribe(
+    this.gSub = this.problemsService.getNewProblemList().subscribe(
       (problems: ProblemForReadModel[]) => {
+        console.log(problems)
         this.problems = problems;
         this.cdr.detectChanges();
       },
-      (error) => console.log('Error when fetching user problems', error)
+      (error) => console.log('Error when fetching new problems', error)
     );
   }
 
@@ -41,4 +40,5 @@ export class UserProblemsPageComponent implements OnInit, OnDestroy {
       this.gSub.unsubscribe();
     }
   }
+
 }

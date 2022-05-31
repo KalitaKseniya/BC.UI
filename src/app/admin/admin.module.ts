@@ -6,10 +6,8 @@ import { PartModelDetailsComponent } from './../part-models/part-model-details/p
 import { AccountPageComponent } from './../account-page/account-page.component';
 import { AlertComponent } from './../shared/components/alert/alert.component';
 import { ForbiddenPageComponent } from './../forbidden-page/forbidden-page.component';
-import { AuthGuard } from './../shared/auth.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AdminLayoutComponent } from '../shared/components/admin-layout/admin-layout.component';
@@ -40,6 +38,9 @@ import { ProblemsFormComponent } from '../problems/problems-form/problems-form.c
 import { UserProblemsPageComponent } from '../problems/user-problems-page/user-problems-page.component';
 import { UserProblemsDetailsPageComponent } from '../problems/user-problems-details-page/user-problems-details-page.component';
 import { CreateBicycleDialogComponent } from '../problems/create-bicycle-dialog/create-bicycle-dialog.component';
+import { MasterProblemsPageComponent } from '../problems/master-problems-page/master-problems-page.component';
+import { ProblemsTableComponent } from '../problems/problems-table/problems-table.component';
+import { NewProblemsPageComponent } from '../problems/new-problems-page/new-problems-page.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,10 @@ import { CreateBicycleDialogComponent } from '../problems/create-bicycle-dialog/
     ProblemsFormComponent,
     UserProblemsPageComponent,
     UserProblemsDetailsPageComponent,
-    CreateBicycleDialogComponent
+    CreateBicycleDialogComponent,
+    MasterProblemsPageComponent,
+    ProblemsTableComponent,
+    NewProblemsPageComponent,
   ],
   imports: [
     CommonModule,

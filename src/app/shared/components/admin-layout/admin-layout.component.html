@@ -13,6 +13,12 @@
     <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
       <a [routerLink]="['user-problems']">Problems</a>
     </li>
+    <li routerLinkActive="active" *ngIf="auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
+      <a [routerLink]="['master-problems']">Assigned Problems</a>
+    </li>
+    <li routerLinkActive="active" *ngIf="auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
+      <a [routerLink]="['master-problems/new']">New Problems</a>
+    </li>
     <li routerLinkActive="active" *ngIf="auth.isAdmin()">
       <a [routerLink]="['roles']">Roles</a>
     </li>
