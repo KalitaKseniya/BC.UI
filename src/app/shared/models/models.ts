@@ -20,3 +20,6 @@ export * from './problems/problemForReadModel';
 export * from './problems/problemForUpdateModel';
 export * from './problems/problemPartModelModel';
 export * from './problems/problemProgressForUpdateModel';
+export * from './userRegisterRequest';
+export * from './objectResult';
+export * from './password-input-visibility';

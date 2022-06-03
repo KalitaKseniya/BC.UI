@@ -1,0 +1,114 @@
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="header">
+    <button routerLink="" class="btn btn-link btn-left">
+      Back to Login
+    </button>
+    <h2>Registration page</h2>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="wrongCredentials">
+    Wrong email, password or there is no such user in the database
+  </div>
+  <div class="alert alert-danger" *ngIf="message">
+    {{ message }}
+  </div>
+
+  <div class="form-control">
+    <label>Email</label>
+    <input type="text" formControlName="email" />
+    <div
+      class="validation"
+      *ngIf="form.get('email').touched && form.get('email').invalid"
+    >
+      <small *ngIf="form.get('email').errors.required">
+        Email is required
+      </small>
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Fisrt Name</label>
+    <input class="form-control" type="text" formControlName="firstName" />
+    <div
+      class="validation"
+      *ngIf="form.get('firstName').touched && form.get('firstName').invalid"
+    >
+      <small *ngIf="form.get('firstName').errors.required"
+        >First Name is a required field</small
+      >
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Second Name</label>
+    <input class="form-control" type="text" formControlName="secondName" />
+    <div
+      class="validation"
+      *ngIf="form.get('secondName').touched && form.get('secondName').invalid"
+    >
+      <small *ngIf="form.get('secondName').errors.required"
+        >Second Name is a required field</small
+      >
+    </div>
+  </div>
+  <div class="form-control">
+    <label>Password</label>
+    <div>
+      <input [type]="passwordVisibility.inputType" formControlName="password" />
+      <button (click)="changePasswordVisibility(passwordVisibility)" class="eye">
+        <i class="fa fa-eye" aria-hidden="true" *ngIf="!passwordVisibility.showPassword"></i>
+        <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="passwordVisibility.showPassword"></i>
+      </button>
+      <div
+        class="validation"
+        *ngIf="form.get('password').touched && form.get('password').invalid"
+        class="validation"
+      >
+        <small *ngIf="form.get('password').errors.required">
+          Password is required
+        </small>
+        <small *ngIf="form.get('password').errors.minlength">
+          Password length must be at least
+          {{ form.get("password").errors.minlength.requiredLength }}. Now -
+          {{ form.get("password").errors.minlength.actualLength }}.
+        </small>
+        <small *ngIf="form.get('password').errors.pattern"
+          >Password must contain an uppercase character, lowercase character, a digit, and a non-alphanumeric character.</small
+              >
+      </div>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label>Type Password again</label>
+    <div>
+      <input class="form-control" [type]="passwordConfirmVisibility.inputType" formControlName="passwordConfirm" />
+      <button (click)="changePasswordVisibility(passwordConfirmVisibility)" class="eye">
+        <i class="fa fa-eye" aria-hidden="true" *ngIf="!passwordConfirmVisibility.showPassword"></i>
+        <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="passwordConfirmVisibility.showPassword"></i>
+      </button>
+      <div
+        class="validation"
+        *ngIf="form.get('passwordConfirm').touched && form.get('passwordConfirm').invalid"
+      >
+        <small *ngIf="form.get('passwordConfirm').errors.required"
+          >Password Confirm is a required field</small
+        >
+      </div>
+      <div
+        class="validation"
+        *ngIf="form.get('passwordConfirm').touched"
+      >
+        <small *ngIf="form.get('password').value != form.get('passwordConfirm').value"
+          >Password fields are not equal</small
+        >
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-dark"
+    [disabled]="form.invalid || submitted"
+  >
+    Register
+  </button>
+</form>

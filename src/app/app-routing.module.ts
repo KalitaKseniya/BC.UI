@@ -2,11 +2,17 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LoginPageComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'register',
+    component: RegistrationPageComponent,
     pathMatch: 'full',
   },
   {

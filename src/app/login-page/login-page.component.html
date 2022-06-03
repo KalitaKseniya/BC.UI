@@ -21,20 +21,26 @@
   </div>
   <div class="form-control">
     <label>Password</label>
-    <input type="password" formControlName="password" />
-    <div
-      class="validation"
-      *ngIf="form.get('password').touched && form.get('password').invalid"
-      class="validation"
-    >
-      <small *ngIf="form.get('password').errors.required">
-        Password is required
-      </small>
-      <small *ngIf="form.get('password').errors.minlength">
-        Password length must be at least
-        {{ form.get("password").errors.minlength.requiredLength }}. Now -
-        {{ form.get("password").errors.minlength.actualLength }}.
-      </small>
+    <div>
+      <input [type]="passwordVisibility.inputType" formControlName="password" />
+      <button (click)="changePasswordVisibility(passwordVisibility)" class="eye">
+        <i class="fa fa-eye" aria-hidden="true" *ngIf="!passwordVisibility.showPassword"></i>
+        <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="passwordVisibility.showPassword"></i>
+      </button>
+      <div
+        class="validation"
+        *ngIf="form.get('password').touched && form.get('password').invalid"
+        class="validation"
+      >
+        <small *ngIf="form.get('password').errors.required">
+          Password is required
+        </small>
+        <small *ngIf="form.get('password').errors.minlength">
+          Password length must be at least
+          {{ form.get("password").errors.minlength.requiredLength }}. Now -
+          {{ form.get("password").errors.minlength.actualLength }}.
+        </small>
+      </div>
     </div>
   </div>
 
@@ -44,5 +50,29 @@
     [disabled]="form.invalid || submitted"
   >
     Sign in
+  </button>
+  <button
+    class="btn btn-dark"
+    (click)="register()"
+  >
+    Register
+  </button>
+  <button
+    class="btn btn-dark"
+    (click)="adminLogin()"
+  >
+    Admin Login
+  </button>
+  <button
+    class="btn btn-dark"
+    (click)="masterLogin()"
+  >
+    Master Login
+  </button>
+  <button
+    class="btn btn-dark"
+    (click)="userLogin()"
+  >
+    User Login
   </button>
 </form>

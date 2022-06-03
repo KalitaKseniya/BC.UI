@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AuthInterceptor } from './shared/auth.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -21,6 +22,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
   declarations: [
     AppComponent,
     LoginPageComponent,
+    RegistrationPageComponent,
   ],
   imports: [
     BrowserModule,

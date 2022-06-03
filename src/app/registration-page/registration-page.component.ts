@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { UserForAuthenticationDto } from '../shared/interfaces';
+import { environment } from 'src/environments/environment';
 import { PasswordInputVisibility } from '../shared/models/models';
+import { UserRegisterRequest } from '../shared/models/userRegisterRequest';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss'],
+  selector: 'app-registration-page',
+  templateUrl: './registration-page.component.html',
+  styleUrls: ['./registration-page.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class RegistrationPageComponent implements OnInit {
+
   form: FormGroup;
   submitted = false;
   wrongCredentials = false;
   message: string = null;
   passwordVisibility: PasswordInputVisibility;
+  passwordConfirmVisibility: PasswordInputVisibility;
 
   constructor(
     public auth: AuthService,
@@ -28,43 +31,28 @@ export class LoginPageComponent implements OnInit {
       showPassword: false,
       inputType: 'password'
     };
+    this.passwordConfirmVisibility = {
+      showPassword: false,
+      inputType: 'password'
+    };
     this.form = new FormGroup({
       email: new FormControl(null, Validators.required),
       password: new FormControl(null, [
         Validators.required,
         Validators.minLength(4),
+        Validators.pattern(environment.passwordPattern)
       ]),
-    });
-    this.route.queryParams.subscribe((params: Params) => {
-      if (params['loginAgain']) {
-        this.message = 'Please enter your email and password';
-      }
-    });
-  }
-
-  register() {
-    this.router.navigate(['/register']);
-  }
-
-  adminLogin() {// ToDo K: delete
-    this.form.patchValue({
-      email : "admin@admin.com",
-      password : "Admin123!"
+      passwordConfirm: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
+      firstName: new FormControl(null, Validators.required),
+      secondName: new FormControl(null, Validators.required),
     });
   }
 
-  masterLogin() {// ToDo K: delete
-    this.form.patchValue({
-      email : "master@master.com",
-      password : "Master123!"
-    });
-  }
-
-  userLogin(){// ToDo K: delete
-    this.form.patchValue({
-      email : "user@user.com",
-      password : "User123!"
-    });
+  redirectToLoginPage() {
+    this.router.navigate(['']);
   }
 
   changePasswordVisibility(password: PasswordInputVisibility) {
@@ -82,17 +70,17 @@ export class LoginPageComponent implements OnInit {
       return;
     }
     this.submitted = true;
-    const userForAuth: UserForAuthenticationDto = {
+    const userForRegistration: UserRegisterRequest = {
       email: this.form.get('email').value,
       password: this.form.get('password').value,
+      passwordConfirm: this.form.get('passwordConfirm').value,
+      firstName: this.form.get('firstName').value,
+      secondName: this.form.get('secondName').value
     };
 
-    this.auth.login(userForAuth).subscribe(
+    this.auth.register(userForRegistration).subscribe(
       () => {
         this.form.reset();
-        if (this.auth.isAuthenticated()) {
-          this.router.navigate(['/admin', 'account']);
-        }
         this.submitted = false;
         this.wrongCredentials = false;
       },
