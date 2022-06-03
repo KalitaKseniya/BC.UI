@@ -6,6 +6,7 @@ import { DeliveryOrderStage } from 'src/app/shared/enums';
 import { DeliveryOrderForStageUpdateModel } from 'src/app/shared/models/deliveryOrderForStageUpdateModel';
 import { ProblemForReadModel } from 'src/app/shared/models/models';
 import { AlertService } from 'src/app/shared/services/alert.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { DeliveryOrdersService } from 'src/app/shared/services/delivery-orders.service';
 import { ProblemsService } from 'src/app/shared/services/problems.service';
 
@@ -25,7 +26,8 @@ export class UserProblemsDetailsPageComponent implements OnInit {
     private problemsService: ProblemsService,
     private router: Router,
     private route: ActivatedRoute,
-    private alert: AlertService
+    private alert: AlertService,
+    private auth: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -52,6 +54,7 @@ export class UserProblemsDetailsPageComponent implements OnInit {
           bicycleSerialNumber: new FormControl(problem.bicycle.serialNumber),
           description: new FormControl(problem.description),
           stage: new FormControl(problem.stage, Validators.required),
+          master: new FormControl(problem.masterEmail, Validators.required),
         });
       });
   }

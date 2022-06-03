@@ -50,12 +50,11 @@
       <textarea class="form-control" formControlName="description" rows="3"></textarea>
     </div>
     <form [formGroup]="partForm">
-
+    <div class="test">
+      <h2>Add Multiple Part Models:</h2>
+      <button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button>
+    </div>
     <table class="table table-bordered" formArrayName="quantities">
-      <tr>
-        <th colspan="2">Add Multiple Part Models:</th>
-        <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>
-      </tr>
       <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
         <td>
                <div class="form-group">

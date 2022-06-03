@@ -1,7 +1,10 @@
 <div *ngIf="problem && form && loading">
   <form class="card" [formGroup]="form" >
     <div class="header">
-      <button routerLink="/admin/user-problems" class="btn btn-link btn-left">
+      <button *ngIf="auth.isUser()" routerLink="/admin/user-problems" class="btn btn-link btn-left">
+        Back to problems
+      </button>
+      <button *ngIf="auth.isMaster()" routerLink="/admin/master-problems" class="btn btn-link btn-left">
         Back to problems
       </button>
     </div>
@@ -16,6 +19,10 @@
     <div class="form-control">
       <label>Date finished</label>
       <input class="form-control" type="text" formControlName="dateFinished" readonly/>
+    </div>
+    <div class="form-control">
+      <label>Master</label>
+      <input class="form-control" type="text" formControlName="master" readonly />
     </div>
     <div class="form-control">
       <label>Address Line 1</label>

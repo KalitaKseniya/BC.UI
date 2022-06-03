@@ -23,15 +23,16 @@ import { ProvidersCreatePageComponent } from '../providers/providers-create-page
 import { ProvidersEditComponent } from '../providers/providers-edit/providers-edit.component';
 import { ProvidersPageComponent } from '../providers/providers-page/providers-page.component';
 import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
-import { AdminGuard } from '../shared/admin.guard';
-import { AuthGuard } from '../shared/auth.guard';
+import { AdminGuard } from '../shared/guards/admin.guard';
+import { AuthGuard } from '../shared/guards/auth.guard';
 import { AdminLayoutComponent } from '../shared/components/admin-layout/admin-layout.component';
-import { MasterGuard } from '../shared/master.guard';
-import { UserGuard } from '../shared/user.guard';
+import { MasterGuard } from '../shared/guards/master.guard';
+import { UserGuard } from '../shared/guards/user.guard';
 import { UserChangePasswordComponent } from '../users/user-change-password/user-change-password.component';
 import { UserCreatePageComponent } from '../users/user-create-page/user-create-page.component';
 import { UserEditPageComponent } from '../users/user-edit-page/user-edit-page/user-edit-page.component';
 import { UsersPageComponent } from '../users/users-page/users-page.component';
+import { MasterOrAdminGuard } from '../shared/guards/master-or-admin.guard';
 
 const routes: Routes = [
   {
@@ -128,7 +129,7 @@ const routes: Routes = [
       },
       {
         path: 'delivery-orders',
-        canActivate: [AuthGuard, AdminGuard],
+        canActivate: [AuthGuard, MasterOrAdminGuard],
         children:[
           {
             path: '',
@@ -159,18 +160,20 @@ const routes: Routes = [
       },
       {
         path: 'user-problems',
-        canActivate: [AuthGuard, UserGuard],
         children:[
           {
             path: '',
+            canActivate: [AuthGuard, UserGuard],
             component: UserProblemsPageComponent,
           },
           {
             path: 'create',
+            canActivate: [AuthGuard, UserGuard],
             component: ProblemCreatePageComponent,
           },
           {
             path: ":id/details",
+            canActivate: [MasterOrAdminGuard],
             component: UserProblemsDetailsPageComponent,
           },
         ]
@@ -200,6 +203,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard, AdminGuard, UserGuard, MasterGuard],
+  providers: [AuthGuard, AdminGuard, UserGuard, MasterGuard, MasterOrAdminGuard],
 })
 export class AdminRoutingModule {}

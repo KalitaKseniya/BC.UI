@@ -28,7 +28,7 @@
     <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
       <a [routerLink]="['providers']">Providers</a>
     </li>
-    <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
+    <li routerLinkActive="active" *ngIf="auth.isAdmin() || auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
       <a [routerLink]="['delivery-orders']">Delivery Orders</a>
     </li>
     <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
