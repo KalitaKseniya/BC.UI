@@ -12,6 +12,6 @@ export class ManufacturersService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Manufacturer[]>{
-    return this.http.get<Manufacturer[]>(`${environment.serverPartUrl}/api/admin/manufacturers`)
+    return this.http.get<Manufacturer[]>(`${environment.serverUrl}/api/admin/manufacturers`)
   }
 }

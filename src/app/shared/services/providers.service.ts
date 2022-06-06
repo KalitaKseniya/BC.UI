@@ -12,7 +12,7 @@ export class ProvidersService {
   serverUrl: string;
 
   constructor(private http: HttpClient) {
-    this.serverUrl = environment.serverDeliveryOrdersUrl;
+    this.serverUrl = environment.serverUrl;
   }
 
   getAll(): Observable<Provider[]>{

@@ -31,7 +31,7 @@ export class ProblemsService {
     public configuration = new Configuration();
 
     constructor(protected httpClient: HttpClient, @Optional() configuration: Configuration) {
-      this.basePath = environment.serverProblemUrl;
+      this.basePath = environment.serverUrl;
       if (configuration) {
           this.configuration = configuration;
       }

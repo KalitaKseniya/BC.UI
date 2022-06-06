@@ -30,7 +30,7 @@ import { Configuration } from '../configuration';
      public configuration;
      constructor(protected httpClient: HttpClient, @Optional() configuration: Configuration) {
 
-      this.basePath = environment.serverDeliveryOrdersUrl;
+      this.basePath = environment.serverUrl;
       if (configuration) {
           this.configuration = configuration;
       }
@@ -161,7 +161,7 @@ import { Configuration } from '../configuration';
 
     /**
      * Update of DeliveryOrder stage.
-     * 
+     *
      * @param id The value that is used to find DeliveryOrder
      * @param body Stage to update
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -171,14 +171,14 @@ import { Configuration } from '../configuration';
      public updateStageDeliveryOrder(id: string, body?: DeliveryOrderForStageUpdateModel, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
      public updateStageDeliveryOrder(id: string, body?: DeliveryOrderForStageUpdateModel, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
      public updateStageDeliveryOrder(id: string, body?: DeliveryOrderForStageUpdateModel, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
- 
+
          if (id === null || id === undefined) {
              throw new Error('Required parameter id was null or undefined when calling updateStageDeliveryOrder.');
          }
- 
- 
+
+
          let headers = this.defaultHeaders;
- 
+
          // to determine the Accept header
          let httpHeaderAccepts: string[] = [
              'text/plain',
@@ -189,7 +189,7 @@ import { Configuration } from '../configuration';
          if (httpHeaderAcceptSelected != undefined) {
              headers = headers.set('Accept', httpHeaderAcceptSelected);
          }
- 
+
          // to determine the Content-Type header
          const consumes: string[] = [
              'application/json-patch+json',
@@ -201,7 +201,7 @@ import { Configuration } from '../configuration';
          if (httpContentTypeSelected != undefined) {
              headers = headers.set('Content-Type', httpContentTypeSelected);
          }
- 
+
          return this.httpClient.request<any>('put',`${this.basePath}/api/admin/delivery-orders/${encodeURIComponent(String(id))}`,
              {
                  body: body,

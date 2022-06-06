@@ -11,7 +11,7 @@ export class PartsService {
   serverUrl: string;
 
   constructor(private http: HttpClient) {
-    this.serverUrl = environment.serverPartUrl;
+    this.serverUrl = environment.serverUrl;
   }
 
   getAll(): Observable<Part[]>{

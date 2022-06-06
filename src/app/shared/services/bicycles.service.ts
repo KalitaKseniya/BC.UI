@@ -31,7 +31,7 @@ export class BicyclesService {
     public configuration = new Configuration();
 
     constructor(protected httpClient: HttpClient, @Optional() configuration: Configuration) {
-        this.basePath = environment.serverBicycleUrl;
+        this.basePath = environment.serverUrl;
         if (configuration) {
             this.configuration = configuration;
         }

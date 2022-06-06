@@ -57,7 +57,7 @@ export class AuthService {
 
   login(userForAuth: UserForAuthenticationDto): Observable<any> {
     return this.http
-      .post(`${this.basePath}/api/authentication/login`, userForAuth)
+      .post(`${this.basePath}/api/Authentication/login`, userForAuth)
       .pipe(tap(this.setToken), catchError(this.handleError.bind(this)));
   }
 

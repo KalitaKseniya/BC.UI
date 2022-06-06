@@ -11,7 +11,7 @@ import { PartModel, PartModelForCreationOrUpdateDto } from '../interfaces';
 export class PartModelsService {
   serverUrl: string;
   constructor(private http: HttpClient) {
-    this.serverUrl = environment.serverPartUrl;
+    this.serverUrl = environment.serverUrl;
    }
 
   getPartModels(): Observable<PartModel[]>{
