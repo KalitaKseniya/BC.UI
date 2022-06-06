@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { Part } from 'src/app/shared/interfaces';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { PartsService } from 'src/app/shared/services/parts.service';
@@ -20,7 +22,8 @@ export class PartsPageComponent implements OnInit, OnDestroy {
   constructor(
     private partsService: PartsService,
     private alert: AlertService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -33,16 +36,24 @@ export class PartsPageComponent implements OnInit, OnDestroy {
   }
 
   deletePart(part: Part){
-    if (!confirm(`Are you sure you want to delete ${part.name}?`)) {
-      return;
-    }
-    this.dSub = this.partsService.delete(part.id).subscribe(
-      () => {
-        this.parts = this.parts.filter((u) => u.id !== part.id);
-        this.alert.danger('Part has been deleted');
-      },
-      (error) => console.log('Error deleting part model', error)
-    );
+
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Confirm remove Part',
+        message: `Are you sure you want to delete ${part.name}?`
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.dSub = this.partsService.delete(part.id).subscribe(
+          () => {
+            this.parts = this.parts.filter((u) => u.id !== part.id);
+            this.alert.danger('Part has been deleted');
+          },
+          (error) => console.log('Error deleting part model', error)
+        );
+      }
+    });
   }
 
   redirectToUpdate = (id: string) => {

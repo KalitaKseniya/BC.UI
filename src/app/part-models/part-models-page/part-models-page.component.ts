@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-part-models-page',
@@ -27,7 +29,8 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
   constructor(
     private partModelsService: PartModelsService,
     private alert: AlertService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -48,16 +51,24 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
   }
 
   redirectToDelete(partModel: PartModel) {
-    if (!confirm(`Are you sure you want to delete ${partModel.name}?`)) {
-      return;
-    }
-    this.dSub = this.partModelsService.deletePartModel(partModel.id).subscribe(
-      () => {
-        this.partModels = this.partModels.filter((u) => u.id !== partModel.id);
-        this.alert.danger('PartModel has been deleted');//ToDo K: fix, not showing
-      },
-      (error) => console.log('Error deleting part model', error)
-    );
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Confirm remove Part Model',
+        message: `Are you sure you want to delete ${partModel.name}?`
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.dSub = this.partModelsService.deletePartModel(partModel.id).subscribe(
+          () => {
+            this.partModels = this.partModels.filter((u) => u.id !== partModel.id);
+            this.dataSource.data = this.partModels;
+            this.alert.danger('Part Model has been deleted');
+          },
+          (error) => console.log('Error deleting part model', error)
+        );
+      }
+    });
   }
 
   public redirectToUpdate = (id: string) => {

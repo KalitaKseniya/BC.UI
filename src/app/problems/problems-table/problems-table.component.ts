@@ -1,9 +1,11 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { ProblemForReadModel, ProblemProgressForUpdateModel } from 'src/app/shared/models/models';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ProblemsService } from 'src/app/shared/services/problems.service';
@@ -28,7 +30,8 @@ export class ProblemsTableComponent implements OnInit, OnDestroy {
     private problemsService: ProblemsService,
     private authService: AuthService,
     private alert: AlertService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -41,16 +44,25 @@ export class ProblemsTableComponent implements OnInit, OnDestroy {
   }
 
   redirectToDelete(problem: ProblemForReadModel) {
-    if (!confirm(`Are you sure you want to DELETE problem ${problem.id}?`)) {
-      return;
-    }
-    this.dSub = this.problemsService.deleteProblem(problem.id).subscribe(
-      () => {
-        this.problems = this.problems.filter((u) => u.id !== problem.id);
-        this.alert.danger('Problem has been deleted');
-      },
-      (error) => console.log('Error deleting problem', error)
-    );
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Confirm remove Problem',
+        message: `Are you sure you want to DELETE problem ${problem.id}?`
+      }
+    });
+
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.dSub = this.problemsService.deleteProblem(problem.id).subscribe(
+          () => {
+            this.problems = this.problems.filter((u) => u.id !== problem.id);
+            this.dataSource.data = this.problems;
+            this.alert.danger('Problem has been deleted');
+          },
+          (error) => console.log('Error deleting problem', error)
+        );
+      }
+    });
   }
 
   redirectToAccept(problem: ProblemForReadModel) {
@@ -58,23 +70,28 @@ export class ProblemsTableComponent implements OnInit, OnDestroy {
       console.error('Forbidden.')
       return;
     }
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Accept Problem',
+        message: `Are you sure you want to ACCEPT problem ${problem.id}?`
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result) {
+        const problemProgressModel: ProblemProgressForUpdateModel = {
+          masterId: this.authService.userId,
+          masterEmail: this.authService.userEmail,
+          stage: 'InProgress'// ToDo: replace to enum?
+        };
 
-    if (!confirm(`Are you sure you want to ACCEPT problem ${problem.id}?`)) {
-      return;
-    }
-
-    const problemProgressModel: ProblemProgressForUpdateModel = {
-      masterId: this.authService.userId,
-      masterEmail: this.authService.userEmail,
-      stage: 'InProgress'// ToDo: replace to enum?
-    };
-
-    this.dSub = this.problemsService.updateProblemProgress(problem.id, problemProgressModel).subscribe(
-      () => {
-        this.alert.success('Problem has been accepted');
-      },
-      (error) => console.log('Error accepting problem', error)
-    );
+        this.dSub = this.problemsService.updateProblemProgress(problem.id, problemProgressModel).subscribe(
+          () => {
+            this.alert.success('Problem has been accepted');
+          },
+          (error) => console.log('Error accepting problem', error)
+        );
+      }
+    });
   }
 
   public redirectToDetails = (id: string) => {

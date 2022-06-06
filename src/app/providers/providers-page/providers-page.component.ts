@@ -1,6 +1,8 @@
 import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { Provider } from 'src/app/shared/interfaces';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { ProvidersService } from 'src/app/shared/services/providers.service';
@@ -23,7 +25,8 @@ export class ProvidersPageComponent implements OnInit, OnDestroy {
   constructor(
     private providersService: ProvidersService,
     private alert: AlertService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -36,16 +39,23 @@ export class ProvidersPageComponent implements OnInit, OnDestroy {
   }
 
   deleteProvider(provider: Provider){
-    if (!confirm(`Are you sure you want to delete ${provider.name}?`)) {
-      return;
-    }
-    this.dSub = this.providersService.delete(provider.id).subscribe(
-      () => {
-        this.providers = this.providers.filter((u) => u.id !== provider.id);
-        this.alert.danger('Provider has been deleted');
-      },
-      (error) => console.log('Error deleting provider', error)
-    );
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Confirm remove Provider',
+        message: `Are you sure you want to remove provider ${provider.name}?`
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.dSub = this.providersService.delete(provider.id).subscribe(
+          () => {
+            this.providers = this.providers.filter((u) => u.id !== provider.id);
+            this.alert.danger('Provider has been deleted');
+          },
+          (error) => console.log('Error deleting provider', error)
+        );
+      }
+    });
   }
 
   redirectToUpdate = (id: string) => {

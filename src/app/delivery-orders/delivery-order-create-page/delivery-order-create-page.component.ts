@@ -11,6 +11,8 @@ import { PartModel } from 'src/app/shared/interfaces';
 import { DeliveryOrderPartModelForDisplay } from 'src/app/shared/models/part-models/deliveryOrderPartModelForDisplay';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { PartModelsService } from 'src/app/shared/services/partModels.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-delivery-order-create-page',
@@ -40,7 +42,8 @@ export class DeliveryOrderCreatePageComponent implements OnInit, OnDestroy {
     private partModelsService: PartModelsService,
     private alert: AlertService,
     private router: Router,
-    private calculationService: DeliveryOrderCalculationService
+    private calculationService: DeliveryOrderCalculationService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -85,16 +88,23 @@ export class DeliveryOrderCreatePageComponent implements OnInit, OnDestroy {
   }
 
   confirmOrder() {
-    if (!confirm(`Are you sure you want to make order for provider with  ${this.totalPrice}$?`)) {
-      return;
-    }
-    const checkoutData = this.getDataForCheckout();
-    if (!checkoutData.partModels || checkoutData.partModels.length == 0){
-      alert('You can not order 0 part models!');
-      return;
-    } 
-    const url: string = 'admin/delivery-orders/checkout';
-    this.router.navigate([url], {state: checkoutData});
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Confirm Checkout',
+        message: `Are you sure you want to make order for ${this.financial(this.totalPrice)}$?`
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result) {
+        const checkoutData = this.getDataForCheckout();
+        if (!checkoutData.partModels || checkoutData.partModels.length == 0){
+          alert('You can not order 0 part models!');
+          return;
+        }
+        const url: string = 'admin/delivery-orders/checkout';
+        this.router.navigate([url], {state: checkoutData});
+      }
+    });
   }
 
   changeQuantity(partModel: DeliveryOrderPartModelForDisplay){
@@ -108,7 +118,7 @@ export class DeliveryOrderCreatePageComponent implements OnInit, OnDestroy {
   recalculateSummaries(){
     console.log('recalulatin')
     var checked = this.partModels.filter(x => x.isChecked);
-    
+
     this.totalDifferentItems = checked.length;
     this.totalWeight = this.calculationService.calculateTotalWeight(checked);
     this.totalPrice = this.calculationService.calculateTotalPrice(this.chosenProvider, checked);

@@ -10,6 +10,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -25,6 +27,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    MatDialogModule
   ],
   exports: [
     HttpClientModule,
@@ -39,8 +42,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    MatDialogModule
   ],
   declarations: [
+    ConfirmDialogComponent
   ],
 })
 export class SharedModule {}

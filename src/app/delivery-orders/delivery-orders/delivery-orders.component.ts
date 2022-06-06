@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { DeliveryOrder } from '../../shared/interfaces';
 import { DeliveryOrderForReadModel } from '../../shared/models/deliveryOrderForReadModel';
 import { AlertService } from '../../shared/services/alert.service';
@@ -29,11 +31,11 @@ export class DeliveryOrdersComponent implements OnInit, OnDestroy {
   constructor(
     private deliveryOrderService: DeliveryOrdersService,
     private alert: AlertService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.gSub = this.deliveryOrderService.getDeliveryOrdersList().subscribe(
@@ -50,16 +52,24 @@ export class DeliveryOrdersComponent implements OnInit, OnDestroy {
   }
 
   redirectToDelete(deliveryOrder: DeliveryOrder) {
-    if (!confirm(`Are you sure you want to delete delivery order ${deliveryOrder.id}?`)) {
-      return;
-    }
-    this.dSub = this.deliveryOrderService.deleteDeliveryOrder(deliveryOrder.id).subscribe(
-      () => {
-        this.deliveryOrders = this.deliveryOrders.filter((u) => u.id !== deliveryOrder.id);
-        this.alert.danger('Delivery order has been deleted');//ToDo K: fix, not showing
-      },
-      (error) => console.log('Error deleting delivery order', error)
-    );
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Confirm Remove Delivery Order',
+        message: `Are you sure you want to delete delivery order ${deliveryOrder.id}?`
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.dSub = this.deliveryOrderService.deleteDeliveryOrder(deliveryOrder.id).subscribe(
+          () => {
+            this.deliveryOrders = this.deliveryOrders.filter((u) => u.id !== deliveryOrder.id);
+            this.dataSource.data = this.deliveryOrders;
+            this.alert.danger('Delivery order has been deleted');
+          },
+          (error) => console.log('Error deleting delivery order', error)
+        );
+      }
+    });
   }
 
   public redirectToDetails = (id: string) => {
