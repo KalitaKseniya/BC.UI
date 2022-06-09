@@ -1,8 +1,8 @@
-<h2>Order Part Models from Provider</h2>
-<app-delivery-order-provider-create-page 
+<h2>{{"deliveryOrderCreate.pageTitle" | translate}}</h2>
+<app-delivery-order-provider-create-page
   (providerSelectedEvent)="setProvider($event)"
 >
-  
+
 </app-delivery-order-provider-create-page>
 
  <table mat-table [dataSource]="dataSource" matSort>
@@ -20,15 +20,21 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="image">
-      <th mat-header-cell  *matHeaderCellDef> Image </th>
+      <th mat-header-cell  *matHeaderCellDef>
+        {{"tableRows.image" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> <img src={{element.imageUrl}}> </td>
     </ng-container>
     <ng-container matColumnDef="name">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Name </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.name" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
     <ng-container matColumnDef="quantity">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Quantity </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.quantity" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element; let i = index;">
         <input type="number"
           value="{{element.quantity}}"
@@ -40,19 +46,27 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="price">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Purchase Price </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.purchasePrice" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.purchasePrice | currency: 'USD'}} </td>
     </ng-container>
     <ng-container matColumnDef="weight">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Weight </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.weight" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{financial(element.weightInKg)}} kg </td>
     </ng-container>
     <ng-container matColumnDef="manufacturerName">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Manufacturer </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.manufacturer" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.manufacturer.name}} </td>
     </ng-container>
     <ng-container matColumnDef="partName">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Part </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.part" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.part.name}} </td>
     </ng-container>
 
@@ -64,11 +78,11 @@
   </mat-paginator>
   <table>
   <tr>
-    <th>Total different items</th>
-    <th>Total weight</th>
-    <th>Delivery price</th>
-    <th>Part models price</th>
-    <th>Total price</th>
+    <th>{{"tableRows.totalDifferentItems" | translate}}</th>
+    <th>{{"tableRows.totalWeight" | translate}}</th>
+    <th>{{"tableRows.deliveryPrice" | translate}}</th>
+    <th>{{"tableRows.partModelPrice" | translate}}</th>
+    <th>{{"tableRows.totalPrice" | translate}}</th>
   </tr>
   <tr>
     <td>{{totalDifferentItems}}</td>
@@ -83,8 +97,8 @@
   (click)="confirmOrder()"
   [disabled]="!chosenProvider || !isWeightAllowed"
 >
-  Confirm order
-</button>  
+  {{"deliveryOrderCreate.confirmOrderButton" | translate}}
+</button>
 <ng-template #loading>
 <p>Loading...</p>
 </ng-template>

@@ -2,8 +2,8 @@
   <table>
     <tr>
       <th>Id</th>
-      <th>Name</th>
-      <th>Users</th>
+      <th>{{ "tableRows.name" | translate}}</th>
+      <th>{{ "tableRows.users" | translate}}</th>
     </tr>
     <tr *ngFor="let role of roles">
       <td>{{ role.id }}</td>

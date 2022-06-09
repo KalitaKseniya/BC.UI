@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     FlexLayoutModule,
     MatDialogModule,
+    TranslateModule,
   ],
   exports: [
     HttpClientModule,
@@ -44,6 +46,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     FlexLayoutModule,
     MatDialogModule,
+    TranslateModule,
   ],
   declarations: [
     ConfirmDialogComponent,

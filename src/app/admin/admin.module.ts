@@ -1,7 +1,6 @@
 import { DeliveryOrderDetailsComponent } from './../delivery-orders/delivery-order-details/delivery-order-details.component';
 import { DeliveryOrderCheckoutPageComponent } from './../delivery-orders/delivery-order-checkout-page/delivery-order-checkout-page.component';
 import { DeliveryOrderProviderCreatePageComponent } from './../delivery-orders/delivery-order-provider-create-page/delivery-order-provider-create-page.component';
-import { DeliveryOrderUpdatePageComponent } from './../delivery-orders/delivery-order-update-page/delivery-order-update-page.component';
 import { PartModelDetailsComponent } from './../part-models/part-model-details/part-model-details.component';
 import { AccountPageComponent } from './../account-page/account-page.component';
 import { ForbiddenPageComponent } from './../forbidden-page/forbidden-page.component';
@@ -66,7 +65,6 @@ import { NewProblemsPageComponent } from '../problems/new-problems-page/new-prob
     ProvidersCreatePageComponent,
     DeliveryOrdersComponent,
     DeliveryOrderCreatePageComponent,
-    DeliveryOrderUpdatePageComponent,
     DeliveryOrderProviderCreatePageComponent,
     DeliveryOrderCheckoutPageComponent,
     DeliveryOrderDetailsComponent,

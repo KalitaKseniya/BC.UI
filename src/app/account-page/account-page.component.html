@@ -2,35 +2,35 @@
     <form class="card" [formGroup]="form" (ngSubmit)="submit()">
       <div class="header">
         <button *ngIf="auth.isAdmin()" routerLink="/admin/users" class="btn btn-link btn-left">
-          Back to all users
+          {{ "account.backToAllUsers" | translate}}
         </button>
-        <h2>My account</h2>
+        <h2>{{ "account.pageTitle" | translate}}</h2>
       </div>
       <div class="form-control">
-        <label>Email</label>
+        <label>{{ "controls.email" | translate}}</label>
         <input class="form-control" type="text" formControlName="email" readonly />
       </div>
       <div class="form-control">
-        <label>First Name</label>
+        <label>{{ "controls.firstName" | translate}}</label>
         <input class="form-control" type="text" formControlName="firstName" readonly/>
       </div>
       <div class="form-control">
-        <label>Second Name</label>
+        <label>{{ "controls.secondName" | translate}}</label>
         <input class="form-control" type="text" formControlName="secondName" readonly/>
       </div>
       <div class="form-control">
-        <label>Username</label>
+        <label>{{ "controls.username" | translate}}</label>
         <input class="form-control" type="text" formControlName="username" readonly/>
       </div>
       <div class="form-control">
-        <label>Role</label>
+        <label>{{ "controls.role" | translate}}</label>
         <input class="form-control" type="text" formControlName="role" readonly/>
       </div>
       <button
         class="btn btn-primary"
         [routerLink]="['/admin','user', user.id, 'change-password']"
       >
-        Change password
+      {{ "account.changePasswordButton" | translate}}
       </button>
     </form>
   </div>

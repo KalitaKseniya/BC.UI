@@ -7,7 +7,7 @@ export const environment = {
   serverUrl: "https://localhost:5011",
   passwordPattern : '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$',
   locales: ['en', 'ru'],
-  defaultLocale: 'en',
+  defaultLocale: 'ru',
 };
 
 /*

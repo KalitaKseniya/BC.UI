@@ -2,14 +2,15 @@
     mat-flat-button
     color="primary"
     [routerLink]="['/admin','parts', 'create']"
-  >Create new Part
+>
+  {{"parts.createNewPartButton" | translate}}
 </button>
 <div *ngIf="parts.length; else loading">
   <table>
     <tr>
       <th>Id</th>
-      <th>Name</th>
-      <th>Actions</th>
+      <th>{{"tableRows.name" | translate}}</th>
+      <th>{{"tableRows.actions" | translate}}</th>
     </tr>
     <tr *ngFor="let part of parts">
       <td>{{ part.id }}</td>
@@ -17,10 +18,10 @@
       <td>
         <button class="btn btn-sm btn-warning"
           (click)="redirectToUpdate(part.id)">
-          Edit
+          {{"tableRows.update" | translate}}
         </button>
         <button class="btn btn-sm btn-danger" (click)="deletePart(part)">
-          Delete
+          {{"tableRows.delete" | translate}}
         </button>
       </td>
     </tr>

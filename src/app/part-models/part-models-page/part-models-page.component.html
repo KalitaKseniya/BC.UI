@@ -6,44 +6,64 @@
       mat-flat-button
       color="primary"
       [routerLink]="['create']"
-    >Create new Part Model</button>
+    >
+      {{"partModels.createNewPartModelButton" | translate}}
+    </button>
 </div>
 
  <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="image">
-      <th mat-header-cell  *matHeaderCellDef> Image </th>
+      <th mat-header-cell  *matHeaderCellDef>
+        {{"tableRows.image" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> <img src={{element.imageUrl}}> </td>
     </ng-container>
     <ng-container matColumnDef="name">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Name </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.name" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
     <ng-container matColumnDef="availableQuantity">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Available Quantity </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.availableQuantity" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.availableQuantity}} </td>
     </ng-container>
     <ng-container matColumnDef="price">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Price </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.price" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.price | currency:'USD'}} </td>
     </ng-container>
     <ng-container matColumnDef="purchasePrice">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Purchase Price </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.purchasePrice" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.purchasePrice | currency:'USD'}} </td>
     </ng-container>
     <ng-container matColumnDef="weightInKg">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Weight, kg </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.weight" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{financial(element.weightInKg)}} </td>
     </ng-container>
     <ng-container matColumnDef="manufacturerName">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Manufacturer </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.manufacturer" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.manufacturer.name}} </td>
     </ng-container>
     <ng-container matColumnDef="partName">
-      <th mat-header-cell  mat-sort-header *matHeaderCellDef> Part </th>
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+        {{"tableRows.part" | translate}}
+      </th>
       <td mat-cell *matCellDef="let element"> {{element.part.name}} </td>
     </ng-container>
     <ng-container matColumnDef="update">
-        <th mat-header-cell *matHeaderCellDef> Update </th>
+        <th mat-header-cell *matHeaderCellDef>
+          {{"tableRows.update" | translate}}
+        </th>
         <td mat-cell *matCellDef="let element">
           <button mat-icon-button color="accent" (click)="redirectToUpdate(element.id)">
               <mat-icon class="mat-18">system_update</mat-icon>
@@ -51,7 +71,9 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="delete">
-          <th mat-header-cell *matHeaderCellDef> Delete </th>
+          <th mat-header-cell *matHeaderCellDef>
+            {{"tableRows.delete" | translate}}
+          </th>
           <td mat-cell *matCellDef="let element">
             <button mat-icon-button color="warn" (click)="redirectToDelete(element)">
                 <mat-icon class="mat-18">delete</mat-icon>

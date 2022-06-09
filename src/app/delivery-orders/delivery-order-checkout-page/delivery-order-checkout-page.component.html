@@ -1,9 +1,9 @@
 <div *ngIf="provider">
     <table>
       <tr>
-        <th>Name</th>
-        <th>Price per kg</th>
-        <th>Min weight to deliver</th>
+        <th>{{"tableRows.name" | translate}}</th>
+        <th>{{"tableRows.pricePerKg" | translate}}</th>
+        <th>{{"tableRows.minWeightInKgToDeliver" | translate}}</th>
       </tr>
       <tr>
         <td>{{ provider.name }}</td>
@@ -16,13 +16,13 @@
   <div *ngIf="partModels">
     <table>
         <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Purchase price</th>
-          <th>Quantity</th>
-          <th>Weight</th>
-          <th>Part name</th>
-          <th>Manufacturer name</th>
+          <th>{{"tableRows.image" | translate}}</th>
+          <th>{{"tableRows.name" | translate}}</th>
+          <th>{{"tableRows.purchasePrice" | translate}}</th>
+          <th>{{"tableRows.quantity" | translate}}</th>
+          <th>{{"tableRows.weight" | translate}}</th>
+          <th>{{"tableRows.part" | translate}}</th>
+          <th>{{"tableRows.manufacturer" | translate}}</th>
         </tr>
         <tr *ngFor="let partModel of partModels">
           <td><img src="{{partModel.imageUrl}}"> </td>
@@ -37,11 +37,11 @@
   </div>
   <table>
     <tr>
-      <th>Total different items</th>
-      <th>Total weight</th>
-      <th>Delivery price</th>
-      <th>Part models price</th>
-      <th>Total price</th>
+      <th>{{"tableRows.totalDifferentItems" | translate}}</th>
+      <th>{{"tableRows.totalWeight" | translate}}</th>
+      <th>{{"tableRows.deliveryPrice" | translate}}</th>
+      <th>{{"tableRows.partModelPrice" | translate}}</th>
+      <th>{{"tableRows.totalPrice" | translate}}</th>
     </tr>
     <tr>
       <td>{{totalDifferentItems}}</td>
@@ -57,5 +57,5 @@
   (click)="confirmOrder()"
   [disabled]="submitted"
 >
-  Confirm order
+  {{"deliveryOrderCheckout.confirmOrderButton" | translate}}
 </button>

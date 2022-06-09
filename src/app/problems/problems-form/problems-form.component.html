@@ -2,11 +2,11 @@
   <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <div class="header">
       <button routerLink="/admin/user-problems" class="btn btn-link btn-left">
-        Back to all problems
+        {{"problemsForm.backToAllProblemsButton" | translate}}
       </button>
     </div>
     <div class="form-group">
-      <label>Bicycle</label>
+      <label>{{"controls.bicycle" | translate}}</label>
       <select formControlName="bicycle" class="form-control">
         <option
             *ngFor="let b of userBicycles"
@@ -17,48 +17,48 @@
       </select>
     </div>
     <div class="form-control">
-      <label>Address Line 1</label>
+      <label>{{"controls.addressLine1" | translate}}</label>
       <input class="form-control" type="text" formControlName="addressLine1" />
       <div
         class="validation"
         *ngIf="form.get('addressLine1').touched && form.get('addressLine1').invalid"
       >
         <small *ngIf="form.get('addressLine1').errors.required"
-          >Address Line 1 is a required field</small
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
         >
       </div>
     </div>
     <div class="form-control">
-      <label>Address Line 2</label>
+      <label>{{"controls.addressLine2" | translate}}</label>
       <input class="form-control" type="text" formControlName="addressLine2" />
     </div>
 
     <div class="form-control">
-      <label>Place</label>
+      <label>{{"controls.place" | translate}}</label>
       <input class="form-control" type="text" formControlName="place" />
       <div
         class="validation"
         *ngIf="form.get('place').touched && form.get('place').invalid"
       >
         <small *ngIf="form.get('place').errors.required"
-          >Place is a required field</small
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
         >
       </div>
     </div>
     <div class="form-group">
-      <label>Description</label>
+      <label>{{"controls.description" | translate}}</label>
       <textarea class="form-control" formControlName="description" rows="3"></textarea>
     </div>
     <form [formGroup]="partForm">
     <div class="test">
-      <h2>Add Multiple Part Models:</h2>
+      <h2> {{"problemsForm.addMultiplePartModels" | translate}}</h2>
       <button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button>
     </div>
     <table class="table table-bordered" formArrayName="quantities">
       <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
         <td>
                <div class="form-group">
-                  <label>Part</label>
+                  <label>{{"controls.part" | translate}}</label>
                   <select formControlName="part" class="form-control">
                     <option
                         *ngFor="let p of parts"
@@ -71,7 +71,7 @@
         </td>
         <td>
           <div class="form-group">
-            <label>Part Model</label>
+            <label>{{"controls.partModel" | translate}}</label>
             <select formControlName="partModel" class="form-control">
                 <option
                     *ngFor="let pm of getPartModels(i)"
@@ -85,18 +85,18 @@
         <td>
           <div class="form-group">
             <div class="form-control">
-              <label>Amount</label>
+              <label>{{"controls.amount" | translate}}</label>
               <input class="form-control" type="number" formControlName="amount" />
               <div
                 class="validation"
                 *ngIf="quantities().controls[i].get('amount').touched && quantities().controls[i].get('amount').invalid"
               >
                 <small *ngIf="quantities().controls[i].get('amount').errors.required"
-                  >Amount is a required field</small
+                  >{{ "controlsValidation.fieldRequired" | translate}}</small
                 >
-                <small *ngIf="quantities().controls[i].get('amount').errors.min"
-                  >Amount must be greater than or equal to 1</small
-                >
+                <small *ngIf="quantities().controls[i].get('amount').errors.min">
+                  {{"controls.amount" | translate}} {{"controlsValidation.greaterThenOrEqual" | translate}} 1
+                </small>
               </div>
             </div>
             </div>

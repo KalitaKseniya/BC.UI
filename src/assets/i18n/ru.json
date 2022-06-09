@@ -7,12 +7,173 @@
     },
     "controls": {
         "email": "Email",
-        "password": "Пароль"
+        "password": "Пароль",
+        "firstName": "Имя",
+        "secondName": "Фамилия",
+        "passwordAgain": "Введите пароль еще раз",
+        "username": "Имя пользователя",
+        "role": "Роль",
+        "oldPassword": "Старый пароль",
+        "newPassword": "Новый пароль",
+        "dateCreated": "Дата создания",
+        "dateFinished": "Дата окончания",
+        "stage": "Этап",
+        "totalPrice": "Итоговая цена",
+        "provider": "Поставщик",
+        "partModels": "Запчасти",
+        "name": "Имя",
+        "price": "Цена",
+        "availableQuantity": "Доступное количество",
+        "weightInKg": "Вес, кг",
+        "part": "Категория",
+        "manufacturer": "Производитель",
+        "bicycle": "Велосипед",
+        "addressLine1": "Адресная линия 1",
+        "addressLine2": "Адресная линия 2",
+        "place": "Место",
+        "description": "Описание",
+        "partModel": "Запчасть",
+        "amount": "Количество",
+        "master":"Мастер",
+        "bicycleModel": "Модель велосипеда",
+        "bicycleSerialNumber": "Серийный номер велосипеда",
+        "phone": "Номер телефона",
+        "pricePerKg": "Цена за кг",
+        "minWeightInKgToDeliver": "Минимальный вес в кг для доставки",
+        "purchasePrice": "Цена закупки"
+    },
+    "tableRows":{
+      "acceptProblem": "Принять заявку",
+      "actions": "Действия",
+      "address": "Адрес",
+      "amount": "Количество",
+      "availableQuantity": "Доступное количество",
+      "bicycleModel": "Модель велосипеда",
+      "changePassword": "Сменить пароль",
+      "choose": "Выбрать",
+      "dateCreated": "Дата создания",
+      "dateFinished": "Дата окончания",
+      "delete": "Удалить",
+      "deliveryPrice": "Цена закупки",
+      "details": "Детали",
+      "email": "Email",
+      "fullName": "ФИО",
+      "image": "Изображение",
+      "manufacturer": "Производитель",
+      "masterEmail": "Email мастера",
+      "minWeightInKgToDeliver": "Минимальный вес в кг для доставки",
+      "name": "Имя",
+      "part": "Категория",
+      "partModel": "Запчасть",
+      "partModelPrice": "Цена запчасти",
+      "phone": "Номер телефона",
+      "price": "Цена",
+      "pricePerKg": "Цена за кг",
+      "provider": "Поставщик",
+      "purchasePrice": "Цена закупки",
+      "quantity": "Количество",
+      "role": "Роль",
+      "stage": "Этап",
+      "totalDifferentItems": "Итоговое количество разных предметов",
+      "totalPrice": "Итоговая цена",
+      "totalWeight": "Итоговый вес",
+      "update": "Редактировать",
+      "username": "Имя пользователя",
+      "users": "Пользователи",
+      "weight": "Вес"
     },
     "controlsValidation": {
-      "passwordRequired": "Пароль - это обязательное поле",
-      "emailRequired": "Email - это обязательное поле",
-      "passwordMinLength": "Минимальная длина пароля - "
+      "passwordMinLength": "Минимальная длина пароля - ",
+      "fieldRequired": "Обязательное поле",
+      "passwordMustContain": "Пароль должен содержать буквы в верхнем регистре, букву в нижнем регистре, цифру и любой другой не буквенно-цифровой символ.",
+      "passwordsAreNotEqual": "Пароли не совпадают",
+      "nonNegative": "Поле должно быть не отрицательным",
+      "greaterThenOrEqual": "должно быть больше или равно",
+      "lessThenOrEqual": "Должно быть меньше или равно"
+    },
+    "register": {
+      "pageTitle": "Страница регистрации",
+      "registerButton": "Зарегистрироваться",
+      "backToLogin": "На страницу входа"
+    },
+    "account": {
+      "pageTitle": "Мой аккаунт",
+      "changePasswordButton": "Сменить пароль",
+      "backToAllUsers": "Ко всем пользователям"
+    },
+    "layout": {
+      "admin": "Админ",
+      "master": "Мастер",
+      "user": "Пользователь",
+      "partModels": "Запчасти",
+      "users": "Пользователи",
+      "problems": "Мои заявки",
+      "assignedProblems": "Назначенные заявки",
+      "newProblems": "Новые заявки",
+      "roles": "Роли",
+      "parts": "Категории",
+      "providers": "Поставщики",
+      "deliveryOrders": "Заказы",
+      "createProblem": "Создать заявку",
+      "myAccount": "Мой аккаунт",
+      "logout": "Выйти"
+    },
+     "changePassword": {
+      "pageTitle": "Сменить пароль",
+      "changePasswordButton": "Сменить пароль",
+      "backToAllUsers": "Ко всем пользователям"
+    },
+    "deliveryOrderDetails" : {
+      "updateStageButton": "Редактировать этап",
+      "backToAllDeliveryOrders": "К заказам"
+    },
+    "deliveryOrderCheckout": {
+      "confirmOrderButton": "Подвтердить заказ"
+    },
+    "deliveryOrderCreate": {
+      "pageTitle": "Заказать запчасти у поставщика",
+      "confirmOrderButton": "Подтвердить заказ"
+    },
+    "deliveryOrders": {
+      "createNewDeliveryOrderButton": "Создать новый заказ"
+    },
+    "forbidden" : "Доступ Запрещен",
+    "partModelsForm": {
+      "backToAllPartModels": "К запчастям",
+      "partModel": "запчасть"
+    },
+    "partModels" : {
+      "createNewPartModelButton": "Создать запчасть"
+    },
+    "partsForm": {
+      "backToAllParts": "К категориям",
+      "part": "Категория"
+    },
+    "parts": {
+      "createNewPartButton": "Создать новую категорию"
+    },
+    "problemsForm": {
+      "backToAllProblemsButton": "К заявкам",
+      "addMultiplePartModels" : "Добавить несколько запчастей"
+    },
+    "userProblemsDetails": {
+      "backToProblems": "Вернуться к заявкам",
+      "caption" : "Категории и запчасти"
+    },
+    "userProblems" : {
+      "createNewProblemButton": "Создать новую запчасть"
+    },
+    "providers": {
+      "backToAllProvidersButton": "К поставщикам",
+      "provider": "Поставщик",
+      "createNewProviderButton": "Добавить поставщика"
+    },
+    "users": {
+      "createNewuserButton": "Создать нового пользователя"
+    },
+    "editUser":{
+      "backToAllUsers": "Ко всем пользователям",
+      "edit": "Редактировать",
+      "editUser": "Редактировать пользователя"
     }
 }
-  

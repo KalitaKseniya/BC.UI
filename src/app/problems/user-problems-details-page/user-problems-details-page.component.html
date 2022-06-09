@@ -2,10 +2,10 @@
   <form class="card" [formGroup]="form" >
     <div class="header">
       <button *ngIf="auth.isUser()" routerLink="/admin/user-problems" class="btn btn-link btn-left">
-        Back to problems
+        {{"userProblemsDetails.backToProblems" | translate}}
       </button>
       <button *ngIf="auth.isMaster()" routerLink="/admin/master-problems" class="btn btn-link btn-left">
-        Back to problems
+        {{"userProblemsDetails.backToProblems" | translate}}
       </button>
     </div>
     <div class="form-control">
@@ -13,54 +13,54 @@
       <input class="form-control" type="text" formControlName="id" readonly />
     </div>
     <div class="form-control">
-      <label>Date Created</label>
+      <label>{{"controls.dateCreated" | translate}}</label>
       <input class="form-control" type="text" formControlName="dateCreated" readonly />
     </div>
     <div class="form-control">
-      <label>Date finished</label>
+      <label>{{"controls.dateFinished" | translate}}</label>
       <input class="form-control" type="text" formControlName="dateFinished" readonly/>
     </div>
     <div class="form-control">
-      <label>Master</label>
+      <label>{{"controls.master" | translate}}</label>
       <input class="form-control" type="text" formControlName="master" readonly />
     </div>
     <div class="form-control">
-      <label>Address Line 1</label>
+      <label>{{"controls.addressLine1" | translate}}</label>
       <input class="form-control" type="text" formControlName="addressLine1" readonly />
     </div>
     <div class="form-control">
-      <label>Address Line 2</label>
+      <label>{{"controls.addressLine2" | translate}}</label>
       <input class="form-control" type="text" formControlName="addressLine2" readonly />
     </div>
     <div class="form-control">
-      <label>Place</label>
+      <label>{{"controls.place" | translate}}</label>
       <input class="form-control" type="text" formControlName="place" readonly />
     </div>
     <div class="form-control">
-      <label>Bicycle model</label>
+      <label>{{"controls.bicycleModel" | translate}}</label>
       <input class="form-control" type="text" formControlName="bicycleModel" readonly />
     </div>
     <div class="form-control">
-      <label>Bicycle serial number</label>
+      <label>{{"controls.bicycleSerialNumber" | translate}}</label>
       <input class="form-control" type="text" formControlName="bicycleSerialNumber" readonly />
     </div>
     <div class="form-control">
-      <label>Stage</label>
+      <label>{{"controls.stage" | translate}}</label>
       <input class="form-control" type="text" formControlName="stage" readonly />
     </div>
 
     <div class="form-group">
-      <label>Description</label>
+      <label>{{"controls.description" | translate}}</label>
       <textarea class="form-control" formControlName="description" rows="3" readonly></textarea>
     </div>
     <div *ngIf="problem.partModels">
       <table>
-        <caption><b>Parts and Part models</b></caption>
+        <caption><b>{{"userProblemsDetails.caption" | translate}}</b></caption>
           <tr>
-            <th>Part</th>
-            <th>Part Model</th>
-            <th>Amount</th>
-            <th>Price</th>
+            <th>{{"tableRows.part" | translate}}</th>
+            <th>{{"tableRows.partModel" | translate}}</th>
+            <th>{{"tableRows.amount" | translate}}</th>
+            <th>{{"tableRows.price" | translate}}</th>
           </tr>
           <tr *ngFor="let part of problem.partModels">
             <td>{{ part.partName }}</td>

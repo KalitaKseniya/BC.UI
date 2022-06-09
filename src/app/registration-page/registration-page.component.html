@@ -1,7 +1,7 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
   <div class="header">
     <button routerLink="" class="btn btn-link btn-left">
-      Back to Login
+      {{"register.backToLogin" | translate}}
     </button>
     <h2>{{ "register.pageTitle" | translate}}</h2>
   </div>
@@ -18,36 +18,36 @@
       *ngIf="form.get('email').touched && form.get('email').invalid"
     >
       <small *ngIf="form.get('email').errors.required">
-        {{ "controlsValidation.emailRequired" | translate}}
+        {{ "controlsValidation.fieldRequired" | translate}}
       </small>
     </div>
   </div>
   <div class="form-control">
-    <label>Fisrt Name</label>
+    <label>{{ "controls.firstName" | translate}}</label>
     <input class="form-control" type="text" formControlName="firstName" />
     <div
       class="validation"
       *ngIf="form.get('firstName').touched && form.get('firstName').invalid"
     >
       <small *ngIf="form.get('firstName').errors.required"
-        >First Name is a required field</small
+        >{{ "controlsValidation.fieldRequired" | translate}}</small
       >
     </div>
   </div>
   <div class="form-control">
-    <label>Second Name</label>
+    <label>{{ "controls.secondName" | translate}}</label>
     <input class="form-control" type="text" formControlName="secondName" />
     <div
       class="validation"
       *ngIf="form.get('secondName').touched && form.get('secondName').invalid"
     >
       <small *ngIf="form.get('secondName').errors.required"
-        >Second Name is a required field</small
+        >{{ "controlsValidation.fieldRequired" | translate}}</small
       >
     </div>
   </div>
   <div class="form-control">
-    <label>Password</label>
+    <label>{{ "controls.password" | translate}}</label>
     <div>
       <input [type]="passwordVisibility.inputType" formControlName="password" />
       <button (click)="changePasswordVisibility(passwordVisibility)" class="eye">
@@ -60,21 +60,21 @@
         class="validation"
       >
         <small *ngIf="form.get('password').errors.required">
-          Password is required
+          {{ "controlsValidation.fieldRequired" | translate}}
         </small>
         <small *ngIf="form.get('password').errors.minlength">
-          Password length must be at least
+          {{ "controlsValidation.passwordMinLength" | translate}}
           {{ form.get("password").errors.minlength.requiredLength }}.
         </small>
         <small *ngIf="form.get('password').errors.pattern"
-          >Password must contain an uppercase character, lowercase character, a digit, and a non-alphanumeric character.</small
+          >{{ "controlsValidation.passwordMustContain" | translate}}</small
               >
       </div>
     </div>
   </div>
 
   <div class="form-control">
-    <label>Type Password again</label>
+    <label>{{ "controls.passwordAgain" | translate}}</label>
     <div>
       <input class="form-control" [type]="passwordConfirmVisibility.inputType" formControlName="passwordConfirm" />
       <button (click)="changePasswordVisibility(passwordConfirmVisibility)" class="eye">
@@ -86,7 +86,7 @@
         *ngIf="form.get('passwordConfirm').touched && form.get('passwordConfirm').invalid"
       >
         <small *ngIf="form.get('passwordConfirm').errors.required"
-          >Password Confirm is a required field</small
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
         >
       </div>
       <div
@@ -94,7 +94,7 @@
         *ngIf="form.get('passwordConfirm').touched"
       >
         <small *ngIf="form.get('password').value != form.get('passwordConfirm').value"
-          >Password fields are not equal</small
+          >{{ "controlsValidation.passwordsAreNotEqual" | translate}}</small
         >
       </div>
     </div>
@@ -105,6 +105,6 @@
     class="btn btn-dark"
     [disabled]="form.invalid || submitted"
   >
-    Register
+  {{ "register.registerButton" | translate}}
   </button>
 </form>

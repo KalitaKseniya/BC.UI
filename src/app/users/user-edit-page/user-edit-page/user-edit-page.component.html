@@ -2,9 +2,9 @@
   <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <div class="header">
       <button routerLink="/admin/users" class="btn btn-link btn-left">
-        Back to all users
+        {{"editUser.backToAllUsers" | translate}}
       </button>
-      <h2>Edit a user</h2>
+      <h2>{{"editUser.editUser" | translate}}</h2>
     </div>
     <div class="form-control">
       <label>Email</label>
@@ -15,36 +15,38 @@
       >
         <small *ngIf="form.get('email').errors.email">Invalid email</small>
         <small *ngIf="form.get('email').errors.required"
-          >Email is a required field</small
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
         >
       </div>
     </div>
     <div class="form-control">
-      <label>First Name</label>
+      <label>{{ "controls.firstName" | translate}}</label>
       <input class="form-control" type="text" formControlName="firstName" />
       <div
         class="validation"
         *ngIf="form.get('firstName').touched && form.get('firstName').invalid"
       >
         <small *ngIf="form.get('firstName').errors.required"
-          >First Name is a required field</small
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
         >
       </div>
     </div>
     <div class="form-control">
-      <label>Second Name</label>
+      <label>{{ "controls.secondName" | translate}}</label>
       <input class="form-control" type="text" formControlName="secondName" />
       <div
         class="validation"
         *ngIf="form.get('secondName').touched && form.get('secondName').invalid"
       >
         <small *ngIf="form.get('secondName').errors.required"
-          >Second Name is a required field</small
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
         >
       </div>
     </div>
     <div class="form-control">
-      <label>Role</label>
+      <label>
+        {{ "controls.role" | translate}}
+      </label>
       <input class="form-control" type="text" formControlName="role" readonly/>
     </div>
     <button
@@ -52,7 +54,7 @@
       type="submit"
       [disabled]="form.invalid || submitted"
     >
-      Update
+      {{"editUser.edit" | translate}}
     </button>
   </form>
 </div>

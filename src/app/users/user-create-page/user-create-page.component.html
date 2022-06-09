@@ -6,7 +6,7 @@
     <h2>Create a user</h2>
   </div>
   <div class="form-control">
-    <label>Email</label>
+    <label>{{ "controls.email" | translate}} </label>
     <input class="form-control" type="text" formControlName="email" />
     <div
       class="validation"
@@ -14,46 +14,46 @@
     >
       <small *ngIf="form.get('email').errors.email">Invalid email</small>
       <small *ngIf="form.get('email').errors.required"
-        >Email is a required field</small
+        >{{ "controlsValidation.fieldRequired" | translate}}</small
       >
     </div>
   </div>
   <div class="form-control">
-    <label>Fisrt Name</label>
+    <label>{{ "controls.firstName" | translate}}</label>
     <input class="form-control" type="text" formControlName="firstName" />
     <div
       class="validation"
       *ngIf="form.get('firstName').touched && form.get('firstName').invalid"
     >
       <small *ngIf="form.get('firstName').errors.required"
-        >First Name is a required field</small
+        >{{ "controlsValidation.fieldRequired" | translate}}</small
       >
     </div>
   </div>
   <div class="form-control">
-    <label>Second Name</label>
+    <label>{{ "controls.secondName" | translate}}</label>
     <input class="form-control" type="text" formControlName="secondName" />
     <div
       class="validation"
       *ngIf="form.get('secondName').touched && form.get('secondName').invalid"
     >
       <small *ngIf="form.get('secondName').errors.required"
-        >Second Name is a required field</small
+        >{{ "controlsValidation.fieldRequired" | translate}}</small
       >
     </div>
   </div>
   <div class="form-control">
-    <label>Password</label>
+    <label>{{ "controls.password" | translate}}</label>
     <input class="form-control" type="text" formControlName="password" />
     <div
       class="validation"
       *ngIf="form.get('password').touched && form.get('password').invalid"
     >
       <small *ngIf="form.get('password').errors.required"
-        >Password is a required field</small
+        >{{ "controlsValidation.fieldRequired" | translate}}</small
       >
       <small *ngIf="form.get('password').errors.pattern"
-        >Password must contain an uppercase character, lowercase character, a digit, and a non-alphanumeric character.</small
+        >{{ "controlsValidation.passwordMustContain" | translate}}</small
       >
       <small *ngIf="form.get('password').errors.minlength"
         >Password length should be greater than or equal to 6.</small
@@ -61,14 +61,14 @@
     </div>
   </div>
   <div class="form-control">
-    <label>Type Password again</label>
+    <label>{{ "controls.passwordAgain" | translate}}</label>
     <input class="form-control" type="text" formControlName="passwordConfirm" />
     <div
       class="validation"
       *ngIf="form.get('passwordConfirm').touched && form.get('passwordConfirm').invalid"
     >
       <small *ngIf="form.get('passwordConfirm').errors.required"
-        >Password Confirm is a required field</small
+        >{{ "controlsValidation.fieldRequired" | translate}}</small
       >
     </div>
     <div
@@ -81,7 +81,7 @@
   </div>
   </div>
   <div class="form-control">
-    <label>Role</label>
+    <label>{{ "controls.role" | translate}}</label>
     <select formControlName="role">
         <option
             *ngFor="let r of roles"

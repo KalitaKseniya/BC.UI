@@ -2,17 +2,18 @@
     mat-flat-button
     color="primary"
     [routerLink]="['/admin','user', 'create']"
-  >Create new User
+  >
+  {{"users.createNewuserButton" | translate}}
 </button>
 <div *ngIf="users.length; else loading">
     <table>
       <tr>
         <th>Id</th>
-        <th>Full Name</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Actions</th>
+        <th>{{"tableRows.fullName" | translate}}</th>
+        <th>{{"tableRows.username" | translate}}</th>
+        <th>{{"tableRows.email" | translate}}</th>
+        <th>{{"tableRows.role" | translate}}</th>
+        <th>{{"tableRows.actions" | translate}}</th>
       </tr>
       <tr *ngFor="let user of users">
         <td>{{user.id}}</td>
@@ -25,19 +26,19 @@
             class="btn btn-dark"
             [routerLink]="['/admin','user', user.id, 'edit']"
           >
-            Edit
+            {{"tableRows.update" | translate}}
           </button>
           <button
             class="btn btn-light"
             [routerLink]="['/admin','user', user.id, 'change-password']"
           >
-            Change password
+            {{"tableRows.changePassword" | translate}}
           </button>
           <button
             class="btn btn-primary"
             (click)="deleteUser(user)"
           >
-            Delete
+            {{"tableRows.delete" | translate}}
           </button>
         </td>
       </tr>

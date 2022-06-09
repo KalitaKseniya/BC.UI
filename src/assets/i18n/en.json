@@ -10,18 +10,171 @@
         "password": "Password",
         "firstName": "First Name",
         "secondName": "Second Name",
-        "passwordAgain": "Type Password again"
-
+        "passwordAgain": "Type Password again",
+        "username": "Username",
+        "role": "Role",
+        "oldPassword": "Old Password",
+        "newPassword": "New Password",
+        "dateCreated": "Date Created",
+        "dateFinished": "Date Finished",
+        "stage": "Stage",
+        "totalPrice": "Total Price",
+        "provider": "Provider",
+        "partModels": "Part Models",
+        "name": "Name",
+        "price": "Price",
+        "availableQuantity": "Available Quantity",
+        "weightInKg": "Weight, kg",
+        "part": "Part",
+        "manufacturer": "Manufacturer",
+        "bicycle": "Bicycle",
+        "addressLine1": "Address Line 1",
+        "addressLine2": "Address Line 2",
+        "place": "Place",
+        "description": "Description",
+        "partModel": "Part Model",
+        "amount": "Amount",
+        "master":"Master",
+        "bicycleModel": "Bicycle Model",
+        "bicycleSerialNumber": "Bicycle Serial Number",
+        "phone": "Phone",
+        "pricePerKg": "Price per Kg",
+        "minWeightInKgToDeliver": "Min Weight in kg to Deliver",
+        "purchasePrice": "Purchase Price"
+    },
+    "tableRows": {
+      "acceptProblem": "Accept Problem",
+      "actions": "Actions",
+      "address": "Address",
+      "amount": "Amount",
+      "availableQuantity": "Available Quantity",
+      "bicycleModel": "Bicycle Model",
+      "changePassword": "Change Password",
+      "choose": "Choose",
+      "dateCreated": "Date Created",
+      "dateFinished":"Date Finished",
+      "delete": "Delete",
+      "deliveryPrice": "Delivery Price",
+      "details": "Details",
+      "email": "Email",
+      "fullName": "Full Name",
+      "image": "Image",
+      "manufacturer" : "Manufacturer",
+      "masterEmail": "Master Email",
+      "minWeightInKgToDeliver": "Min Weight in kg to Deliver",
+      "name": "Name",
+      "part" : "Part",
+      "partModel" : "Part Model",
+      "partModelPrice": "Part Model Price",
+      "phone": "Phone",
+      "price": "Price",
+      "pricePerKg": "Price per Kg",
+      "provider": "Provider",
+      "purchasePrice": "Purchase Price",
+      "quantity": "Quantity",
+      "role": "Role",
+      "stage": "Stage",
+      "totalDifferentItems": "Total Different Items",
+      "totalPrice": "Total Price",
+      "totalWeight": "Total Weight",
+      "update": "Edit",
+      "username": "Username",
+      "users": "Users",
+      "weight": "Weight"
     },
     "controlsValidation": {
         "passwordMinLength": "Password length must be at least",
         "fieldRequired": "It is a required field",
         "passwordMustContain": "Password must contain an uppercase character, lowercase character, a digit, and a non-alphanumeric character.",
-        "passwordsAreNotEqual": "Password fields are not equal"
+        "passwordsAreNotEqual": "Password fields are not equal",
+        "nonNegative": "Field must be non-negative",
+        "greaterThenOrEqual": "must be greater than or equal to",
+        "lessThenOrEqual": "Must be less than or equal to"
+
     },
     "register": {
       "pageTitle": "Registration page",
-      "registerButton": "Register"
+      "registerButton": "Register",
+      "backToLogin": "Back to Login"
+    },
+    "account": {
+      "pageTitle": "My account",
+      "changePasswordButton": "Change password",
+      "backToAllUsers": "Back to all users"
+    },
+    "layout": {
+      "admin": "Admin",
+      "master": "Master",
+      "user": "User",
+      "partModels": "Part Models",
+      "users": "Users",
+      "problems": "My Problems",
+      "assignedProblems": "Assigned Problems",
+      "newProblems": "New Problems",
+      "roles": "Roles",
+      "parts": "Parts",
+      "providers": "Providers",
+      "deliveryOrders": "Delivery Orders",
+      "createProblem": "Create Problem",
+      "myAccount": "My Account",
+      "logout": "Logout"
+    },
+    "changePassword": {
+      "pageTitle": "Change password",
+      "changePasswordButton": "Change password",
+      "backToAllUsers": "Back to all users"
+    },
+    "deliveryOrderDetails" : {
+      "updateStageButton": "Update Stage",
+      "backToAllDeliveryOrders": "Back to all Delivery Orders"
+    },
+    "deliveryOrderCheckout": {
+      "confirmOrderButton": "Confirm Order"
+    },
+    "deliveryOrderCreate": {
+      "pageTitle": "Order Part Models from Provider",
+      "confirmOrderButton": "Confirm Order"
+    },
+    "deliveryOrders": {
+      "createNewDeliveryOrderButton": "Create new Delivery Order"
+    },
+    "forbidden" : "Forbidden",
+    "partModelsForm": {
+      "backToAllPartModels": "Back to all part models",
+      "partModel": "a Part Model"
+    },
+    "partModels" : {
+      "createNewPartModelButton": "Create new Part Model"
+    },
+    "partsForm": {
+      "backToAllParts": "Back to all Parts",
+      "part": "Part"
+    },
+    "parts": {
+      "createNewPartButton": "Create new Part"
+    },
+    "problemsForm": {
+      "backToAllProblemsButton": "Back to all Problems",
+      "addMultiplePartModels" : "Add multiple Part Models"
+    },
+    "userProblemsDetails": {
+      "backToProblems": "Back to Problems",
+      "caption" : "Parts and Part models"
+    },
+    "userProblems" : {
+      "createNewProblemButton": "Create new Problem"
+    },
+    "providers": {
+      "backToAllProvidersButton": "Back to all Providers",
+      "provider": "Provider",
+      "createNewProviderButton": "Create new Provider"
+    },
+    "users": {
+      "createNewuserButton": "Create new User"
+    },
+    "editUser":{
+      "backToAllUsers": "Back to all users",
+      "edit": "Edit",
+      "editUser": "Edit a user"
     }
   }
-  

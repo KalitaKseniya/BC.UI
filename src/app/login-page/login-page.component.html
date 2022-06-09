@@ -6,16 +6,16 @@
   <div class="alert alert-danger" *ngIf="message">
     {{ message }}
   </div>
-  
+
   <div class="form-control">
-    <label>{{ "controls.email" | translate }}</label>
+    <label>{{ "controls.email" | translate}}</label>
     <input type="text" formControlName="email" />
     <div
       class="validation"
       *ngIf="form.get('email').touched && form.get('email').invalid"
     >
       <small *ngIf="form.get('email').errors.required">
-        {{ "controlsValidation.emailRequired" | translate}}
+        {{ "controlsValidation.fieldRequired" | translate}}
       </small>
     </div>
   </div>
@@ -33,11 +33,11 @@
         class="validation"
       >
         <small *ngIf="form.get('password').errors.required">
-          {{ "controlsValidation.passwordRequired" | translate}}
+          {{ "controlsValidation.fieldRequired" | translate}}
         </small>
         <small *ngIf="form.get('password').errors.minlength">
           {{ "controlsValidation.passwordMinLength" | translate}}
-          {{ form.get("password").errors.minlength.requiredLength }}. 
+          {{ form.get("password").errors.minlength.requiredLength }}.
         </small>
       </div>
     </div>

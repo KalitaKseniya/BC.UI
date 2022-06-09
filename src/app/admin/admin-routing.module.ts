@@ -4,7 +4,6 @@ import { AccountPageComponent } from '../account-page/account-page.component';
 import { DeliveryOrderCheckoutPageComponent } from '../delivery-orders/delivery-order-checkout-page/delivery-order-checkout-page.component';
 import { DeliveryOrderCreatePageComponent } from '../delivery-orders/delivery-order-create-page/delivery-order-create-page.component';
 import { DeliveryOrderDetailsComponent } from '../delivery-orders/delivery-order-details/delivery-order-details.component';
-import { DeliveryOrderUpdatePageComponent } from '../delivery-orders/delivery-order-update-page/delivery-order-update-page.component';
 import { DeliveryOrdersComponent } from '../delivery-orders/delivery-orders/delivery-orders.component';
 import { ForbiddenPageComponent } from '../forbidden-page/forbidden-page.component';
 import { PartModelDetailsComponent } from '../part-models/part-model-details/part-model-details.component';
@@ -142,10 +141,6 @@ const routes: Routes = [
             component: DeliveryOrderCheckoutPageComponent,
           },
           {
-            path: ":id/edit",
-            component: DeliveryOrderUpdatePageComponent
-          },
-          {
             path: ":id/details",
             component: DeliveryOrderDetailsComponent
           },
@@ -171,7 +166,7 @@ const routes: Routes = [
           },
           {
             path: ":id/details",
-            canActivate: [MasterOrAdminGuard],
+            canActivate: [AuthGuard],
             component: UserProblemsDetailsPageComponent,
           },
         ]

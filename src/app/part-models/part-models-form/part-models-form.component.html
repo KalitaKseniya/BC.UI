@@ -2,80 +2,80 @@
   <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <div class="header">
       <button routerLink="/admin/part-models" class="btn btn-link btn-left">
-        Back to all part models
+        {{"partModelsForm.backToAllPartModels" | translate}}
       </button>
-      <h2>{{formStatus}} a part model</h2>
+      <h2>{{formStatus}} {{"partModelsForm.partModel" | translate}}</h2>
     </div>
     <div class="form-control">
-      <label>Name</label>
+      <label>{{ "controls.name" | translate}}</label>
       <input class="form-control" type="text" formControlName="name" />
       <div
         class="validation"
         *ngIf="form.get('name').touched && form.get('name').invalid"
       >
         <small *ngIf="form.get('name').errors.required"
-          >Name is a required field</small
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
         >
       </div>
     </div>
     <div class="form-control">
-      <label>Price</label>
+      <label>{{ "controls.price" | translate}}</label>
       <input class="form-control" type="number" formControlName="price" />
       <div
         class="validation"
         *ngIf="form.get('price').touched && form.get('price').invalid"
       >
         <small *ngIf="form.get('price').errors.required"
-          >Price is a required field</small
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
         >
-        <small *ngIf="form.get('price').errors.min"
-          >Price must be non-negative</small
-        >
+        <small *ngIf="form.get('price').errors.min">
+          {{"controlsValidation.nonNegative" | translate}}
+        </small>
       </div>
     </div>
     <div class="form-control">
-      <label>Purchase Price</label>
+      <label>{{ "controls.purchasePrice" | translate}}</label>
       <input class="form-control" type="number" formControlName="purchasePrice" />
       <div
         class="validation"
         *ngIf="form.get('purchasePrice').touched && form.get('purchasePrice').invalid"
       >
         <small *ngIf="form.get('purchasePrice').errors.required"
-          >Purchase Price is a required field</small
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
         >
-        <small *ngIf="form.get('purchasePrice').errors.min"
-          >Purchase Price must be non-negative</small
-        >
+        <small *ngIf="form.get('purchasePrice').errors.min">
+          {{"controlsValidation.nonNegative" | translate}}
+        </small>
       </div>
     </div>
     <div class="form-control">
-      <label>Available Quantity</label>
+      <label>{{ "controls.availableQuantity" | translate}}</label>
       <input class="form-control" type="number" formControlName="availableQuantity" />
       <div
         class="validation"
         *ngIf="form.get('availableQuantity').touched && form.get('availableQuantity').invalid"
       >
         <small *ngIf="form.get('availableQuantity').errors.required"
-          >Available Quantity is a required field</small
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
         >
-        <small *ngIf="form.get('availableQuantity').errors.min"
-          >Available Quantity must be non-negative</small
-        >
+        <small *ngIf="form.get('availableQuantity').errors.min">
+          {{"controlsValidation.nonNegative" | translate}}
+        </small>
       </div>
     </div>
     <div class="form-control">
-      <label>Weight, kg</label>
+      <label>{{ "controls.weightInKg" | translate}}</label>
       <input class="form-control" type="number" formControlName="weightInKg" />
       <div
         class="validation"
         *ngIf="form.get('weightInKg').touched && form.get('weightInKg').invalid"
       >
         <small *ngIf="form.get('weightInKg').errors.required"
-          >Weight is a required field</small
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
         >
-        <small *ngIf="form.get('weightInKg').errors.min"
-          >Weight must be non-negative</small
-        >
+        <small *ngIf="form.get('weightInKg').errors.min">
+          {{"controlsValidation.nonNegative" | translate}}
+        </small>
       </div>
     </div>
 
@@ -86,7 +86,7 @@
     </app-image-input>
 
     <div class="form-control">
-      <label>Part</label>
+      <label>{{ "controls.part" | translate}}</label>
       <select formControlName="part">
           <option
               *ngFor="let p of parts"
@@ -97,7 +97,7 @@
       </select>
     </div>
     <div class="form-control">
-      <label>Manufacturer</label>
+      <label>{{ "controls.manufacturer" | translate}}</label>
       <select formControlName="manufacturer">
           <option
               *ngFor="let m of manufacturers"

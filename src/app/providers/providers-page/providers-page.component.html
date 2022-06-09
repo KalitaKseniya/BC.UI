@@ -2,18 +2,19 @@
     mat-flat-button
     color="primary"
     [routerLink]="['/admin','providers', 'create']"
-  >Create new Provider
+  >
+  {{"providers.createNewProviderButton" | translate}}
 </button>
 <div *ngIf="providers.length; else loading">
   <table>
     <tr>
       <th>Id</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Price per kg</th>
-      <th>Min weight to deliver</th>
-      <th>Phone</th>
-      <th>Actions</th>
+      <th>{{"tableRows.name" | translate}}</th>
+      <th>{{"tableRows.email" | translate}}</th>
+      <th>{{"tableRows.pricePerKg" | translate}}</th>
+      <th>{{"tableRows.minWeightInKgToDeliver" | translate}}</th>
+      <th>{{"tableRows.phone" | translate}}</th>
+      <th>{{"tableRows.actions" | translate}}</th>
     </tr>
     <tr *ngFor="let provider of providers">
       <td>{{ provider.id }}</td>
@@ -25,10 +26,10 @@
       <td>
         <button class="btn btn-sm btn-warning"
           (click)="redirectToUpdate(provider.id)">
-          Edit
+          {{"tableRows.update" | translate}}
         </button>
         <button class="btn btn-sm btn-danger" (click)="deleteProvider(provider)">
-          Delete
+          {{"tableRows.delete" | translate}}
         </button>
       </td>
     </tr>

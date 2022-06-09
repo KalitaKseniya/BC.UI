@@ -4,7 +4,9 @@
       mat-flat-button
       color="primary"
       [routerLink]="['create']"
-    >Create new Problem</button>
+    >
+    {{"userProblems.createNewProblemButton" | translate}}
+  </button>
 </div>
 <div *ngIf="problems?.length && problems.length > 0" else=loading>
   <app-problems-table

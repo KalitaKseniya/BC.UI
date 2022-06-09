@@ -1,54 +1,82 @@
 <app-alert></app-alert>
 <nav class="navbar bg-primary">
-  <select class="selector-language" (change)="switchLanguage($event)" value="en">
+  <select class="selector-language" (change)="switchLanguage($event)" [value]="defaultLang">
     <option value="en" label="EN"></option>
     <option value="ru" label="RU"></option>
   </select>
   <div *ngIf="auth.isAuthenticated()">
-    <h3 *ngIf="auth.isAdmin()">Admin</h3>
-    <h3 *ngIf="auth.isMaster()">Master</h3>
-    <h3 *ngIf="auth.isUser()">User</h3>
+    <h3 *ngIf="auth.isAdmin()">
+      {{ "layout.admin" | translate}}
+    </h3>
+    <h3 *ngIf="auth.isMaster()">
+      {{ "layout.master" | translate}}
+    </h3>
+    <h3 *ngIf="auth.isUser()">
+      {{ "layout.user" | translate}}
+    </h3>
     <ul>
       <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['admin/part-models']">
-        <a>Part Models</a>
+        <a>{{ "layout.partModels" | translate}}</a>
       </li>
       <li routerLinkActive="active" *ngIf="auth.isAdmin()">
-        <a [routerLink]="['admin/users']">Users</a>
+        <a [routerLink]="['admin/users']">
+          {{ "layout.users" | translate}}
+        </a>
       </li>
       <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
-        <a [routerLink]="['admin/user-problems']">Problems</a>
+        <a [routerLink]="['admin/user-problems']">
+          {{ "layout.problems" | translate}}
+        </a>
       </li>
       <li routerLinkActive="active" *ngIf="auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
-        <a [routerLink]="['admin/master-problems']">Assigned Problems</a>
+        <a [routerLink]="['admin/master-problems']">
+          {{ "layout.assignedProblems" | translate}}
+        </a>
       </li>
       <li routerLinkActive="active" *ngIf="auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
-        <a [routerLink]="['admin/master-problems/new']">New Problems</a>
+        <a [routerLink]="['admin/master-problems/new']">
+          {{ "layout.newProblems" | translate}}
+        </a>
       </li>
       <li routerLinkActive="active" *ngIf="auth.isAdmin()">
-        <a [routerLink]="['admin/roles']">Roles</a>
+        <a [routerLink]="['admin/roles']">
+          {{ "layout.roles" | translate}}
+        </a>
       </li>
       <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
-        <a [routerLink]="['admin/parts']">Parts</a>
+        <a [routerLink]="['admin/parts']">
+          {{ "layout.parts" | translate}}
+        </a>
       </li>
       <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
-        <a [routerLink]="['admin/providers']">Providers</a>
+        <a [routerLink]="['admin/providers']">
+          {{ "layout.providers" | translate}}
+        </a>
       </li>
       <li routerLinkActive="active" *ngIf="auth.isAdmin() || auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
-        <a [routerLink]="['admin/delivery-orders']">Delivery Orders</a>
+        <a [routerLink]="['admin/delivery-orders']">
+          {{ "layout.deliveryOrders" | translate}}
+        </a>
       </li>
       <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
-        <a [routerLink]="['admin/user-problems/create']">Create Problem</a>
+        <a [routerLink]="['admin/user-problems/create']">
+          {{ "layout.createProblem" | translate}}
+        </a>
       </li>
       <li routerLinkActive="active">
-        <a [routerLink]="['admin/account']"><i>My account</i></a>
+        <a [routerLink]="['admin/account']">
+          <i> {{ "layout.myAccount" | translate}} </i>
+        </a>
       </li>
       <li>
-        <a (click)="auth.logout()" routerLink="/">Logout</a>
+        <a (click)="auth.logout()" routerLink="/">
+          {{ "layout.logout" | translate}}
+        </a>
       </li>
     </ul>
   </div>
   <div *ngIfElse>
-   
+
   </div>
 </nav>
 <div class="container">

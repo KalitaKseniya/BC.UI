@@ -2,7 +2,7 @@
     <form class="card" [formGroup]="form" (ngSubmit)="submit()">
       <div class="header">
         <button routerLink="/admin/delivery-orders" class="btn btn-link btn-left">
-          Back to all delivery orders
+          {{"deliveryOrderDetails.backToAllDeliveryOrders" | translate}}
         </button>
       </div>
       <div class="form-control">
@@ -10,11 +10,11 @@
         <input class="form-control" type="text" formControlName="id" readonly />
       </div>
       <div class="form-control">
-        <label>Date Created</label>
+        <label>{{"controls.dateCreated" | translate}}</label>
         <input class="form-control" type="text" formControlName="dateCreated" readonly />
       </div>
       <div class="form-control">
-        <label>Stage</label>
+        <label>{{"controls.stage" | translate}}</label>
         <select formControlName="stage">
             <option
                 *ngFor="let p of stages"
@@ -25,26 +25,26 @@
         </select>
       </div>
       <div class="form-control">
-        <label>Date finished</label>
+        <label>{{"controls.dateFinished" | translate}}</label>
         <input class="form-control" type="text" formControlName="dateFinished" readonly/>
       </div>
       <div class="form-control">
-        <label>Total price</label>
+        <label>{{"controls.totalPrice" | translate}}</label>
         <input class="form-control" type="number" formControlName="totalPrice" readonly/>
       </div>
       <div class="form-control">
-        <label>Provider name</label>
+        <label>{{"controls.provider" | translate}}</label>
         <input class="form-control" type="text" formControlName="providerName" readonly/>
       </div>
       <div *ngIf="deliveryOrder.partModels">
         <table>
-          <caption><b>Part models</b></caption>
+          <caption><b>{{"controls.partModels" | translate}}</b></caption>
             <tr>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Purchase price</th>
-              <th>Quantity</th>
-              <th>Weight</th>
+              <th>{{"tableRows.image" | translate}}</th>
+              <th>{{"tableRows.name" | translate}}</th>
+              <th>{{"tableRows.purchasePrice" | translate}}</th>
+              <th>{{"tableRows.quantity" | translate}}</th>
+              <th>{{"tableRows.weight" | translate}}</th>
             </tr>
             <tr *ngFor="let partModel of deliveryOrder.partModels">
               <td><img src="{{partModel.partModelImageUrl}}"> </td>
@@ -61,8 +61,7 @@
         type="submit"
         [disabled]="form.invalid || submitted"
       >
-        Update Stage
+        {{"deliveryOrderDetails.updateStageButton" | translate}}
       </button>
     </form>
   </div>
-  
