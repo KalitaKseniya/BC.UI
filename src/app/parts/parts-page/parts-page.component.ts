@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { Part } from 'src/app/shared/interfaces';
@@ -23,7 +24,8 @@ export class PartsPageComponent implements OnInit, OnDestroy {
     private partsService: PartsService,
     private alert: AlertService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -36,11 +38,12 @@ export class PartsPageComponent implements OnInit, OnDestroy {
   }
 
   deletePart(part: Part){
+    const messageFromTranslate = this.translate.instant('confirmDialogs.partDelete.message');
 
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Confirm remove Part',
-        message: `Are you sure you want to delete ${part.name}?`
+        title: this.translate.instant('confirmDialogs.partDelete.title'),
+        message: messageFromTranslate + ` ${part.name}?`
       }
     });
     confirmDialog.afterClosed().subscribe(result => {

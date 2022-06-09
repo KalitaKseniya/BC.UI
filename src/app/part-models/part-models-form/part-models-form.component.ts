@@ -4,6 +4,7 @@ import { FormStatus } from 'src/app/shared/enums';
 import { Manufacturer, Part, PartModelForCreationOrUpdateDto } from 'src/app/shared/interfaces';
 import { ManufacturersService } from 'src/app/shared/services/manufacturers.service';
 import { PartsService } from 'src/app/shared/services/parts.service';
+import { UtilityService } from 'src/app/shared/services/utility.service';
 
 @Component({
   selector: 'app-part-models-form',
@@ -24,7 +25,8 @@ export class PartModelsFormComponent implements OnInit {
 
   constructor(
     private manufacturersService: ManufacturersService,
-    private partsService: PartsService) { }
+    private partsService: PartsService,
+    private utility: UtilityService) { }
 
   ngOnInit(): void {
     this.loading = true;

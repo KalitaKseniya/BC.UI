@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-part-models-page',
@@ -30,7 +31,8 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
     private partModelsService: PartModelsService,
     private alert: AlertService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -51,10 +53,12 @@ export class PartModelsPageComponent implements OnInit, OnDestroy {
   }
 
   redirectToDelete(partModel: PartModel) {
+    const messageFromTranslate = this.translate.instant('confirmDialogs.partModelDelete.message');
+
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Confirm remove Part Model',
-        message: `Are you sure you want to delete ${partModel.name}?`
+        title: this.translate.instant('confirmDialogs.partModelDelete.title'),
+        message: messageFromTranslate + `${partModel.name}?`
       }
     });
     confirmDialog.afterClosed().subscribe(result => {

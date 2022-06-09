@@ -4,7 +4,12 @@
       <button routerLink="/admin/providers" class="btn btn-link btn-left">
         {{"providers.backToAllProvidersButton" | translate}}
       </button>
-      <h2>{{formStatus}} {{"providers.provider" | translate}}</h2>
+      <h2 *ngIf="utility.isCreate(formStatus)">
+        {{"providersForm.create" | translate}}
+      </h2>
+      <h2 *ngIf="!utility.isCreate(formStatus)">
+        {{"providersForm.update" | translate}}
+      </h2>
     </div>
     <div class="form-control">
       <label>{{"controls.name" | translate}}</label>
@@ -90,7 +95,7 @@
       class="btn btn-primary"
       [disabled]="form.invalid || submitted"
       >
-      {{formStatus}}
+      {{"generalButtons.save" | translate}}
     </button>
   </form>
 </div>

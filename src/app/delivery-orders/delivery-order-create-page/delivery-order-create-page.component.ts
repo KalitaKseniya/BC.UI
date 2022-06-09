@@ -13,6 +13,7 @@ import { AlertService } from 'src/app/shared/services/alert.service';
 import { PartModelsService } from 'src/app/shared/services/partModels.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-delivery-order-create-page',
@@ -43,7 +44,8 @@ export class DeliveryOrderCreatePageComponent implements OnInit, OnDestroy {
     private alert: AlertService,
     private router: Router,
     private calculationService: DeliveryOrderCalculationService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -88,10 +90,11 @@ export class DeliveryOrderCreatePageComponent implements OnInit, OnDestroy {
   }
 
   confirmOrder() {
+    const messageFromTranslate = this.translate.instant('confirmDialogs.deliveryOrderCreate.message');
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Confirm Checkout',
-        message: `Are you sure you want to make order for ${this.financial(this.totalPrice)}$?`
+        title: this.translate.instant('confirmDialogs.deliveryOrderCreate.title'),
+        message: messageFromTranslate + `${this.financial(this.totalPrice)}$?`
       }
     });
     confirmDialog.afterClosed().subscribe(result => {

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormStatus } from 'src/app/shared/enums';
 import { PartDto } from 'src/app/shared/interfaces';
+import { UtilityService } from 'src/app/shared/services/utility.service';
 
 @Component({
   selector: 'app-parts-form',
@@ -15,7 +16,7 @@ export class PartsFormComponent implements OnInit {
   @Input() submitted: boolean;
   form: FormGroup;
 
-  constructor() { }
+  constructor(private utility: UtilityService) { }
 
   ngOnInit(): void {
     console.log('partDto from form')

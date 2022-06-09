@@ -140,14 +140,18 @@
     "forbidden" : "Доступ Запрещен",
     "partModelsForm": {
       "backToAllPartModels": "К запчастям",
-      "partModel": "запчасть"
+      "partModel": "запчасть",
+      "update": "Редактировать запчасть",
+      "create": "Создать запчасть"
     },
     "partModels" : {
       "createNewPartModelButton": "Создать запчасть"
     },
     "partsForm": {
       "backToAllParts": "К категориям",
-      "part": "Категория"
+      "part": "Категория",
+      "update": "Редактировать категорию",
+      "create": "Создать категорию"
     },
     "parts": {
       "createNewPartButton": "Создать новую категорию"
@@ -175,5 +179,46 @@
       "backToAllUsers": "Ко всем пользователям",
       "edit": "Редактировать",
       "editUser": "Редактировать пользователя"
+    },
+    "providersForm": {
+      "update": "Редактировать поставщика",
+      "create": "Создать поставщика"
+    },
+    "generalButtons": {
+      "save": "Сохранить"
+    },
+    "confirmDialogs":{
+      "deliveryOrderCreate": {
+        "title": "Оформление заказа",
+        "message": "Вы уверены, что хотите оформить заказ ценой "
+      },
+      "deliveryOrderDelete": {
+        "title": "Удаление заказа",
+        "message": "Вы уверены, что хотите удалить заказ  "
+      },
+      "partModelDelete": {
+        "title": "Удаление запчасти",
+        "message": "Вы уверены, что хотите удалить запчасть "
+      },
+      "partDelete": {
+        "title": "Удаление категории",
+        "message": "Вы уверены, что хотите удалить категорию "
+      },
+      "problemDelete": {
+        "title": "Удаление заявки",
+        "message": "Вы уверены, что хотите удалить заявку "
+      },
+      "problemAccept": {
+        "title": "Принятие заявки",
+        "message": "Вы уверены, что хотите принять заявку "
+      },
+      "providerDelete": {
+        "title": "Удаление поставщика",
+        "message": "Вы уверены, что хотите удалить поставщика "
+      },
+      "userDelete": {
+        "title": "Удаление пользователя",
+        "message": "Вы уверены, что хотите удалить пользователя "
+      }
     }
 }

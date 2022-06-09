@@ -90,7 +90,6 @@
         "nonNegative": "Field must be non-negative",
         "greaterThenOrEqual": "must be greater than or equal to",
         "lessThenOrEqual": "Must be less than or equal to"
-
     },
     "register": {
       "pageTitle": "Registration page",
@@ -141,14 +140,18 @@
     "forbidden" : "Forbidden",
     "partModelsForm": {
       "backToAllPartModels": "Back to all part models",
-      "partModel": "a Part Model"
+      "partModel": "a Part Model",
+      "update": "Update Part Model",
+      "create": "Create Part Model"
     },
     "partModels" : {
       "createNewPartModelButton": "Create new Part Model"
     },
     "partsForm": {
       "backToAllParts": "Back to all Parts",
-      "part": "Part"
+      "part": "Part",
+      "update": "Update Part",
+      "create": "Create Part"
     },
     "parts": {
       "createNewPartButton": "Create new Part"
@@ -176,5 +179,46 @@
       "backToAllUsers": "Back to all users",
       "edit": "Edit",
       "editUser": "Edit a user"
+    },
+    "providersForm": {
+      "update": "Update provider",
+      "create": "Create provider"
+    },
+    "generalButtons": {
+      "save": "Save"
+    },
+    "confirmDialogs": {
+      "deliveryOrderCreate": {
+        "title": "Confirm Checkout",
+        "message": "Are you sure you want to make order for "
+      },
+      "deliveryOrderDelete": {
+        "title": "Delete Delivery Order",
+        "message": "Are you sure you want to delete delivery order "
+      },
+      "partModelDelete": {
+        "title": "Delete Part Model",
+        "message": "Are you sure you want to delete part model "
+      },
+      "partDelete": {
+        "title": "Delete Part",
+        "message": "Are you sure you want to delete part "
+      },
+      "problemDelete": {
+        "title": "Delete Problem",
+        "message": "Are you sure you want to delete problem "
+      },
+      "problemAccept": {
+        "title": "Accept Problem",
+        "message": "Are you sure you want to accept problem "
+      },
+      "providerDelete": {
+        "title": "Delete Provider",
+        "message": "Are you sure you want to delete provider "
+      },
+      "userDelete": {
+        "title": "Delete User",
+        "message": "Are you sure you want to delete user "
+      }
     }
   }

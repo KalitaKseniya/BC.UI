@@ -1,6 +1,7 @@
 import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { Provider } from 'src/app/shared/interfaces';
@@ -26,7 +27,8 @@ export class ProvidersPageComponent implements OnInit, OnDestroy {
     private providersService: ProvidersService,
     private alert: AlertService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -39,10 +41,12 @@ export class ProvidersPageComponent implements OnInit, OnDestroy {
   }
 
   deleteProvider(provider: Provider){
+    const messageFromTranslate = this.translate.instant('confirmDialogs.providerDelete.message');
+
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Confirm remove Provider',
-        message: `Are you sure you want to remove provider ${provider.name}?`
+        title: this.translate.instant('confirmDialogs.providerDelete.title'),
+        message: messageFromTranslate + `${provider.name}?`
       }
     });
     confirmDialog.afterClosed().subscribe(result => {

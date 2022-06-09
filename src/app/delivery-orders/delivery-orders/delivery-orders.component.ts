@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { DeliveryOrder } from '../../shared/interfaces';
@@ -32,7 +33,8 @@ export class DeliveryOrdersComponent implements OnInit, OnDestroy {
     private deliveryOrderService: DeliveryOrdersService,
     private alert: AlertService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {}
@@ -52,10 +54,12 @@ export class DeliveryOrdersComponent implements OnInit, OnDestroy {
   }
 
   redirectToDelete(deliveryOrder: DeliveryOrder) {
+    const messageFromTranslate = this.translate.instant('confirmDialogs.deliveryOrderDelete.message');
+
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Confirm Remove Delivery Order',
-        message: `Are you sure you want to delete delivery order ${deliveryOrder.id}?`
+        title: this.translate.instant('confirmDialogs.deliveryOrderDelete.title'),
+        message: messageFromTranslate + ` ${deliveryOrder.id}?`
       }
     });
     confirmDialog.afterClosed().subscribe(result => {

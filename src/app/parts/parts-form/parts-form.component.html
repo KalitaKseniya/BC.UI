@@ -4,7 +4,12 @@
       <button routerLink="/admin/parts" class="btn btn-link btn-left">
         {{"partsForm.backToAllParts" | translate}}
       </button>
-      <h2>{{formStatus}} {{"partsForm.part" | translate}}</h2>
+      <h2 *ngIf="utility.isCreate(formStatus)">
+        {{"partsForm.create" | translate}}
+      </h2>
+      <h2 *ngIf="!utility.isCreate(formStatus)">
+        {{"partsForm.update" | translate}}
+      </h2>
     </div>
     <div class="form-control">
       <label>{{ "controls.name" | translate}}</label>
@@ -23,7 +28,7 @@
       class="btn btn-primary"
       [disabled]="form.invalid || submitted"
       >
-      {{formStatus}}
+       {{"generalButtons.save" | translate}}
     </button>
   </form>
 </div>

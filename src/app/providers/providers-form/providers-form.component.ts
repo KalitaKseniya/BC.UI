@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormStatus } from 'src/app/shared/enums';
 import { ProviderDto } from 'src/app/shared/interfaces';
+import { UtilityService } from 'src/app/shared/services/utility.service';
 
 @Component({
   selector: 'app-providers-form',
@@ -16,9 +17,9 @@ export class ProvidersFormComponent implements OnInit {
   @Input() submitted: boolean;
   form: FormGroup;
 
-  constructor() { }
+  constructor(private utility: UtilityService) { }
 
-  ngOnInit(): void {
+  ngOnInit() : void {
     console.log('providerDto from form')
     console.log(this.providerDto)
 
@@ -29,6 +30,7 @@ export class ProvidersFormComponent implements OnInit {
       pricePerKg: new FormControl(this.providerDto.pricePerKg, [Validators.required, Validators.min(0)]),
       minWeightInKgToDeliver: new FormControl(this.providerDto.minWeightInKgToDeliver, [Validators.required, Validators.min(0)]),
     });
+
   }
 
   submit() {

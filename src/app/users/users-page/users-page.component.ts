@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { User } from 'src/app/shared/interfaces';
@@ -19,7 +20,8 @@ export class UsersPageComponent implements OnInit, OnDestroy {
   constructor(
     private usersService: UsersService,
     private alert: AlertService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -32,10 +34,12 @@ export class UsersPageComponent implements OnInit, OnDestroy {
   }
 
   deleteUser(user: User) {
+    const messageFromTranslate = this.translate.instant('confirmDialogs.userDelete.message');
+
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Confirm remove User',
-        message: `Are you sure you want to delete ${user.firstName} ${user.secondName}?`
+        title:  this.translate.instant('confirmDialogs.userDelete.title'),
+        message: messageFromTranslate + ` ${user.firstName} ${user.secondName}?`
       }
     });
     confirmDialog.afterClosed().subscribe(result => {

@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { ProblemForReadModel, ProblemProgressForUpdateModel } from 'src/app/shared/models/models';
@@ -31,7 +32,8 @@ export class ProblemsTableComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private alert: AlertService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -44,10 +46,12 @@ export class ProblemsTableComponent implements OnInit, OnDestroy {
   }
 
   redirectToDelete(problem: ProblemForReadModel) {
+    const messageFromTranslate = this.translate.instant('confirmDialogs.problemDelete.message');
+
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Confirm remove Problem',
-        message: `Are you sure you want to DELETE problem ${problem.id}?`
+        title: this.translate.instant('confirmDialogs.problemDelete.title'),
+        message: messageFromTranslate + ` ${problem.id}?`
       }
     });
 
@@ -70,10 +74,12 @@ export class ProblemsTableComponent implements OnInit, OnDestroy {
       console.error('Forbidden.')
       return;
     }
+    const messageFromTranslate = this.translate.instant('confirmDialogs.problemAccept.message');
+
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Accept Problem',
-        message: `Are you sure you want to ACCEPT problem ${problem.id}?`
+        title: this.translate.instant('confirmDialogs.problemAccept.title'),
+        message: messageFromTranslate + ` ${problem.id}?`
       }
     });
     confirmDialog.afterClosed().subscribe(result => {
