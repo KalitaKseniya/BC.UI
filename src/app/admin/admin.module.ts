@@ -4,7 +4,6 @@ import { DeliveryOrderProviderCreatePageComponent } from './../delivery-orders/d
 import { DeliveryOrderUpdatePageComponent } from './../delivery-orders/delivery-order-update-page/delivery-order-update-page.component';
 import { PartModelDetailsComponent } from './../part-models/part-model-details/part-model-details.component';
 import { AccountPageComponent } from './../account-page/account-page.component';
-import { AlertComponent } from './../shared/components/alert/alert.component';
 import { ForbiddenPageComponent } from './../forbidden-page/forbidden-page.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -44,14 +43,12 @@ import { NewProblemsPageComponent } from '../problems/new-problems-page/new-prob
 
 @NgModule({
   declarations: [
-    AdminLayoutComponent,
     UserEditPageComponent,
     UserCreatePageComponent,
     UsersPageComponent,
     UserChangePasswordComponent,
     RolesPageComponent,
     ForbiddenPageComponent,
-    AlertComponent,
     AccountPageComponent,
     PartModelsPageComponent,
     PartModelsEditPageComponent,

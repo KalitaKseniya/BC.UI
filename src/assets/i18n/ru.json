@@ -1,0 +1,18 @@
+{
+    "login": {
+      "pageTitle": "Страница входа",
+      "signIn": "Войти",
+      "register": "Регистрация",
+      "errorAlert": "Неверный логин, пароль или пользователь не существует"
+    },
+    "controls": {
+        "email": "Email",
+        "password": "Пароль"
+    },
+    "controlsValidation": {
+      "passwordRequired": "Пароль - это обязательное поле",
+      "emailRequired": "Email - это обязательное поле",
+      "passwordMinLength": "Минимальная длина пароля - "
+    }
+}
+  

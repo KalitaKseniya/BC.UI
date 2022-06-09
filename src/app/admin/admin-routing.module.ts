@@ -25,7 +25,6 @@ import { ProvidersPageComponent } from '../providers/providers-page/providers-pa
 import { RolesPageComponent } from '../roles/roles-page/roles-page.component';
 import { AdminGuard } from '../shared/guards/admin.guard';
 import { AuthGuard } from '../shared/guards/auth.guard';
-import { AdminLayoutComponent } from '../shared/components/admin-layout/admin-layout.component';
 import { MasterGuard } from '../shared/guards/master.guard';
 import { UserGuard } from '../shared/guards/user.guard';
 import { UserChangePasswordComponent } from '../users/user-change-password/user-change-password.component';
@@ -37,7 +36,6 @@ import { MasterOrAdminGuard } from '../shared/guards/master-or-admin.guard';
 const routes: Routes = [
   {
     path: '',
-    component: AdminLayoutComponent,
     children: [
       { path: '', redirectTo: '/', pathMatch: 'full' },
       {

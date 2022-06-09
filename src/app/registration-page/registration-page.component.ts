@@ -15,7 +15,6 @@ export class RegistrationPageComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;
-  wrongCredentials = false;
   message: string = null;
   passwordVisibility: PasswordInputVisibility;
   passwordConfirmVisibility: PasswordInputVisibility;
@@ -82,11 +81,9 @@ export class RegistrationPageComponent implements OnInit {
       () => {
         this.form.reset();
         this.submitted = false;
-        this.wrongCredentials = false;
       },
       () => {
         this.submitted = false;
-        this.wrongCredentials = true;
       }
     );
   }

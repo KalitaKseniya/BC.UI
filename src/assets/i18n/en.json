@@ -1,0 +1,27 @@
+{
+    "login": {
+      "pageTitle": "Login page",
+      "signIn": "Sign in",
+      "register": "Register",
+      "errorAlert": "Wrong email, password or there is no such user"
+    },
+    "controls": {
+        "email": "Email",
+        "password": "Password",
+        "firstName": "First Name",
+        "secondName": "Second Name",
+        "passwordAgain": "Type Password again"
+
+    },
+    "controlsValidation": {
+        "passwordMinLength": "Password length must be at least",
+        "fieldRequired": "It is a required field",
+        "passwordMustContain": "Password must contain an uppercase character, lowercase character, a digit, and a non-alphanumeric character.",
+        "passwordsAreNotEqual": "Password fields are not equal"
+    },
+    "register": {
+      "pageTitle": "Registration page",
+      "registerButton": "Register"
+    }
+  }
+  

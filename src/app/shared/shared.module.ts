@@ -1,3 +1,4 @@
+import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,7 +28,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   exports: [
     HttpClientModule,
@@ -42,10 +43,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   declarations: [
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
   ],
 })
 export class SharedModule {}

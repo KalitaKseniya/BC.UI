@@ -1,46 +1,55 @@
 <app-alert></app-alert>
 <nav class="navbar bg-primary">
-  <h3 *ngIf="auth.isAdmin()">Admin</h3>
-  <h3 *ngIf="auth.isMaster()">Master</h3>
-  <h3 *ngIf="auth.isUser()">User</h3>
-  <ul>
-    <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['part-models']">
-      <a>Part Models</a>
-    </li>
-    <li routerLinkActive="active" *ngIf="auth.isAdmin()">
-      <a [routerLink]="['users']">Users</a>
-    </li>
-    <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['user-problems']">Problems</a>
-    </li>
-    <li routerLinkActive="active" *ngIf="auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['master-problems']">Assigned Problems</a>
-    </li>
-    <li routerLinkActive="active" *ngIf="auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['master-problems/new']">New Problems</a>
-    </li>
-    <li routerLinkActive="active" *ngIf="auth.isAdmin()">
-      <a [routerLink]="['roles']">Roles</a>
-    </li>
-    <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['parts']">Parts</a>
-    </li>
-    <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['providers']">Providers</a>
-    </li>
-    <li routerLinkActive="active" *ngIf="auth.isAdmin() || auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['delivery-orders']">Delivery Orders</a>
-    </li>
-    <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
-      <a [routerLink]="['user-problems/create']">Create Problem</a>
-    </li>
-    <li routerLinkActive="active">
-      <a [routerLink]="['account']"><i>My account</i></a>
-    </li>
-    <li>
-      <a (click)="auth.logout()" routerLink="/">Logout</a>
-    </li>
-  </ul>
+  <select class="selector-language" (change)="switchLanguage($event)" value="en">
+    <option value="en" label="EN"></option>
+    <option value="ru" label="RU"></option>
+  </select>
+  <div *ngIf="auth.isAuthenticated()">
+    <h3 *ngIf="auth.isAdmin()">Admin</h3>
+    <h3 *ngIf="auth.isMaster()">Master</h3>
+    <h3 *ngIf="auth.isUser()">User</h3>
+    <ul>
+      <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['admin/part-models']">
+        <a>Part Models</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="auth.isAdmin()">
+        <a [routerLink]="['admin/users']">Users</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['admin/user-problems']">Problems</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['admin/master-problems']">Assigned Problems</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['admin/master-problems/new']">New Problems</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="auth.isAdmin()">
+        <a [routerLink]="['admin/roles']">Roles</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['admin/parts']">Parts</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['admin/providers']">Providers</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="auth.isAdmin() || auth.isMaster()" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['admin/delivery-orders']">Delivery Orders</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['admin/user-problems/create']">Create Problem</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['admin/account']"><i>My account</i></a>
+      </li>
+      <li>
+        <a (click)="auth.logout()" routerLink="/">Logout</a>
+      </li>
+    </ul>
+  </div>
+  <div *ngIfElse>
+   
+  </div>
 </nav>
 <div class="container">
   <router-outlet></router-outlet>

@@ -3,25 +3,22 @@
     <button routerLink="" class="btn btn-link btn-left">
       Back to Login
     </button>
-    <h2>Registration page</h2>
+    <h2>{{ "register.pageTitle" | translate}}</h2>
   </div>
 
-  <div class="alert alert-danger" *ngIf="wrongCredentials">
-    Wrong email, password or there is no such user in the database
-  </div>
   <div class="alert alert-danger" *ngIf="message">
     {{ message }}
   </div>
 
   <div class="form-control">
-    <label>Email</label>
+    <label>{{ "controls.email" | translate}}</label>
     <input type="text" formControlName="email" />
     <div
       class="validation"
       *ngIf="form.get('email').touched && form.get('email').invalid"
     >
       <small *ngIf="form.get('email').errors.required">
-        Email is required
+        {{ "controlsValidation.emailRequired" | translate}}
       </small>
     </div>
   </div>
@@ -67,8 +64,7 @@
         </small>
         <small *ngIf="form.get('password').errors.minlength">
           Password length must be at least
-          {{ form.get("password").errors.minlength.requiredLength }}. Now -
-          {{ form.get("password").errors.minlength.actualLength }}.
+          {{ form.get("password").errors.minlength.requiredLength }}.
         </small>
         <small *ngIf="form.get('password').errors.pattern"
           >Password must contain an uppercase character, lowercase character, a digit, and a non-alphanumeric character.</small

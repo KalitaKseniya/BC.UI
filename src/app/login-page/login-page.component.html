@@ -1,26 +1,26 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-  <h2>Login page</h2>
+  <h2>{{ "login.pageTitle" | translate}}</h2>
   <div class="alert alert-danger" *ngIf="wrongCredentials">
-    Wrong email, password or there is no such user in the database
+    {{ "login.errorAlert" | translate}}
   </div>
   <div class="alert alert-danger" *ngIf="message">
     {{ message }}
   </div>
-
+  
   <div class="form-control">
-    <label>Email</label>
+    <label>{{ "controls.email" | translate }}</label>
     <input type="text" formControlName="email" />
     <div
       class="validation"
       *ngIf="form.get('email').touched && form.get('email').invalid"
     >
       <small *ngIf="form.get('email').errors.required">
-        Email is required
+        {{ "controlsValidation.emailRequired" | translate}}
       </small>
     </div>
   </div>
   <div class="form-control">
-    <label>Password</label>
+    <label>{{ "controls.password" | translate}}</label>
     <div>
       <input [type]="passwordVisibility.inputType" formControlName="password" />
       <button (click)="changePasswordVisibility(passwordVisibility)" class="eye">
@@ -33,12 +33,11 @@
         class="validation"
       >
         <small *ngIf="form.get('password').errors.required">
-          Password is required
+          {{ "controlsValidation.passwordRequired" | translate}}
         </small>
         <small *ngIf="form.get('password').errors.minlength">
-          Password length must be at least
-          {{ form.get("password").errors.minlength.requiredLength }}. Now -
-          {{ form.get("password").errors.minlength.actualLength }}.
+          {{ "controlsValidation.passwordMinLength" | translate}}
+          {{ form.get("password").errors.minlength.requiredLength }}. 
         </small>
       </div>
     </div>
@@ -49,13 +48,13 @@
     class="btn btn-dark"
     [disabled]="form.invalid || submitted"
   >
-    Sign in
+  {{ "login.signIn" | translate}}
   </button>
   <button
     class="btn btn-dark"
     (click)="register()"
   >
-    Register
+  {{ "login.register" | translate}}
   </button>
   <button
     class="btn btn-dark"
