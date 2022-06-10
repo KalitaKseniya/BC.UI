@@ -1,0 +1,22 @@
+
+<div fxLayout fxLayoutAlign="center center">
+  <button
+    mat-flat-button
+    color="primary"
+    [routerLink]="['create']"
+  >
+  {{"userBicycles.createNewBicycle" | translate}}
+</button>
+</div>
+<div *ngIf="bicycles?.length && bicycles.length > 0" else=loading>
+<app-bicycles-table
+  [displayedColumns]="displayedColumns"
+  [bicycles]="bicycles"
+>
+
+</app-bicycles-table>
+</div>
+
+<ng-template #loading>
+<p>Loading...</p>
+</ng-template>

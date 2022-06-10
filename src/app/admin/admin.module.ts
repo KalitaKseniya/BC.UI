@@ -39,6 +39,12 @@ import { CreateBicycleDialogComponent } from '../problems/create-bicycle-dialog/
 import { MasterProblemsPageComponent } from '../problems/master-problems-page/master-problems-page.component';
 import { ProblemsTableComponent } from '../problems/problems-table/problems-table.component';
 import { NewProblemsPageComponent } from '../problems/new-problems-page/new-problems-page.component';
+import { BicyclesPageComponent } from '../bicycles/bicycles-page/bicycles-page.component';
+import { BicyclesTableComponent } from '../bicycles/bicycles-table/bicycles-table.component';
+import { UserBicyclesPageComponent } from '../bicycles/user-bicycles-page/user-bicycles-page.component';
+import { CreateBicyclePageComponent } from '../bicycles/create-bicycle-page/create-bicycle-page.component';
+import { BicycleFormComponent } from '../bicycles/bicycle-form/bicycle-form.component';
+import { BicycleEditPageComponent } from '../bicycles/bicycle-edit-page/bicycle-edit-page.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +82,12 @@ import { NewProblemsPageComponent } from '../problems/new-problems-page/new-prob
     MasterProblemsPageComponent,
     ProblemsTableComponent,
     NewProblemsPageComponent,
+    BicyclesPageComponent,
+    BicyclesTableComponent,
+    UserBicyclesPageComponent,
+    BicycleFormComponent,
+    CreateBicyclePageComponent,
+    BicycleEditPageComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,12 @@
+<div *ngIf="!loading; else loadingTemplate">
+  <app-bicycle-form
+    [callbackFunction]="updateCallback"
+    [(bicycleDto)]="bicycleDto"
+    [formStatus]="formStatusUpdate"
+    [submitted]="submitted"
+></app-bicycle-form>
+</div>
+
+<ng-template #loadingTemplate>
+  <p>Loading...</p>
+</ng-template>

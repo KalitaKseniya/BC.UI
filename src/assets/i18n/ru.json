@@ -40,7 +40,10 @@
         "phone": "Номер телефона",
         "pricePerKg": "Цена за кг",
         "minWeightInKgToDeliver": "Минимальный вес в кг для доставки",
-        "purchasePrice": "Цена закупки"
+        "purchasePrice": "Цена закупки",
+        "model": "Модель",
+        "serialNumber": "Серийный номер",
+        "user": "Пользователь"
     },
     "tableRows":{
       "acceptProblem": "Принять заявку",
@@ -73,6 +76,7 @@
       "purchasePrice": "Цена закупки",
       "quantity": "Количество",
       "role": "Роль",
+      "serialNumber": "Серийный номер",
       "stage": "Этап",
       "totalDifferentItems": "Итоговое количество разных предметов",
       "totalPrice": "Итоговая цена",
@@ -80,7 +84,9 @@
       "update": "Редактировать",
       "username": "Имя пользователя",
       "users": "Пользователи",
-      "weight": "Вес"
+      "weight": "Вес",
+      "userId": "Id Пользователя",
+      "userName": "Имя пользователя"
     },
     "controlsValidation": {
       "passwordMinLength": "Минимальная длина пароля - ",
@@ -116,7 +122,9 @@
       "deliveryOrders": "Заказы",
       "createProblem": "Создать заявку",
       "myAccount": "Мой аккаунт",
-      "logout": "Выйти"
+      "logout": "Выйти",
+      "userBicycles": "Мои велосипеды",
+      "bicycles": "Велосипеды"
     },
      "changePassword": {
       "pageTitle": "Сменить пароль",
@@ -184,6 +192,14 @@
       "update": "Редактировать поставщика",
       "create": "Создать поставщика"
     },
+    "bicycleForm": {
+      "backToAllBicycles": "К велосипедам",
+      "update": "Редактировать велосипед",
+      "create": "Создать велосипед"
+    },
+    "userBicycles": {
+      "createNewBicycle": "Добавить велосипед"
+    },
     "generalButtons": {
       "save": "Сохранить"
     },
@@ -219,6 +235,10 @@
       "userDelete": {
         "title": "Удаление пользователя",
         "message": "Вы уверены, что хотите удалить пользователя "
+      },
+      "bicycleDelete": {
+        "title": "Удаление велосипеда",
+        "message": "Вы уверены, что хотите удалить велосипед "
       }
     }
 }

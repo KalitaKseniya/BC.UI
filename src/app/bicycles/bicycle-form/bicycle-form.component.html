@@ -1,0 +1,60 @@
+<div *ngIf="form">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="header">
+      <button *ngIf="auth.isAdmin()" routerLink="/admin/bicycles" class="btn btn-link btn-left">
+        {{"bicycleForm.backToAllBicycles" | translate}}
+      </button>
+      <button *ngIf="auth.isUser()" routerLink="/admin/user-bicycles" class="btn btn-link btn-left">
+        {{"bicycleForm.backToAllBicycles" | translate}}
+      </button>
+      <h2 *ngIf="utility.isCreate(formStatus)">
+        {{"bicycleForm.create" | translate}}
+      </h2>
+      <h2 *ngIf="!utility.isCreate(formStatus)">
+        {{"bicycleForm.update" | translate}}
+      </h2>
+    </div>
+    <div class="form-control">
+      <label>{{ "controls.model" | translate}}</label>
+      <input class="form-control" type="text" formControlName="model" />
+      <div
+        class="validation"
+        *ngIf="form.get('model').touched && form.get('model').invalid"
+      >
+        <small *ngIf="form.get('model').errors.required"
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
+        >
+      </div>
+    </div>
+    <div class="form-control">
+      <label>{{ "controls.serialNumber" | translate}}</label>
+      <input class="form-control" type="text" formControlName="serialNumber" />
+      <div
+        class="validation"
+        *ngIf="form.get('serialNumber').touched && form.get('serialNumber').invalid"
+      >
+        <small *ngIf="form.get('serialNumber').errors.required"
+          >{{ "controlsValidation.fieldRequired" | translate}}</small
+        >
+      </div>
+    </div>
+    <div *ngIf="auth.isAdmin() && users?.length && users?.length > 0" class="form-control">
+      <label>{{ "controls.user" | translate}}</label>
+      <select formControlName="user">
+          <option
+              *ngFor="let u of users"
+              [ngValue]="u.id"
+          >
+              {{u.id}}
+          </option>
+      </select>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="form.invalid || submitted"
+      >
+       {{"generalButtons.save" | translate}}
+    </button>
+  </form>
+</div>

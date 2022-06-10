@@ -40,7 +40,10 @@
         "phone": "Phone",
         "pricePerKg": "Price per Kg",
         "minWeightInKgToDeliver": "Min Weight in kg to Deliver",
-        "purchasePrice": "Purchase Price"
+        "purchasePrice": "Purchase Price",
+        "model": "Model",
+        "serialNumber": "Serial Number",
+        "user": "User"
     },
     "tableRows": {
       "acceptProblem": "Accept Problem",
@@ -73,6 +76,7 @@
       "purchasePrice": "Purchase Price",
       "quantity": "Quantity",
       "role": "Role",
+      "serialNumber": "Serial Number",
       "stage": "Stage",
       "totalDifferentItems": "Total Different Items",
       "totalPrice": "Total Price",
@@ -80,7 +84,9 @@
       "update": "Edit",
       "username": "Username",
       "users": "Users",
-      "weight": "Weight"
+      "weight": "Weight",
+      "userId": "User Id",
+      "userName": "Username"
     },
     "controlsValidation": {
         "passwordMinLength": "Password length must be at least",
@@ -116,7 +122,9 @@
       "deliveryOrders": "Delivery Orders",
       "createProblem": "Create Problem",
       "myAccount": "My Account",
-      "logout": "Logout"
+      "logout": "Logout",
+      "userBicycles": "My bicycles",
+      "bicycles": "Bicycles"
     },
     "changePassword": {
       "pageTitle": "Change password",
@@ -184,6 +192,14 @@
       "update": "Update provider",
       "create": "Create provider"
     },
+    "bicycleForm": {
+      "backToAllBicycles": "Back to all bicycles",
+      "update": "Update bicycle",
+      "create": "Create bicycle"
+    },
+    "userBicycles": {
+      "createNewBicycle": "Create bicycle"
+    },
     "generalButtons": {
       "save": "Save"
     },
@@ -219,6 +235,10 @@
       "userDelete": {
         "title": "Delete User",
         "message": "Are you sure you want to delete user "
+      },
+      "bicycleDelete": {
+        "title": "Delete Bicycle",
+        "message": "Are you sure you want to delete bicycle "
       }
     }
   }

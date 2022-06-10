@@ -4,7 +4,7 @@
     <option value="en" label="EN"></option>
     <option value="ru" label="RU"></option>
   </select>
-  <div *ngIf="auth.isAuthenticated()">
+  <div *ngIf="auth.isAuthenticated()" class="styleless">
     <h3 *ngIf="auth.isAdmin()">
       {{ "layout.admin" | translate}}
     </h3>
@@ -63,6 +63,16 @@
           {{ "layout.createProblem" | translate}}
         </a>
       </li>
+      <li routerLinkActive="active" *ngIf="auth.isUser()" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['admin/user-bicycles']">
+          {{ "layout.userBicycles" | translate}}
+        </a>
+      </li>
+      <li routerLinkActive="active" *ngIf="auth.isAdmin()" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['admin/bicycles']">
+          {{ "layout.bicycles" | translate}}
+        </a>
+      </li>
       <li routerLinkActive="active">
         <a [routerLink]="['admin/account']">
           <i> {{ "layout.myAccount" | translate}} </i>
@@ -75,9 +85,7 @@
       </li>
     </ul>
   </div>
-  <div *ngIfElse>
 
-  </div>
 </nav>
 <div class="container">
   <router-outlet></router-outlet>

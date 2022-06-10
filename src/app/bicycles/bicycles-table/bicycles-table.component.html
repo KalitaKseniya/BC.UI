@@ -1,0 +1,60 @@
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell  mat-sort-header *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+  <ng-container matColumnDef="model">
+    <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+      {{"tableRows.bicycleModel" | translate}}
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+  </ng-container>
+  <ng-container matColumnDef="serialNumber">
+    <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+      {{"tableRows.serialNumber" | translate}}
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.serialNumber}} </td>
+  </ng-container>
+  <ng-container matColumnDef="userId">
+    <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+      {{"tableRows.userId" | translate}}
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+  </ng-container>
+  <ng-container matColumnDef="userName">
+    <th mat-header-cell  mat-sort-header *matHeaderCellDef>
+      {{"tableRows.userName" | translate}}
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>
+        {{"tableRows.delete" | translate}}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="warn" (click)="redirectToDelete(element)">
+            <mat-icon class="mat-18">delete</mat-icon>
+        </button>
+      </td>
+  </ng-container>
+  <ng-container matColumnDef="update">
+    <th mat-header-cell *matHeaderCellDef>
+      {{"tableRows.update" | translate}}
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="accent" (click)="redirectToUpdate(element.id)">
+          <mat-icon class="mat-18">system_update</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 100]">
+</mat-paginator>
+
+<ng-template #loading>
+<p>Loading...</p>
+</ng-template>

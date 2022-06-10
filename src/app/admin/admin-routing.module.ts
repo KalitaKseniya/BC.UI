@@ -31,6 +31,10 @@ import { UserCreatePageComponent } from '../users/user-create-page/user-create-p
 import { UserEditPageComponent } from '../users/user-edit-page/user-edit-page/user-edit-page.component';
 import { UsersPageComponent } from '../users/users-page/users-page.component';
 import { MasterOrAdminGuard } from '../shared/guards/master-or-admin.guard';
+import { UserBicyclesPageComponent } from '../bicycles/user-bicycles-page/user-bicycles-page.component';
+import { CreateBicyclePageComponent } from '../bicycles/create-bicycle-page/create-bicycle-page.component';
+import { BicyclesPageComponent } from '../bicycles/bicycles-page/bicycles-page.component';
+import { BicycleEditPageComponent } from '../bicycles/bicycle-edit-page/bicycle-edit-page.component';
 
 const routes: Routes = [
   {
@@ -182,6 +186,42 @@ const routes: Routes = [
           {
             path: 'new',
             component: NewProblemsPageComponent,
+          },
+        ]
+      },
+      {
+        path: 'user-bicycles',
+        canActivate: [AuthGuard, UserGuard],
+        children:[
+          {
+            path: '',
+            component: UserBicyclesPageComponent,
+          },
+          {
+            path: ":id/edit",
+            component: BicycleEditPageComponent
+          },
+          {
+            path: 'create',
+            component: CreateBicyclePageComponent,
+          },
+        ]
+      },
+      {
+        path: 'bicycles',
+        canActivate: [AdminGuard],
+        children:[
+          {
+            path: '',
+            component: BicyclesPageComponent,
+          },
+          {
+            path: ":id/edit",
+            component: BicycleEditPageComponent
+          },
+          {
+            path: 'create',
+            component: CreateBicyclePageComponent,
           },
         ]
       },
