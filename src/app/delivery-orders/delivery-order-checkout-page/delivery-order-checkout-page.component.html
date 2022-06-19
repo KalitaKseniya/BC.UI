@@ -7,7 +7,7 @@
       </tr>
       <tr>
         <td>{{ provider.name }}</td>
-        <td>{{ provider.pricePerKg | currency: 'USD'}}</td>
+        <td>{{ provider.pricePerKg }} BYN</td>
         <td>{{ provider.minWeightInKgToDeliver}} kg</td>
       </tr>
     </table>
@@ -27,7 +27,7 @@
         <tr *ngFor="let partModel of partModels">
           <td><img src="{{partModel.imageUrl}}"> </td>
           <td>{{ partModel.name }}</td>
-          <td>{{ financial(partModel.purchasePrice) | currency: 'USD'}}</td>
+          <td>{{ financial(partModel.purchasePrice) }} BYN</td>
           <td>{{ partModel.quantity}}</td>
           <td>{{ financial(partModel.weightInKg)}} kg</td>
           <td>{{ partModel.part.name}} </td>
@@ -46,9 +46,9 @@
     <tr>
       <td>{{totalDifferentItems}}</td>
       <td>{{financial(totalWeight)}} kg</td>
-      <td>{{financial(deliveryPrice) | currency: 'USD'}}</td>
-      <td>{{financial(partModelsPrice) | currency: 'USD'}}</td>
-      <td><b>{{financial(totalPrice) | currency: 'USD'}}</b></td>
+      <td>{{financial(deliveryPrice) }} BYN</td>
+      <td>{{financial(partModelsPrice) }} BYN</td>
+      <td><b>{{financial(totalPrice) }} BYN</b></td>
     </tr>
   </table>
 

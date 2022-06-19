@@ -13,7 +13,7 @@ export class UserProblemsPageComponent implements OnInit, OnDestroy {
 
   problems: ProblemForReadModel[] = [];
   gSub: Subscription;
-  public displayedColumns = ['id', 'bicycle', 'address', 'masterEmail', 'dateCreated', 'stage', 'dateFinished', 'details', 'delete'
+  public displayedColumns = ['bicycle', 'address', 'masterEmail', 'dateCreated', 'stage', 'dateFinished', 'details'
 ];
 
   constructor(

@@ -1,6 +1,6 @@
 <table mat-table [dataSource]="dataSource" matSort>
   <ng-container matColumnDef="id">
-    <th mat-header-cell  mat-sort-header *matHeaderCellDef> Id </th>
+    <th mat-header-cell  mat-sort-header *matHeaderCellDef> {{"tableRows.number" | translate}}  </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
   </ng-container>
   <ng-container matColumnDef="dateCreated">

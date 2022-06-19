@@ -86,7 +86,8 @@
       "users": "Users",
       "weight": "Weight",
       "userId": "User Id",
-      "userName": "Username"
+      "userName": "Username",
+      "number": "Number"
     },
     "controlsValidation": {
         "passwordMinLength": "Password length must be at least",
@@ -201,7 +202,9 @@
       "createNewBicycle": "Create bicycle"
     },
     "generalButtons": {
-      "save": "Save"
+      "save": "Save",
+      "addMore": "Add more",
+      "remove": "Remove"
     },
     "confirmDialogs": {
       "deliveryOrderCreate": {
@@ -240,5 +243,9 @@
         "title": "Delete Bicycle",
         "message": "Are you sure you want to delete bicycle "
       }
+    },
+    "createUser": {
+      "backToAllUsers": "Back to all users",
+      "createUser": "create user"
     }
   }

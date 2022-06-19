@@ -86,7 +86,8 @@
       "users": "Пользователи",
       "weight": "Вес",
       "userId": "Id Пользователя",
-      "userName": "Имя пользователя"
+      "userName": "Имя пользователя",
+      "number": "Номер"
     },
     "controlsValidation": {
       "passwordMinLength": "Минимальная длина пароля - ",
@@ -173,7 +174,7 @@
       "caption" : "Категории и запчасти"
     },
     "userProblems" : {
-      "createNewProblemButton": "Создать новую запчасть"
+      "createNewProblemButton": "Создать новую заявку"
     },
     "providers": {
       "backToAllProvidersButton": "К поставщикам",
@@ -201,7 +202,9 @@
       "createNewBicycle": "Добавить велосипед"
     },
     "generalButtons": {
-      "save": "Сохранить"
+      "save": "Сохранить",
+      "addMore": "Добавить еще",
+      "remove": "Удалить"
     },
     "confirmDialogs":{
       "deliveryOrderCreate": {
@@ -240,5 +243,9 @@
         "title": "Удаление велосипеда",
         "message": "Вы уверены, что хотите удалить велосипед "
       }
+    },
+    "createUser": {
+      "backToAllUsers": "Ко всем пользователям",
+      "createUser": "Создать пользователя"
     }
 }

@@ -15,7 +15,7 @@ export class UserBicyclesPageComponent implements OnInit {
   problems: ProblemForReadModel[] = [];
   bicycles: BicycleForReadModel[] = [];
   gSub: Subscription;
-  public displayedColumns = ['id', 'model', 'serialNumber', 'update', 'delete'];
+  public displayedColumns = ['model', 'serialNumber', 'update', 'delete'];
 
   constructor(
     private auth: AuthService,

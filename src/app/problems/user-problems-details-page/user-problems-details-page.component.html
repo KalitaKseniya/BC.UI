@@ -9,7 +9,7 @@
       </button>
     </div>
     <div class="form-control">
-      <label>Id</label>
+      <label>{{"tableRows.number" | translate}} </label>
       <input class="form-control" type="text" formControlName="id" readonly />
     </div>
     <div class="form-control">
@@ -66,7 +66,7 @@
             <td>{{ part.partName }}</td>
             <td>{{ part?.partModelName}}</td>
             <td>{{ part?.amount}}</td>
-            <td>{{ financial(part?.pricePerDetail) | currency: 'USD'}}</td>
+            <td>{{ financial(part?.pricePerDetail) }} BYN</td>
           </tr>
         </table>
     </div>

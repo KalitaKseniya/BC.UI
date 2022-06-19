@@ -52,7 +52,10 @@
     <form [formGroup]="partForm">
     <div class="test">
       <h2> {{"problemsForm.addMultiplePartModels" | translate}}</h2>
-      <button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button>
+      <button type="button" (click)="addQuantity()" class="btn btn-primary">
+        {{"generalButtons.addMore" | translate}}
+
+      </button>
     </div>
     <table class="table table-bordered" formArrayName="quantities">
       <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
@@ -77,7 +80,7 @@
                     *ngFor="let pm of getPartModels(i)"
                     [ngValue]="pm.id"
                 >
-                    {{pm.name}} - {{pm.price | currency: 'USD'}}
+                    {{pm.name}} - {{pm.price }} BYN
                 </option>
             </select>
           </div>
@@ -102,7 +105,9 @@
             </div>
         </td>
         <td>
-            <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
+            <button (click)="removeQuantity(i)" class="btn btn-danger">
+              {{"generalButtons.remove" | translate}}
+            </button>
         </td>
       </tr>
     </table>

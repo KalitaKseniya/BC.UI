@@ -49,7 +49,7 @@
             <tr *ngFor="let partModel of deliveryOrder.partModels">
               <td><img src="{{partModel.partModelImageUrl}}"> </td>
               <td>{{ partModel.partModelName }}</td>
-              <td>{{ financial(partModel.purchasePrice) | currency: 'USD'}}</td>
+              <td>{{ financial(partModel.purchasePrice)}} BYN</td>
               <td>{{ partModel.quantity}}</td>
               <td>{{ financial(partModel.partModelWeightInKg)}} kg</td>
             </tr>

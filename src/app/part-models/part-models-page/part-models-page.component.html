@@ -34,13 +34,13 @@
       <th mat-header-cell  mat-sort-header *matHeaderCellDef>
         {{"tableRows.price" | translate}}
       </th>
-      <td mat-cell *matCellDef="let element"> {{element.price | currency:'USD'}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.price }} BYN</td>
     </ng-container>
     <ng-container matColumnDef="purchasePrice">
       <th mat-header-cell  mat-sort-header *matHeaderCellDef>
         {{"tableRows.purchasePrice" | translate}}
       </th>
-      <td mat-cell *matCellDef="let element"> {{element.purchasePrice | currency:'USD'}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.purchasePrice }} BYN </td>
     </ng-container>
     <ng-container matColumnDef="weightInKg">
       <th mat-header-cell  mat-sort-header *matHeaderCellDef>
